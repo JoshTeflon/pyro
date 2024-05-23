@@ -26,7 +26,8 @@ body {
 }
 
 @layer utilities {
-  /* .text-balance {
-    text-wrap: balance;
-  } */
+  .text-outline {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(var(--foreground-rgb));
+  }
 }

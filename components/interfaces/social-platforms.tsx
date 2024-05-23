@@ -36,7 +36,7 @@ const platforms: PlatformInterface[] = [
 
 const SocialPlatforms: React.FC = () => {
   return (
-    <ul className='flex items-center space-x-3 lg:space-x-4'>
+    <ul className='flex items-center space-x-2 lg:space-x-2.5'>
       {
         platforms?.map((icon: PlatformInterface) => (
           <li

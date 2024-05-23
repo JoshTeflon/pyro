@@ -15,7 +15,7 @@ const menuItems: MenuItems[] = [
     link: ''
   },
   {
-    item: 'P',
+    item: '🔥',
     link: ''
   },
   {
@@ -36,7 +36,7 @@ const Menu = () => {
           menuItems?.map((item: MenuItems) => (
             <li
               key={item?.item}
-              className='text-sm lg:text-base uppercase cursor-pointer'
+              className='text-sm lg:text-base uppercase cursor-pointer hover:-translate-y-1 transition-all duration-300 ease-in-out'
             >
               {item.item}
             </li>
