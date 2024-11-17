@@ -1,44 +1,17 @@
-import React from 'react';
-
-interface MenuItems {
-  item: string
-  link: string
-}
-
-const menuItems: MenuItems[] = [
-  {
-    item: 'home',
-    link: ''
-  },
-  {
-    item: 'music',
-    link: ''
-  },
-  {
-    item: '🔥',
-    link: ''
-  },
-  {
-    item: 'videos',
-    link: ''
-  },
-  {
-    item: 'store',
-    link: ''
-  }
-]
+import { menuItems } from '@/lib/data';
+import { MenuItems } from '@/types';
 
 const Menu = () => {
   return (
     <nav className='w-full'>
-      <ul className='w-full flex items-center justify-between space-x-16'>
+      <ul className='w-full flex items-center justify-center space-x-4'>
         {
           menuItems?.map((item: MenuItems) => (
             <li
               key={item?.item}
-              className='text-sm lg:text-base uppercase cursor-pointer hover:-translate-y-1 transition-all duration-300 ease-in-out'
+              className='text-sm cursor-pointer hover:text-body hover:-translate-y-0.5 transition-all duration-300 ease-in-out'
             >
-              {item.item}
+              {item.item}.
             </li>
           ))
         }

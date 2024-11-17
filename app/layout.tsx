@@ -1,12 +1,11 @@
-import type { Metadata } from "next";
-import { Karla } from "next/font/google";
+import type { Metadata } from 'next';
+import { GeistMono } from 'geist/font/mono';
+
 import "./globals.css";
 
-const inter = Karla({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
-  title: "Pyro",
-  description: "Pyro",
+  title: "ii6 pyro",
+  description: "Official website of ii6 pyro",
 };
 
 export default function RootLayout({
@@ -17,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} mx-auto w-full max-w-7xl px-4 lg:px-6 antialiased`}
+        className={`${GeistMono.className} ${GeistMono.variable} antialiased`}
       >
         {children}
       </body>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { SocialPlatforms } from '../interfaces';
+import { SocialPlatforms } from '.';
 
 const Footer: React.FC = () => {
   return (

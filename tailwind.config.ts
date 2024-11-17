@@ -9,9 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "main": 'rgb(var(--background-rgb))',
-        "primary": 'rgb(var(--foreground-rgb))'
-      }
+        "main": 'var(--main-clr)',
+        "primary": 'var(--primary-clr)',
+        "body": 'var(--body-clr)',
+      },
+      fontFamily: {
+        "geist-mono": ['var(--font-geist-mono)'],
+      },
     },
   },
   plugins: [],
