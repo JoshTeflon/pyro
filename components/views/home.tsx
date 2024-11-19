@@ -21,7 +21,7 @@ const Home = () => {
         <div className='absolute bottom-16 left-1/2 -translate-x-1/2'>
           <div className='flex flex-col items-center text-center space-y-4'>
             <p className='text-4xl lg:text-5xl font-extralight uppercase'>New Release</p>
-            <span className='text-lg lg:text-xl font-black uppercase'>out now</span>
+            <span className='text-lg lg:text-xl font-black uppercase animate-glow'>out now</span>
             <Button
               variant='primary'
               size='lg'
