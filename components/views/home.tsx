@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { Header } from '@/components/interfaces';
+import { Button, Header } from '@/components/interfaces';
 import { artist } from '@/lib/data';
 
 const Home = () => {
@@ -15,12 +15,21 @@ const Home = () => {
         fill
         priority
       />
-      <div className='z-10 absolute inset-0 w-full h-full bg-main/50'></div>
-      <div className='side-pad z-20 relative'>
+      <div className='z-10 absolute inset-0 w-full h-full bg-overlay'></div>
+      <div className='side-pad z-30 relative w-full h-full'>
         <Header  />
-        {/* <div className='text-body'>
-          <h1>Website of ii6 pyro</h1>
-        </div> */}
+        <div className='absolute bottom-16 left-1/2 -translate-x-1/2'>
+          <div className='flex flex-col items-center text-center space-y-4'>
+            <p className='text-4xl lg:text-5xl font-extralight uppercase'>New Release</p>
+            <span className='text-lg lg:text-xl font-black uppercase'>out now</span>
+            <Button
+              variant='primary'
+              size='lg'
+            >
+              Listen
+            </Button>
+          </div>
+        </div>
       </div>
     </section>
   )

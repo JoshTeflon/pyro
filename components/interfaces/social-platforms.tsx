@@ -8,9 +8,14 @@ const SocialPlatforms: React.FC = () => {
         artist?.socials?.map((icon: PlatformInterface) => (
           <li
             key={icon.name}
-            className='group cursor-pointer w-7 h-7 flex items-center justify-center hover:bg-main rounded-full transition-colors duration-500 ease-in-out'
+            className='w-7 h-7'
           >
-            <icon.icon className="w-4 text-inherit group-hover:text-body" />
+            <a
+              className='w-full h-full flex items-center justify-center text-inherit hover:bg-main hover:text-body focus:bg-main focus:text-body rounded-full transition-colors duration-500 ease-in-out'
+              href='/'
+            >
+              <icon.icon className="w-4 text-inherit" />
+            </a>
           </li>
         ))
       }

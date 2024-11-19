@@ -6,6 +6,7 @@
   --primary-clr: hsl(0, 98%, 32%);
   --main-clr: hsl(0, 0%, 10%);
   --body-clr: hsl(50, 100%, 91%);
+  --overlay-clr: hsla(0, 0%, 0%, 0.5);
 }
 
 *,
@@ -16,7 +17,7 @@
 
 body {
   width: 100%;
-  height: 100%;
+  min-height: 100dvh;
   margin: 0;
   padding: 0;
   color: var(--body-clr);

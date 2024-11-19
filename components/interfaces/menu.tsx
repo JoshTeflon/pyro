@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { menuItems } from '@/lib/data';
 import { MenuItems } from '@/types';
 
@@ -9,9 +11,11 @@ const Menu = () => {
           menuItems?.map((item: MenuItems) => (
             <li
               key={item?.item}
-              className='text-sm cursor-pointer hover:text-body hover:-translate-y-0.5 transition-all duration-300 ease-in-out'
+              className='text-sm font-medium text-inherit hover:text-body hover:-translate-y-0.5 cursor-pointer transition-all duration-300 ease-in-out'
             >
-              {item.item}.
+              <Link href='/' className='focus:text-body'>
+                {item.item}.
+              </Link>
             </li>
           ))
         }

@@ -10,8 +10,8 @@ interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({ className }) => {
   return (
-    <div className={`${rockSalt.className} whitespace-nowrap`}>
-      <h1 className={`${className} text-[2.5rem]`}>{artist?.name}</h1>
+    <div className={`${rockSalt.className} whitespace-nowrap hover:animate-jello-horizontal`}>
+      <h1 className={`${className}`}>{artist?.name}</h1>
     </div>
   )
 }

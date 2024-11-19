@@ -3,7 +3,7 @@ import { ArtistInterface, MenuItems } from '@/types';
 
 export const artist: ArtistInterface = {
   name: 'ii6 pyro',
-  main_image: '/images/ii6-pyro-main.jpg',
+  main_image: '/images/ii6-pyro-main.png',
   socials: [
     {
       name: 'instagram',
@@ -52,6 +52,10 @@ export const menuItems: MenuItems[] = [
     link: ''
   },
   {
+    item: 'store',
+    link: ''
+  },
+  {
     item: 'gallery',
     link: ''
   },
@@ -59,8 +63,8 @@ export const menuItems: MenuItems[] = [
     item: 'about us',
     link: ''
   },
-  {
-    item: 'newsletter',
-    link: ''
-  },
+  // {
+  //   item: 'newsletter',
+  //   link: ''
+  // },
 ]
