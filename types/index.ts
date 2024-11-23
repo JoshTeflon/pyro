@@ -16,3 +16,8 @@ export interface PlatformInterface {
   icon: React.ComponentType<SVGProps<SVGSVGElement>>
   url: string
 }
+
+export interface NavContextInterface {
+  navOpen: boolean;
+  toggleNavOpen: () => void;
+}
