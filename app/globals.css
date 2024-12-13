@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --primary-clr: hsl(0, 98%, 32%);
+  --primary-clr: hsl(0, 98%, 32%, 0.9);
   --main-clr: hsl(0, 0%, 10%);
   --body-clr: hsl(50, 100%, 91%);
   --overlay-clr: hsla(0, 0%, 0%, 0.5);
@@ -27,5 +27,10 @@ body {
 @layer utilities {
   .side-pad {
     @apply mx-auto w-full max-w-7xl px-4 lg:px-6;
+  }
+
+  .bar {
+    @apply block absolute p-0 w-8 h-1 rounded;
+    transition: all 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
   }
 }

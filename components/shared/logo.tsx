@@ -10,7 +10,7 @@ interface LogoProps extends VariantProps<typeof logoVariants> {
 const rockSalt = Rock_Salt({ subsets: ['latin'], weight: ['400'] });
 
 const logoVariants = cva(
-  `${rockSalt.className} whitespace-nowrap hover:animate-jello-horizontal`,
+  `${rockSalt.className} whitespace-nowrap hover:animate-jello-horizontal transition-all ease-in-out duration-300`,
   {
     variants: {
       variant: {

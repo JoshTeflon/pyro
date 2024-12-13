@@ -13,9 +13,11 @@ const config: Config = {
         'primary': 'var(--primary-clr)',
         'body': 'var(--body-clr)',
         'overlay': 'var(--overlay-clr)',
+        'primary-overlay': 'var(--primary-overlay-clr)',
       },
       fontFamily: {
         'geist-mono': ['var(--font-geist-mono)', 'monospace', 'Courier New'],
+        'news-cycle': ['var(--font-news-cycle)', 'var(--font-geist-mono)', 'monospace', 'Courier New'],
       },
       keyframes: {
         'jello-horizontal': {

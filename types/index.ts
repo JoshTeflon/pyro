@@ -18,6 +18,7 @@ export interface PlatformInterface {
 }
 
 export interface NavContextInterface {
-  navOpen: boolean;
-  toggleNavOpen: () => void;
+  navOpen: boolean
+  toggleNavOpen: () => void
+  closeNav: () => void
 }
