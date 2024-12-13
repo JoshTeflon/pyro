@@ -4,13 +4,14 @@ import { cva, type VariantProps } from 'class-variance-authority';
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {}
 
 const buttonVariants = cva(
-  /* button base classes */
   'h-fit transition-all duration-150 ease-in-out',
   {
     variants: {
       variant: {
-          primary: "bg-primary ",
-          default: "bg-main",
+          default: 'bg-main text-body',
+          primary: 'bg-primary text-main',
+          secondary: 'bg-body text-main',
+          'secondary-primary': 'bg-body text-primary',
       },
       size: {
           sm: 'text-xs lg:text-sm py-1 px-2',
@@ -37,10 +38,10 @@ const buttonVariants = cva(
   }
 );
 
-export const Button: React.FC<ButtonProps> = ({ children, className, variant, size, ...props }) => {
+export const Button: React.FC<ButtonProps> = ({ children, className, variant, size, roundness, ...props }) => {
   return (
     <button
-      className={buttonVariants({ variant, size, className })}
+      className={buttonVariants({ className, variant, size, roundness })}
       {...props}
     >
       {children}

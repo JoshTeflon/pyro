@@ -40,10 +40,6 @@ export const artist: ArtistInterface = {
 
 export const menuItems: MenuItems[] = [
   {
-    item: 'home',
-    link: ''
-  },
-  {
     item: 'music',
     link: ''
   },
