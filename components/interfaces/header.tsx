@@ -11,7 +11,7 @@ const Header: React.FC = () => {
   const { navOpen, toggleNavOpen } = useNav();
 
   return (
-    <header className='side-pad z-[75] absolute left-0 right-0 py-8 w-full bg-transparent flex items-center justify-between'>
+    <header className='side-pad z-[75] fixed left-0 right-0 py-8 w-full bg-transparent flex items-center justify-between'>
       <Link href={'/'}>
         <Logo
           className='-rotate-2'

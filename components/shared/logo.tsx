@@ -1,10 +1,13 @@
+import { forwardRef } from 'react';
 import { Rock_Salt } from 'next/font/google';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import { artist } from '@/lib/data';
+import { AnimatedText } from '@/components/shared';
 
 interface LogoProps extends VariantProps<typeof logoVariants> {
   className?: string;
+  ref?: React.RefObject<HTMLDivElement>;
 }
 
 const rockSalt = Rock_Salt({ subsets: ['latin'], weight: ['400'] });
@@ -31,12 +34,19 @@ const logoVariants = cva(
   }
 );
 
-const Logo: React.FC<LogoProps> = ({ className, variant, size }) => {
+const Logo = forwardRef<HTMLDivElement, LogoProps>(({ className, variant, size }, ref) => {
   return (
-    <div className={logoVariants({ variant, size })}>
-      <h1 className={`${className}`}>{artist?.name}</h1>
+    <div
+      ref={ref}
+      className={logoVariants({ variant, size })}
+    >
+      <h1 className={`tracking-wide lg:tracking-wider ${className}`}>
+        <AnimatedText text={artist?.name} />
+      </h1>
     </div>
   )
-}
+});
+
+Logo.displayName = 'Logo';
 
 export default Logo;

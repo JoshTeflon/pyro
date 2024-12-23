@@ -7,15 +7,32 @@ import { SocialPlatforms } from '@/components/interfaces';
 import { useNav } from '@/hooks';
 import { menuItems } from '@/lib/data';
 import { MenuItems } from '@/types';
+import { useEffect } from 'react';
 
 const newsCycle = News_Cycle({ subsets: ['latin'], weight: ['400', '700'] });
 
 const MobileNav = () => {
   const { navOpen } = useNav();
 
+  useEffect(() => {
+    const bodyElement = document.body;
+    const OVERFLOW_HIDDEN_CLASS = 'overflow-hidden';
+    
+    const toggleBodyScroll = (shouldDisableScroll: boolean) => {
+      bodyElement.classList.toggle(OVERFLOW_HIDDEN_CLASS, shouldDisableScroll);
+    };
+
+    toggleBodyScroll(navOpen);
+
+    return () => {
+      bodyElement.classList.remove(OVERFLOW_HIDDEN_CLASS);
+    };
+  }, [navOpen]);
+
+
   return (
     <div
-      className={`${navOpen ? 'translate-y-0' : '-translate-y-full'} z-50 absolute inset-0 block lg:hidden w-full h-full pt-32 pb-8 bg-primary backdrop-blur-sm transition-all ease-in-out duration-300`}
+      className={`${navOpen ? 'translate-y-0' : '-translate-y-full'} z-50 absolute inset-0 block lg:hidden w-full h-dvh pt-32 pb-8 bg-primary backdrop-blur-sm transition-all ease-in-out duration-300`}
     >
       <nav className='side-pad w-full'>
         <ul className='w-full flex flex-col items-center space-y-12'>

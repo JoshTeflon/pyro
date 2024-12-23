@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { GeistMono } from 'geist/font/mono';
 
-import "./globals.css";
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "ii6 pyro",
-  description: "Official website of ii6 pyro",
+  title: 'ii6 pyro',
+  description: 'Official website of ii6 pyro',
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${GeistMono.className} ${GeistMono.variable} antialiased`}
+        className={`${GeistMono.className} ${GeistMono.variable}`}
       >
         {children}
       </body>
