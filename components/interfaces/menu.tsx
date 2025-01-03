@@ -13,7 +13,7 @@ const Menu = () => {
               key={item?.item}
               className='text-sm font-medium text-inherit hover:text-body hover:-translate-y-0.5 cursor-pointer transition-all duration-300 ease-in-out'
             >
-              <Link href='/' className='focus:text-body'>
+              <Link href={item?.link} className='focus:text-body'>
                 {item.item}.
               </Link>
             </li>

@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import { Rock_Salt } from 'next/font/google';
 import { cva, type VariantProps } from 'class-variance-authority';
 
+import { rockSalt } from '@/lib/fonts';
 import { artist } from '@/lib/data';
 import { AnimatedText } from '@/components/shared';
 
@@ -9,8 +9,6 @@ interface LogoProps extends VariantProps<typeof logoVariants> {
   className?: string;
   ref?: React.RefObject<HTMLDivElement>;
 }
-
-const rockSalt = Rock_Salt({ subsets: ['latin'], weight: ['400'] });
 
 const logoVariants = cva(
   `${rockSalt.className} whitespace-nowrap hover:animate-jello-horizontal transition-all ease-in-out duration-300`,

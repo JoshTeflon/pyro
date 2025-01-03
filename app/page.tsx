@@ -18,17 +18,17 @@ export default function Landing() {
 
   return (
     <NavContextProvider>
-      {isLoading ? (
+      {/* {isLoading ? (
           // <Loading />
           <div className='w-full h-dvh flex items-center justify-center'>loading...</div>
-        ) : (
-          <main className='relative w-full h-full flex flex-col grow font-geist-mono'>
+        ) : ( */}
+          <main className='relative w-full h-full flex flex-col grow font-geist-mono tracking-wide'>
             <Header  />
             <MobileNav />
             <Home />
             <Music />
           </main>
-        )}
+        {/* )} */}
     </NavContextProvider>
   );
 }

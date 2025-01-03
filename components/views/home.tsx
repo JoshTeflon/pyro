@@ -3,11 +3,12 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { Button } from '@/components/interfaces';
 import { artist } from '@/lib/data';
+import { newsCycle } from '@/lib/fonts';
 
 const Home = () => {
   const landingImageRef = useRef<HTMLImageElement>(null);
@@ -37,7 +38,7 @@ const Home = () => {
   });
 
   return (
-    <section className='relative w-full h-dvh overflow-hidden'>
+    <section id='home' className='relative w-full h-dvh overflow-hidden'>
       <Image
         ref={landingImageRef}
         className='landing-img z-10 absolute inset-0 w-full h-full object-cover object-center'
@@ -52,8 +53,8 @@ const Home = () => {
       <div className='action-content side-pad z-30 relative w-full h-full'>
         <div className='absolute bottom-16 left-1/2 -translate-x-1/2'>
           <div className='flex flex-col items-center text-center'>
-            <p className='text-3xl lg:text-4xl font-extralight uppercase'>New Release</p>
-            <div className='mt-3 mb-4 flex items-baseline space-x-2 font-bold hover:animate-glow'>
+            <p className={`${newsCycle.className} text-3xl lg:text-4xl font-bold uppercase tracking-wider`}>New Release</p>
+            <div className='mt-3 mb-6 flex items-baseline space-x-2 font-bold hover:animate-glow'>
               <span className='text-xl lg:text-2xl'>GO</span>
               <span className='text-sm lg:text-base tracking-tighter'>ft. wyld chlld</span>
             </div>

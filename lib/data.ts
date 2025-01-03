@@ -1,5 +1,5 @@
 import { Instagram, X, Tiktok, Spotify, Youtube } from '@/components/icons';
-import { ArtistInterface, MenuItems } from '@/types';
+import { ArtistInterface, MenuItems, TrackDetails } from '@/types';
 
 export const artist: ArtistInterface = {
   name: 'ii6 pyro',
@@ -41,7 +41,7 @@ export const artist: ArtistInterface = {
 export const menuItems: MenuItems[] = [
   {
     item: 'music',
-    link: ''
+    link: '#music'
   },
   {
     item: 'videos',
@@ -63,4 +63,27 @@ export const menuItems: MenuItems[] = [
   //   item: 'newsletter',
   //   link: ''
   // },
+]
+
+export const musicList: TrackDetails[] = [
+  {
+    name: 'surrender',
+    cover: '/images/music_covers/surrender_cover.png'
+  },
+  {
+    name: 'go',
+    cover: '/images/music_covers/go_cover.jpeg'
+  },
+  {
+    name: 'nvm',
+    cover: '/images/music_covers/nvm_cover.jpg'
+  },
+  {
+    name: 'lma',
+    cover: '/images/music_covers/lma_cover.jpg'
+  },
+  {
+    name: 'haze',
+    cover: '/images/music_covers/haze_cover.jpg'
+  },
 ]
