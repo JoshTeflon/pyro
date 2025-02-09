@@ -79,7 +79,7 @@ const Music = () => {
     >
       <video
         // title='zzxy'
-        className='absolute inset-0 w-full h-full object-cover opacity-80 ease-in-out'
+        className='z-[-5] absolute inset-0 w-full h-full object-cover opacity-80 ease-in-out'
         // width='100%'
         // height='100vh'
         preload='none'
@@ -142,7 +142,7 @@ const Music = () => {
                 <div className='w-full h-full flex items-center justify-center'>
                   <div
                     className={`
-                      w-full max-w-96 sm:max-w-[25rem] xl:max-w-[28rem] h-96 sm:h-[25rem] xl:h-[28rem]
+                      w-full max-w-96 h-96
                       flex items-center justify-center rounded-md cursor-pointer
                       transition-all duration-300 ease-in-out
                       ${isActive 
@@ -186,8 +186,8 @@ const Music = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className='my-8 text-center text-xs lg:text-sm uppercase'>{activeSlide.details.name}</div>
       </div>
+      <div className='my-4 text-center text-xs lg:text-sm text-body uppercase'>{activeSlide.details.name}</div>
       <div className='flex justify-center'>
         <Lottie
           animationData={fireAnimation}
