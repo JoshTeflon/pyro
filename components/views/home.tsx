@@ -55,13 +55,14 @@ const Home = () => {
           <div className='flex flex-col items-center text-center'>
             <p className={`${newsCycle.className} text-3xl lg:text-4xl font-bold uppercase tracking-wider`}>New Release</p>
             <div className='mt-3 mb-6 flex items-baseline space-x-2 font-bold hover:animate-glow'>
-              <span className='text-xl lg:text-2xl'>GO</span>
-              <span className='text-sm lg:text-base tracking-tighter'>ft. wyld chlld</span>
+              <span className='text-xl lg:text-2xl'>Surrender</span>
+              {/* <span className='text-sm lg:text-base tracking-tighter'>ft. wyld chlld</span> */}
             </div>
             <Button
               ref={streamRef}
               variant='primary'
               size='lg'
+              roundness='round'
             >
               Stream Now
             </Button>

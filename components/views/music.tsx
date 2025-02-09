@@ -6,11 +6,14 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Zoom } from 'swiper/modules';
+import Lottie from "lottie-react";
 
 import { newsCycle } from '@/lib/fonts';
 import { musicList } from '@/lib/data';
+import { TrackDetails } from '@/types';
 import { AnimatedText } from '@/components/shared';
 import { Button } from '@/components/interfaces';
+import fireAnimation from '@/assets/fire-lottie.json';
 
 import 'swiper/css';
 import 'swiper/css/zoom';
@@ -21,8 +24,8 @@ const swiperConfig = {
   initialSlide: 0,
   speed: 300,
   modules: [Zoom],
-  watchSlidesProgress: true,
-  // Add these properties for more control
+  grabCursor: true,
+  slideToClickedSlide: true,
   coverflowEffect: {
     rotate: 0,
     stretch: 0,
@@ -30,40 +33,71 @@ const swiperConfig = {
     modifier: 1,
     slideShadows: false,
   },
-  // Customize breakpoints if needed
   breakpoints: {
     320: {
-      slidesPerView: 1.5,
+      slidesPerView: 2,
+      spaceBetween: -125
+    },
+    640: {
+      slidesPerView: 2.5,
+      spaceBetween: -25
     },
     768: {
       slidesPerView: 2.5,
+      spaceBetween: -25
     },
     1024: {
       slidesPerView: 3,
-    }
+      spaceBetween: 100
+    },
   },
-  // Add custom spacing
-  spaceBetween: -50, // Negative space to bring slides closer
+  spaceBetween: 50,
 };
+
+interface SlideState {
+  isActive: boolean;
+  details: TrackDetails;
+  index: number;
+}
 
 const Music = () => {
   const headerRef = useRef<HTMLHeadingElement>(null);
 
+  const [activeSlide, setActiveSlide] = useState<SlideState>({
+    isActive: false,
+    details: musicList[0],
+    index: 0
+  });
+  
+  // Track the Swiper instance
+  const [swiperInstance, setSwiperInstance] = useState<any>(null);
+
   return (
-    <section id='music' className='z-40 relative w-full min-h-dvh bg-main'>
-      {/* <Image
-        // ref={landingImageRef}
-        className='w-full h-full object-contain object-center rounded-md'
-        src={item.cover}
-        alt={item?.name}
-        quality={100}
-        // placeholder='blur'
-        fill
-        priority
-      /> */}
-      <div className={`${newsCycle.className} side-pad mt-4 md:mt-8 text-center uppercase`}>
+    <section
+      id='music'
+      className='z-40 relative py-8 w-full h-dvh flex flex-col justify-around overflow-hidden'
+    >
+      <video
+        // title='zzxy'
+        className='absolute inset-0 w-full h-full object-cover opacity-80 ease-in-out'
+        // width='100%'
+        // height='100vh'
+        preload='none'
+        playsInline
+        autoPlay
+        loop
+        muted
+      >
+        <source
+          type='video/mp4'
+          // src='/public/SURRENDER (visualizer).mp4'
+          src='https://cdn.shopify.com/videos/c/o/v/f964089c84a240dfa7af199106281137.mp4'
+        />
+        Your browser does not support the video tag.
+      </video>
+      <div className={`${newsCycle.className} side-pad text-center uppercase`}>
         <span className='text-xs'>explore</span>
-        <h3 ref={headerRef} className='text-xl md:text-2xl xl:text-3xl font-bold tracking-wider'>
+        <h3 ref={headerRef} className='text-2xl xl:text-[1.75rem] tracking-wider'>
           <AnimatedText
             text='music'
             scrollConfig={{
@@ -72,50 +106,62 @@ const Music = () => {
           />
         </h3>
       </div>
-      <div className="side-pad relative my-4 md:my-8 lg:my-16 xl:my-20 w-full overflow-hidden">
+      <div className="relative my-8 lg:my-16 w-full overflow-hidden">
         <Swiper
           className="mx-auto px-0"
-          slidesPerView={3}
-          centeredSlides={true}
-          initialSlide={0}
-          watchSlidesProgress={true}
-          grabCursor={true}
-          modules={[Zoom]}
           style={{
             width: '150%',
             marginLeft: '-25%',
-            // alignItems: 'center'
           }}
+          onSwiper={(swiper) => {
+            setSwiperInstance(swiper);
+            setActiveSlide({
+              isActive: true,
+              details: musicList[swiper.activeIndex],
+              index: swiper.activeIndex
+            });
+          }}
+          onSlideChange={(swiper) => {
+            setActiveSlide({
+              isActive: true,
+              details: musicList[swiper.activeIndex],
+              index: swiper.activeIndex
+            });
+          }}
+          {...swiperConfig}
         >
           {musicList.map((item, idx) => (
             <SwiperSlide
               key={idx}
               className="transition-all duration-300 ease-in-out"
-              style={{}}
+              style={{
+                zIndex: activeSlide.index === idx ? 1 : 0
+              }}
             >
               {({ isActive }) => (
                 <div className='w-full h-full flex items-center justify-center'>
                   <div
                     className={`
+                      w-full max-w-96 sm:max-w-[25rem] xl:max-w-[28rem] h-96 sm:h-[25rem] xl:h-[28rem]
                       flex items-center justify-center rounded-md cursor-pointer
                       transition-all duration-300 ease-in-out
                       ${isActive 
-                        ? 'w-full max-w-[23rem] lg:max-w-96 h-96 lg:h-[25rem] opacity-100' 
-                        : 'w-2/5 lg:w-4/5 max-w-[17rem] lg:max-w-72 h-72 lg:h-[19rem] opacity-50'
+                        ? 'scale-100 opacity-100' 
+                        : 'scale-50 opacity-50'
                       }
                     `}
                   >
-                    {/* {item?.name} */}
-                    <div className='group relative w-full h-full rounded-md transition-all duration-300 ease-in-out'>
+                    <div className='group relative w-full h-full bg-main rounded-md transition-all duration-300 ease-in-out'>
                       <Image
                         // ref={landingImageRef}
                         className={`
                           z-10 absolute inset-0 w-full h-full object-cover object-center rounded-md
-                          ${isActive ? 'group-hover:opacity-30' : ''}
+                          ${isActive ? 'group-hover:opacity-75' : ''}
                         `}
                         src={item.cover}
                         alt={item?.name}
                         quality={100}
+                        sizes="(max-width: 768px) 23rem, 24rem"
                         // placeholder='blur'
                         fill
                         priority
@@ -140,6 +186,23 @@ const Music = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className='my-8 text-center text-xs lg:text-sm uppercase'>{activeSlide.details.name}</div>
+      </div>
+      <div className='flex justify-center'>
+        <Lottie
+          animationData={fireAnimation}
+          style={{
+            height: '100%',
+            width: '100%',
+            maxHeight: 100,
+            maxWidth: 100,
+          }}
+          loop={true}
+          autoPlay={true}
+          rendererSettings={{
+            preserveAspectRatio: 'xMidYMid slice',
+          }}
+        />
       </div>
     </section>
   )

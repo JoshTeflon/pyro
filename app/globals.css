@@ -6,7 +6,7 @@
   --primary-clr: hsla(0, 98%, 32%, 0.9);
   --main-clr: hsl(0, 0%, 3%);
   --body-clr: hsl(50, 100%, 91%);
-  --overlay-clr: hsla(0, 0%, 0%, 0.5);
+  --overlay-clr: hsla(0, 0%, 0%, 0.3);
   --scrollbar-thumb: hsl(50, 100%, 91%, 0.3);
   --scrollbar-track: hsl(0, 0%, 3%);
 }

@@ -29,7 +29,7 @@ const buttonVariants = cva(
     compoundVariants: [
       {
         variant: ['default', 'primary', 'outline'],
-        class: 'hover:opacity-80 focus:opacity-80 hover:-translate-y-0.5 active:translate-y-0.5 active:scale-95'
+        class: 'focus:opacity-80 hover:-translate-y-0.5 active:translate-y-0.5 active:scale-95'
       },
     ],
     defaultVariants: {
