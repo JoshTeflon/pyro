@@ -28,7 +28,7 @@ const buttonVariants = cva(
     },
     compoundVariants: [
       {
-        variant: ['default', 'primary', 'outline'],
+        variant: ['default', 'primary', 'outline', 'secondary-primary'],
         class: 'focus:opacity-80 hover:-translate-y-0.5 active:translate-y-0.5 active:scale-95'
       },
     ],

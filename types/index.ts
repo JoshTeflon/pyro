@@ -26,4 +26,5 @@ export interface NavContextInterface {
 export interface TrackDetails {
   name: string
   cover: string
+  video: string
 }
