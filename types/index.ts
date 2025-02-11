@@ -22,3 +22,9 @@ export interface NavContextInterface {
   toggleNavOpen: () => void
   closeNav: () => void
 }
+
+export interface TrackDetails {
+  name: string
+  cover: string
+  video: string
+}

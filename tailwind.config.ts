@@ -15,10 +15,6 @@ const config: Config = {
         'overlay': 'var(--overlay-clr)',
         'primary-overlay': 'var(--primary-overlay-clr)',
       },
-      fontFamily: {
-        'geist-mono': ['var(--font-geist-mono)', 'monospace', 'Courier New'],
-        'news-cycle': ['var(--font-news-cycle)', 'var(--font-geist-mono)', 'monospace', 'Courier New'],
-      },
       keyframes: {
         'jello-horizontal': {
           '0%': { transform: 'scale3d(1, 1, 1)' },

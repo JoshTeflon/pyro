@@ -1,7 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 import { Logo, Hamburger } from '@/components/shared';
 import { Menu, SocialPlatforms } from '@/components/interfaces';
@@ -9,9 +11,46 @@ import { useNav } from '@/hooks';
 
 const Header: React.FC = () => {
   const { navOpen, toggleNavOpen } = useNav();
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 40) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
+
+  useEffect(() => {
+    if (headerRef.current) {
+      gsap.to(headerRef.current, {
+        y: isVisible ? 0 : -80,
+        opacity: isVisible ? 1 : 0,
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+    }
+  }, [isVisible]);
 
   return (
-    <header className='side-pad z-[75] absolute left-0 right-0 py-8 w-full bg-transparent flex items-center justify-between'>
+    <header
+      ref={headerRef}
+      className='side-pad z-[75] fixed left-0 right-0 py-8 w-full bg-transparent flex items-center justify-between'
+    >
       <Link href={'/'}>
         <Logo
           className='-rotate-2'
