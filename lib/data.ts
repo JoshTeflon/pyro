@@ -69,26 +69,26 @@ export const musicList: TrackDetails[] = [
   {
     name: 'surrender',
     cover: '/images/music_covers/surrender_cover.png',
-    video: '/SURRENDER-(visualizer).mp4'
+    video: '/surrender-visualizer.mp4'
   },
   {
     name: 'go',
     cover: '/images/music_covers/go_cover.jpeg',
-    video: '/SURRENDER-(visualizer).mp4'
+    video: '/surrender-visualizer.mp4'
   },
   {
     name: 'nvm',
     cover: '/images/music_covers/nvm_cover.jpg',
-    video: '/NVM-(visualizer).mp4'
+    video: '/nvm-visualizer.mp4'
   },
   {
     name: 'lma',
     cover: '/images/music_covers/lma_cover.jpg',
-    video: '/SURRENDER-(visualizer).mp4'
+    video: '/surrender-visualizer.mp4'
   },
   {
     name: 'haze',
     cover: '/images/music_covers/haze_cover.jpg',
-    video: '/SURRENDER-(visualizer).mp4'
+    video: '/nvm-visualizer.mp4'
   },
 ]

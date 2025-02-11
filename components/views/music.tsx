@@ -169,7 +169,7 @@ const Music = () => {
       </div>
       <div className='relative my-4 text-center text-xs lg:text-sm text-body uppercase'>{activeSlide.details.name}</div>
       <div className='relative flex justify-center'>
-        <Lottie
+        {/* <Lottie
           animationData={fireAnimation}
           style={{ height: '100%', width: '100%', maxHeight: 100, maxWidth: 100 }}
           loop
@@ -177,6 +177,15 @@ const Music = () => {
           rendererSettings={{
             preserveAspectRatio: 'xMidYMid slice',
           }}
+        /> */}
+        <Image
+          className='object-cover object-center'
+          src='/images/flame.png'
+          alt='cool flame'
+          width={32}
+          height={32}
+          quality={100}
+          priority
         />
       </div>
     </section>

@@ -1,9 +1,10 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 import { Header, MobileNav } from '@/components/interfaces';
 import { Home, Music } from '@/components/views';
 import NavContextProvider from '@/contexts/NavContext';
-import { useEffect, useState } from 'react';
 
 export default function Landing() {
   const [isLoading, setIsLoading] = useState<boolean>(true);

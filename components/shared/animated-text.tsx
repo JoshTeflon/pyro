@@ -1,54 +1,54 @@
-import React, { useRef } from 'react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface AnimatedTextProps {
   className?: string;
   text: string;
-  animationDelay?: number | string;
+  animationDelay?: number;
   scrollConfig?: {
     start?: string;
     toggleActions?: string;
   };
 }
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 const AnimatedText: React.FC<AnimatedTextProps> = ({
-  className = '',
+  className = "",
   text,
   animationDelay = 0.3,
   scrollConfig = {
-    start: 'top bottom-=100',
-    toggleActions: 'play none none none'
-  }
+    start: "top bottom-=100",
+    toggleActions: "play none none none",
+  },
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLSpanElement[]>([]);
-  textRef.current = [];
+  const wordRefs = useRef<HTMLSpanElement[]>([]);
+  wordRefs.current = [];
 
   const addToRefs = (el: HTMLSpanElement | null) => {
-    if (el && !textRef.current.includes(el)) {
-      textRef.current.push(el);
+    if (el && !wordRefs.current.includes(el)) {
+      wordRefs.current.push(el);
     }
   };
 
   useGSAP(() => {
     const text_twn = gsap.fromTo(
-      textRef.current,
+      wordRefs.current,
       { y: 0, opacity: 0 },
       {
         keyframes: [
-          { y: -24, opacity: 1, duration: 0.3 },
+          { y: -16, opacity: 1, duration: 0.3 },
           { y: 0, opacity: 1, duration: 0.3 },
         ],
         stagger: 0.1,
-        ease: 'power2.out',
+        ease: "power1.out",
         delay: animationDelay,
         scrollTrigger: {
           trigger: containerRef.current,
-          ...scrollConfig
+          ...scrollConfig,
         },
       }
     );
@@ -58,14 +58,9 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
 
   return (
     <div ref={containerRef} className={className}>
-      {Array.from(text).map((char, index) => (
-        <span
-          key={index}
-          ref={addToRefs}
-          className='inline-block'
-          style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
-        >
-          {char === ' ' ? '\u00A0' : char}
+      {text.split(" ").map((word, index) => (
+        <span key={index} ref={addToRefs} className="inline-block">
+          {word}&nbsp;
         </span>
       ))}
     </div>
