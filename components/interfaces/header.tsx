@@ -6,7 +6,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 import { Logo, Hamburger } from '@/components/shared';
-import { Menu, SocialPlatforms } from '@/components/interfaces';
+import { Menu } from '@/components/interfaces';
 import { useNav } from '@/hooks';
 
 const Header: React.FC = () => {
@@ -62,7 +62,6 @@ const Header: React.FC = () => {
         className='hidden lg:flex p-5 xl:py-5 xl:px-8 items-center justify-between space-x-8 text-main bg-primary border-[0.5px] border-main rounded-xl lg:shadow-lg'
       >
         <Menu />
-        <SocialPlatforms />
       </div>
       <div className='flex lg:hidden'>
         <Hamburger
