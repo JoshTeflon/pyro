@@ -1,4 +1,4 @@
-import { Instagram, X, Tiktok, Spotify, Youtube } from '@/components/icons';
+import { Instagram, X, Tiktok, Spotify, Youtube, AppleMusic, Audiomack } from '@/components/icons';
 import { ArtistInterface, MenuItems, TrackDetails } from '@/types';
 
 export const artist: ArtistInterface = {
@@ -30,11 +30,16 @@ export const artist: ArtistInterface = {
       icon: Youtube,
       url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
     },
-    // {
-    //   name: 'email',
-    //   icon: Email,
-    //   url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-    // },
+    {
+      name: 'apple-music',
+      icon: AppleMusic,
+      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    },
+    {
+      name: 'audiomack',
+      icon: Audiomack,
+      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    },
   ],
 }
 
