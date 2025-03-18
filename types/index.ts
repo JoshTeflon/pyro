@@ -3,7 +3,10 @@ import { SVGProps } from 'react';
 export interface ArtistInterface {
   name: string
   main_image: string
-  socials: PlatformInterface[]
+  socials: {
+    music: PlatformInterface[],
+    video: PlatformInterface[]
+  }
 }
 
 export interface MenuItems {
