@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import { Header, MobileNav } from '@/components/interfaces';
-import { Home, Music } from '@/components/views';
+import { Footer, Home, Music } from '@/components/views';
 import NavContextProvider from '@/contexts/NavContext';
 
 export default function Landing() {
@@ -28,6 +28,7 @@ export default function Landing() {
             <MobileNav />
             <Home />
             <Music />
+            <Footer />
           </main>
         {/* )} */}
     </NavContextProvider>
