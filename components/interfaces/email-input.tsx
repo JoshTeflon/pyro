@@ -22,10 +22,11 @@ const EmailInput: React.FC = () => {
       <input
         id='email'
         aria-label='Email'
+        placeholder='Email Address'
         type='email'
         value={email}
         onChange={handleEmailChange}
-        className='px-2.5 flex-1 bg-transparent font-bold outline-none border-none focus:outline-none'
+        className='px-2.5 flex-1 bg-transparent font-bold outline-none border-none focus:outline-none placeholder:text-body placeholder:opacity-25'
       />
       <Button
         type='submit'
