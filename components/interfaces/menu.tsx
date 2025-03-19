@@ -6,15 +6,15 @@ import { MenuItems } from '@/types';
 const Menu = () => {
   return (
     <nav className='w-full'>
-      <ul className='w-full flex items-center justify-center space-x-4'>
+      <ul className='w-full flex items-center justify-center space-x-8 lg:space-x-10'>
         {
-          menuItems?.map((item: MenuItems) => (
+          menuItems?.map((item: MenuItems, idx: number) => (
             <li
               key={item?.item}
-              className='text-sm font-medium text-inherit hover:text-body hover:-translate-y-0.5 cursor-pointer transition-all duration-300 ease-in-out'
+              className='text-sm lg:text-base font-medium text-inherit hover:text-body hover:-translate-y-0.5 cursor-pointer transition-all duration-300 ease-in-out'
             >
-              <Link href={item?.link} className='focus:text-body'>
-                {item.item}.
+              <Link href={item?.link} className='flex focus:text-body'>
+               <span className='text-[0.5rem]'>0{idx + 1}/</span><span>{item.item}</span>
               </Link>
             </li>
           ))

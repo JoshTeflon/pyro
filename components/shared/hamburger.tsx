@@ -24,7 +24,7 @@ const Hamburger: FC<HamburgerProps> = ({ isOpen = false, toggleMenu }) => {
       />
       <span
         className={`bar top-2.5 right-0 ${
-          isOpen ? 'left-0 w-8 -rotate-45 bg-body' : 'left-2.5 w-px bg-transparent'
+          isOpen ? 'left-0 w-8 -rotate-45 bg-main' : 'left-2.5 w-px bg-transparent'
         }`}
       />
       <span

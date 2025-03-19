@@ -33,6 +33,10 @@ body {
   backface-visibility: hidden;
 }
 
+body, button, a {
+  cursor: none;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -74,5 +78,15 @@ input:-webkit-autofill:active {
   .bar {
     @apply block absolute p-0 w-8 h-1 rounded;
     transition: all 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+  }
+
+  .outline-text-primary {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--primary-clr);
+  }
+
+  .outline-text-body {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--body-clr);
   }
 }

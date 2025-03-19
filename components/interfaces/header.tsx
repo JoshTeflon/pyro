@@ -59,7 +59,7 @@ const Header: React.FC = () => {
         />
       </Link>
       <div
-        className='hidden lg:flex p-5 xl:py-5 xl:px-8 items-center justify-between space-x-8 text-main bg-primary border-[0.5px] border-main rounded-xl lg:shadow-lg'
+        className='hidden lg:flex p-5 xl:py-5 xl:px-8 items-center justify-between space-x-8 text-primary uppercase'
       >
         <Menu />
       </div>
