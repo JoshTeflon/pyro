@@ -31,7 +31,7 @@ const EmailInput: React.FC = () => {
       <Button
         type='submit'
         variant='primary'
-        className='text-body uppercase font-bold'
+        className='text-main uppercase font-bold'
       >join</Button>
     </form>
   )

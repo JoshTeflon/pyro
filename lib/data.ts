@@ -64,14 +64,6 @@ export const menuItems: MenuItems[] = [
     item: 'gallery',
     link: ''
   },
-  {
-    item: 'about us',
-    link: ''
-  },
-  // {
-  //   item: 'newsletter',
-  //   link: ''
-  // },
 ]
 
 export const musicList: TrackDetails[] = [

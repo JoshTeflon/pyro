@@ -53,9 +53,9 @@ const Home = () => {
       <div className='action-content side-pad z-30 relative w-full h-full'>
         <div className='absolute bottom-16 left-1/2 -translate-x-1/2'>
           <div className='flex flex-col items-center text-center'>
-            <p className={`${newsCycle.className} text-3xl lg:text-4xl font-bold uppercase tracking-wider`}>New Release</p>
-            <div className='mt-3 mb-6 flex items-baseline space-x-2 font-bold hover:animate-glow'>
-              <span className='text-xl lg:text-2xl'>Surrender</span>
+            <p className={`${newsCycle.className} text-base sm:text-lg lg:text-xl font-bold uppercase tracking-wider`}>New Release</p>
+            <div className='mt-1 mb-4 lg:mb-6 flex items-baseline space-x-2 font-bold'>
+              <span className='outline-text-body text-[4rem] sm:text-8xl lg:text-9xl xl:text-[10rem] font-bold uppercase leading-none'>Surrender</span>
               {/* <span className='text-sm lg:text-base tracking-tighter'>ft. wyld chlld</span> */}
             </div>
             <Button

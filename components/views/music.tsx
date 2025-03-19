@@ -134,7 +134,7 @@ const Music = () => {
               {({ isActive }) => (
                 <div className='w-full h-full flex items-center justify-center'>
                   <div
-                    className={`w-full max-w-96 h-96 flex items-center justify-center rounded-md cursor-pointer transition-all duration-300 ease-in-out
+                    className={`w-full max-w-96 h-96 flex items-center justify-center rounded-md cursor-grab transition-all duration-300 ease-in-out
                       ${isActive ? 'scale-100 opacity-100' : 'scale-50 opacity-50'}`}
                   >
                     <div className='group relative w-full h-full bg-black/50 rounded-md transition-all duration-300 ease-in-out'>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
+import { CustomCursor } from '@/components/shared';
 import { Header, MobileNav } from '@/components/interfaces';
 import { Footer, Home, Music } from '@/components/views';
 import NavContextProvider from '@/contexts/NavContext';
@@ -19,6 +20,7 @@ export default function Landing() {
 
   return (
     <NavContextProvider>
+      <CustomCursor />
       {/* {isLoading ? (
           // <Loading />
           <div className='w-full h-dvh flex items-center justify-center'>loading...</div>

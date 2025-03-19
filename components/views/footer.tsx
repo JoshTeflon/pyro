@@ -3,7 +3,7 @@ import { EmailInput, SocialPlatforms } from '@/components/interfaces';
 
 const Footer = () => {
   return (
-    <footer className='side-pad pt-16 pb-8 lg:pt-32 lg:pb-16 flex flex-col items-center justify-center space-y-10 lg:space-y-14'>
+    <footer className='side-pad pt-16 pb-8 lg:pt-32 flex flex-col items-center justify-center space-y-10 lg:space-y-14'>
       <div className='mb-4 lg:mb-8 w-[95%] lg:w-full max-w-sm'>
         <EmailInput />
       </div>
