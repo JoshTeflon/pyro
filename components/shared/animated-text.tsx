@@ -58,9 +58,9 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
 
   return (
     <div ref={containerRef} className={className}>
-      {text.split(" ").map((word, index) => (
-        <span key={index} ref={addToRefs} className="inline-block">
-          {word}&nbsp;
+      {text.split(" ").map((word, index, array) => (
+        <span key={word} ref={addToRefs} className="inline-block">
+          {word}{index < array.length - 1 ? '\u00A0' : ''}
         </span>
       ))}
     </div>

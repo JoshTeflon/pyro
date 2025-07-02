@@ -62,9 +62,9 @@ const Home = () => {
               ref={streamRef}
               variant='primary'
               size='lg'
-              roundness='round'
+              className='font-black'
             >
-              Stream Now
+              Listen Now
             </Button>
           </div>
         </div>

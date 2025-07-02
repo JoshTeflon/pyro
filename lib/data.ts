@@ -3,6 +3,7 @@ import { ArtistInterface, MenuItems, TrackDetails } from '@/types';
 
 export const artist: ArtistInterface = {
   name: 'ii6 pyro',
+  short_name: 'ii6',
   main_image: '/images/ii6-pyro-main.png',
   socials: {
     music: [
@@ -53,16 +54,16 @@ export const menuItems: MenuItems[] = [
     link: '#music'
   },
   {
-    item: 'videos',
-    link: ''
-  },
-  {
-    item: 'store',
-    link: ''
-  },
-  {
     item: 'gallery',
+    link: '#gallery'
+  },
+  {
+    item: 'merch',
     link: ''
+  },
+  {
+    item: 'newsletter',
+    link: '#footer'
   },
 ]
 

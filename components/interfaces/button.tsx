@@ -13,6 +13,7 @@ const buttonVariants = cva(
           secondary: 'bg-body text-main',
           'secondary-primary': 'bg-body text-primary',
           outline: 'bg-transparent border border-current',
+          'primary-outline': 'bg-danger-overlay text-body border border-primary hover:bg-primary',
       },
       size: {
           xs: 'text-xs py-0.5 px-1',

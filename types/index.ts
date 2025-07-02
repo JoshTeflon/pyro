@@ -2,6 +2,7 @@ import { SVGProps } from 'react';
 
 export interface ArtistInterface {
   name: string
+  short_name: string
   main_image: string
   socials: {
     music: PlatformInterface[],

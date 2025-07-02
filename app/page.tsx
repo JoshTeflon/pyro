@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 import { CustomCursor } from '@/components/shared';
 import { Header, MobileNav } from '@/components/interfaces';
-import { Footer, Home, Music } from '@/components/views';
+import { Footer, Gallery, Home, Music } from '@/components/views';
 import NavContextProvider from '@/contexts/NavContext';
 
 export default function Landing() {
@@ -30,6 +30,10 @@ export default function Landing() {
             <MobileNav />
             <Home />
             <Music />
+            {/* <div className="sticky top-0 h-dvh">
+              <Music />
+            </div> */}
+            <Gallery />
             <Footer />
           </main>
         {/* )} */}
