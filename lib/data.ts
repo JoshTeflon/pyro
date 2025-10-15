@@ -62,12 +62,17 @@ export const menuItems: MenuItems[] = [
     link: ''
   },
   {
-    item: 'newsletter',
+    item: 'contact',
     link: '#footer'
   },
 ]
 
 export const musicList: TrackDetails[] = [
+  {
+    name: 'deny',
+    cover: '/images/music_covers/deny.jpeg',
+    video: '/surrender-visualizer.mp4'
+  },
   {
     name: 'surrender',
     cover: '/images/music_covers/surrender_cover.png',

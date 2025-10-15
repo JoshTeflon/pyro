@@ -29,7 +29,7 @@ const MobileNav = () => {
 
   return (
     <div
-      className={`${navOpen ? 'translate-y-0' : '-translate-y-full'} z-50 fixed inset-0 block lg:hidden w-full h-dvh pt-32 pb-8 bg-primary backdrop-blur-sm transition-all ease-in-out duration-300`}
+      className={`${navOpen ? 'translate-y-0' : '-translate-y-full'} z-50 fixed inset-0 block lg:hidden w-full h-screen pt-32 pb-8 bg-primary backdrop-blur-sm transition-all ease-in-out duration-300`}
     >
       <nav className='side-pad w-full'>
         <ul className='w-full flex flex-col items-center space-y-20'>

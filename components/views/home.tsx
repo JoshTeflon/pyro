@@ -10,35 +10,46 @@ import { Button } from '@/components/interfaces';
 import { artist } from '@/lib/data';
 import { newsCycle } from '@/lib/fonts';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Home = () => {
   const landingImageRef = useRef<HTMLImageElement>(null);
   const streamRef = useRef<HTMLButtonElement>(null);
 
-  gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
-    let tl = gsap.timeline({
+    gsap.to(landingImageRef.current, {
+      scale: 2,
       scrollTrigger: {
-        trigger: '.landing-img',
-        start: 'bottom 80%'
+        trigger: landingImageRef.current,
+        start: 'bottom 95%',
+        scrub: 1,
+        toggleActions: 'restart none none none',
       }
     });
 
-    // tl.to(landingImageRef.current, {
-    //   scale: '10',
-    //   duration: 1.5,
-    //   ease: 'power3.inOut',
-    // });
-
-    // tl.to('.action-content', {
-    //   opacity: 0,
-    //   duration: 1,
-    //   ease: 'power3.inOut',
-    // });
-  });
+    gsap.fromTo(
+      '.action-content',
+      {
+        y: 0,
+        // scale: 1,
+      },
+      {
+        y: -50,
+        duration: 1,
+        // scale: 0.9,
+        ease: 'sine.inOut',
+        scrollTrigger: {
+          trigger: landingImageRef.current,
+          start: 'bottom 90%',
+          scrub: true,
+        }
+      }
+    );
+  }, []);
 
   return (
-    <section id='home' className='relative w-full h-dvh overflow-hidden'>
+    <section id='home' className='relative w-full h-screen overflow-hidden'>
       <Image
         ref={landingImageRef}
         className='landing-img z-10 absolute inset-0 w-full h-full object-cover object-center'
@@ -55,7 +66,7 @@ const Home = () => {
           <div className='flex flex-col items-center text-center'>
             <p className={`${newsCycle.className} text-base sm:text-lg lg:text-xl font-bold uppercase tracking-wider`}>New Release</p>
             <div className='mt-1 mb-4 lg:mb-6 flex items-baseline space-x-2 font-bold'>
-              <span className='outline-text-body text-[4rem] sm:text-8xl lg:text-9xl xl:text-[10rem] font-bold uppercase leading-none'>Surrender</span>
+              <span className='outline-text-body text-[4rem] sm:text-8xl lg:text-9xl xl:text-[10rem] font-bold uppercase leading-none'>deny</span>
               {/* <span className='text-sm lg:text-base tracking-tighter'>ft. wyld chlld</span> */}
             </div>
             <Button

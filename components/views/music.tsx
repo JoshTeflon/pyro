@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Zoom, EffectFade } from 'swiper/modules';
 import Lottie from "lottie-react";
@@ -48,7 +49,10 @@ interface SlideState {
   index: number;
 }
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Music = () => {
+  const musicRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLHeadingElement>(null);
 
   const [activeSlide, setActiveSlide] = useState<SlideState>({
@@ -78,9 +82,11 @@ const Music = () => {
   return (
     <section
       id='music'
-      className='z-40 relative py-8 w-full h-dvh flex flex-col justify-around overflow-hidden'
+      ref={musicRef}
+      className='z-40 relative py-8 w-full h-screen bg-main flex flex-col justify-around overflow-hidden'
+      // className='z-40 relative py-8 w-full h-screen bg-body flex flex-col justify-around overflow-hidden'
     >
-      <div className='absolute inset-0 w-full h-dvh opacity-40 transition-all ease-in-out'>
+      <div className='absolute inset-0 w-full h-screen opacity-40 transition-all ease-in-out'>
         <Swiper
           effect="fade"
           fadeEffect={{ crossFade: true }}
@@ -94,7 +100,7 @@ const Music = () => {
               <video
                 key={item.name}
                 title={item.video}
-                className='w-full h-dvh object-cover'
+                className='w-full h-screen object-cover'
                 preload='none'
                 playsInline
                 autoPlay
@@ -182,8 +188,8 @@ const Music = () => {
           className='object-cover object-center'
           src='/images/flame.png'
           alt='cool flame'
-          width={32}
-          height={32}
+          width={40}
+          height={40}
           quality={100}
           priority
         />
