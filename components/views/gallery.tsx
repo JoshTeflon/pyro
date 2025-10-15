@@ -138,14 +138,11 @@ const Gallery = () => {
     gsap.set(mainGalleryRef.current, { perspective: 1500 });
     gsap.set(galleryItems.current, { transformStyle: 'preserve-3d' });
 
-    const totalScrollLength = 8;
-
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: galleryRef.current,
         start: 'top 50%',
         end: 'bottom top',
-        // end: `=+=${totalScrollLength * 100}vh`,
         scrub: true,
         pin: true,
       }
@@ -166,88 +163,7 @@ const Gallery = () => {
         ease: 'sine.inOut',
       },
     );
-
-    
-
-    const tweenDuration = 1.5;
-    const overlap = '>-' + (tweenDuration * 0.5); 
-
-    // galleryDeck.forEach((cardData, idx) => {
-    //   const cardEl = cardsRef.current[idx];
-    //   if (!cardEl) return;
-
-    //   tl.fromTo(
-    //     cardEl,
-    //     {
-    //       opacity: 0,
-    //       xPercent: cardData.from.xPercent ?? -50,
-    //       yPercent: cardData.from.yPercent ?? -50,
-    //       x: cardData.from.x ?? 0,
-    //       y: cardData.from.y ?? 0,
-    //       z: cardData.from.z ?? 0
-    //     },
-    //     {
-    //       opacity: 1,
-    //       xPercent: cardData.fromTo.xPercent,
-    //       yPercent: cardData.fromTo.yPercent,
-    //       x: cardData.fromTo.x ?? 0,
-    //       y: cardData.fromTo.y ?? 0,
-    //       z: cardData.fromTo.z ?? 0,
-    //       duration: tweenDuration,
-    //       ease: 'sine.inOut',
-    //     },
-    //     idx === 0 ? 0 : overlap
-    //   )
-    //   .to(
-    //     cardEl,
-    //     {
-    //       opacity: 0,
-    //       xPercent: cardData?.to?.xPercent,
-    //       yPercent: cardData?.to?.yPercent,
-    //       x: cardData?.to?.x ?? 0,
-    //       y: cardData?.to?.y ?? 0,
-    //       z: cardData?.to?.z ?? 0,
-    //       duration: tweenDuration,
-    //       ease: 'sine.inOut',
-    //     },
-    //     `>-0.2`
-    //   );
-    // });
-
-    galleryDeck.forEach((cardData, idx) => {
-      const cardEl = cardsRef.current[idx];
-      if (!cardEl) return;
-
-      const holdDuration = 1; 
-      const fadeDuration = 0.5;
-
-      tl.fromTo(
-        cardEl,
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          duration: fadeDuration,
-        },
-        // idx === 0 ? 0 : overlap
-      )
-      .to(
-        cardEl,
-        {
-          duration: holdDuration,
-        }
-      )
-      .to(
-        cardEl,
-        {
-          opacity: 0,
-          duration: fadeDuration,
-        },
-        `>-0.2`
-      );
-    });
-  }, []);
+  });
 
   return (
     <section
@@ -282,30 +198,6 @@ const Gallery = () => {
           ref={galleryItems}
           className='gallery-items w-full h-full'
         >  
-          {/* {galleryDeck.map(card => (
-            <div
-              key={card.name}
-              ref={addCardRef}
-              className='gallery-card absolute w-auto max-w-[90vw] xl:max-w-[60vw] min-w-[60vw] xl:min-w-[40vw] h-auto'
-              style={{
-                top: card.top,
-                bottom: card.bottom,
-                left: card.left,
-                right: card.right,
-                transformOrigin: card.transformOrigin ?? '50% 50%',
-              }}
-            >
-              <Image
-                className='object-cover rounded-md'
-                width={card.width}
-                height={card.height}
-                src={card.image}
-                alt={card.name}
-                quality={100}
-                placeholder='blur'
-              />
-            </div>
-          ))} */}
           <div
             ref={addCardRef}
             className='gallery-card absolute w-auto max-w-[90vw] xl:max-w-[60vw] min-w-[60vw] xl:min-w-[40vw] h-auto'
