@@ -7,7 +7,7 @@ import { AnimatedText } from '@/components/shared';
 
 interface LogoProps extends VariantProps<typeof logoVariants> {
   className?: string;
-  ref?: React.RefObject<HTMLDivElement>;
+  shortname?: boolean;
 }
 
 const logoVariants = cva(
@@ -32,14 +32,14 @@ const logoVariants = cva(
   }
 );
 
-const Logo = forwardRef<HTMLDivElement, LogoProps>(({ className, variant, size }, ref) => {
+const Logo = forwardRef<HTMLDivElement, LogoProps>(({ className, variant, size, shortname }, ref) => {
   return (
     <div
       ref={ref}
       className={logoVariants({ variant, size })}
     >
       <h1 className={`tracking-wide lg:tracking-wider ${className}`}>
-        <AnimatedText text={artist?.name} />
+        <AnimatedText text={shortname ? artist?.short_name : artist?.name} />
       </h1>
     </div>
   )

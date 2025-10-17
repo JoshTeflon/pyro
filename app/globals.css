@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --primary-clr: hsla(0, 98%, 32%, 0.9);
+  /* --primary-clr: hsla(0, 98%, 32%, 0.9); */
+  /* --primary-clr: hsl(0, 98%, 32%); */
+  --primary-clr: hsl(0, 86%, 28%);
   --main-clr: hsl(0, 0%, 3%);
-  --body-clr: hsl(50, 100%, 91%);
+  /* --body-clr: hsl(50, 100%, 91%); */
+  --body-clr: hsl(255, 100%, 100%);
   --overlay-clr: hsla(0, 0%, 0%, 0.3);
+  --danger-overlay-clr: hsla(0, 100%, 32%, 0.4);
   --scrollbar-thumb: hsla(50, 100%, 91%, 0.3);
   --scrollbar-track: hsl(0, 0%, 3%);
 }
@@ -27,7 +31,7 @@ html {
 
 body {
   width: 100%;
-  min-height: 100dvh;
+  min-height: 100vh;
   color: var(--body-clr);
   background: var(--main-clr);
   backface-visibility: hidden;
@@ -88,5 +92,9 @@ input:-webkit-autofill:active {
   .outline-text-body {
     color: transparent;
     -webkit-text-stroke: 1.5px var(--body-clr);
+  }
+
+  .absolute-center {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
   }
 }

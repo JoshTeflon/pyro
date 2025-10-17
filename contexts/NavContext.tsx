@@ -3,9 +3,9 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
 
 import { useWindowDimension } from '@/hooks';
-import { NavContextInterface } from '@/types';
+import { INavContext } from '@/types';
 
-export const NavContext = createContext<NavContextInterface | undefined>(undefined)
+export const NavContext = createContext<INavContext | undefined>(undefined)
 
 const NavContextProvider = ({ children }: { children: ReactNode }) => {
   const [navOpen, setNavOpen] = useState<boolean>(false);

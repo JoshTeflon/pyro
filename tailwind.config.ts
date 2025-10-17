@@ -14,6 +14,7 @@ const config: Config = {
         'body': 'var(--body-clr)',
         'overlay': 'var(--overlay-clr)',
         'primary-overlay': 'var(--primary-overlay-clr)',
+        'danger-overlay': 'var(--danger-overlay-clr)',
       },
       keyframes: {
         'jello-horizontal': {
