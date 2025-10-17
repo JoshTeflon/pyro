@@ -55,223 +55,20 @@ const Gallery = () => {
       },
     );
 
-    tl.fromTo(
-      cardsRef.current[0],
-      {
-        opacity: 0,
-        z: -4000,
-      },
-      {
-        ease: "power3.inOut",
-        keyframes: [
-          { 
-            z: -2900,
-            opacity: 1, 
-          },
-          { 
-            z: -1050,
-            opacity: 1,
-          },
-          { 
-            z: 0, 
-            opacity: 0, 
-          },
-        ],
-      },
-      `>-0.5` 
-    );
+    for (const [i, cfg] of galleryDeck.entries()) {
+      const el = cardsRef.current[i];
+      if (!el) return;
 
-    tl.fromTo(
-      cardsRef.current[1],
-      {
-        opacity: 0,
-        z: -4000,
-        y: 300,
-      },
-      {
-        ease: "power3.inOut",
-        keyframes: [
-          { 
-            z: -2900,
-            y: 200,
-            opacity: 1, 
-          },
-          { 
-            z: -700,
-            y: 100,
-            opacity: 1,
-          },
-          { 
-            z: 0, 
-            y: 0,
-            opacity: 0, 
-          },
-        ],
-      },
-      `>-1.2`
-    );
-
-    tl.fromTo(
-      cardsRef.current[2],
-      {
-        opacity: 0,
-        z: -4000,
-      },
-      {
-        ease: "power3.inOut",
-        keyframes: [
-          { 
-            z: -2900,
-            opacity: 1, 
-          },
-          { 
-            z: -1050,
-            opacity: 1,
-          },
-          { 
-            z: 0, 
-            opacity: 0, 
-          },
-        ],
-      },
-      `>-1.25` 
-    );
-
-    tl.fromTo(
-      cardsRef.current[3],
-      {
-        opacity: 0,
-        z: -4200,
-      },
-      {
-        ease: "power3.inOut",
-        keyframes: [
-          { 
-            z: -3050,
-            opacity: 1,
-          },
-          { 
-            z: -700,
-            opacity: 1,
-          },
-          { 
-            z: 0, 
-            opacity: 0, 
-          },
-        ],
-      },
-      `>-1.3` 
-    );
-
-    tl.fromTo(
-      cardsRef.current[4],
-      {
-        opacity: 0,
-        z: -4200,
-      },
-      {
-        ease: "power3.inOut",
-        keyframes: [
-          { 
-            z: -3050,
-            opacity: 1, 
-          },
-          { 
-            z: -700,
-            opacity: 1,
-          },
-          { 
-            z: 0, 
-            opacity: 0, 
-          },
-        ],
-      },
-      `>-1.35` 
-    );
-
-    tl.fromTo(
-      cardsRef.current[5],
-      {
-        opacity: 0,
-        z: -4500,
-      },
-      {
-        ease: "power3.inOut",
-        keyframes: [
-          { 
-            z: -3500,
-            opacity: 1, 
-          },
-          { 
-            z: -1500,
-            opacity: 1,
-          },
-          { 
-            z: 0, 
-            opacity: 0, 
-          },
-        ],
-      },
-      `>-1.4` 
-    );
-
-    tl.fromTo(
-      cardsRef.current[6],
-      {
-        opacity: 0,
-        z: -5200,
-      },
-      {
-        ease: "power3.inOut",
-        keyframes: [
-          { 
-            xPercent: '2%',
-            z: -4500,
-            opacity: 1, 
-          },
-          {
-            xPercent: '8%',
-            z: -2000,
-            opacity: 1,
-          },
-          { 
-            xPercent: '10%',
-            z: -800, 
-            opacity: 0, 
-          },
-        ],
-      },
-      `>-1.45` 
-    );
-
-    tl.fromTo(
-      cardsRef.current[7],
-      {
-        opacity: 0,
-        z: -4800,
-      },
-      {
-        ease: "power3.inOut",
-        keyframes: [
-          { 
-            y: -32,
-            z: -4000,
-            opacity: 1, 
-          },
-          {
-            y: -128,
-            z: -1500,
-            opacity: 1,
-          },
-          { 
-            y: -160,
-            z: -800, 
-            opacity: 0, 
-          },
-        ],
-      },
-      `>-1.5` 
-    );
+      tl.fromTo(
+        el,
+        cfg.from,
+        {
+          ease: 'power3.inOut',
+          keyframes: cfg.keyframes,
+        },
+        cfg.position
+      );
+    };
   });
 
   return (
@@ -312,7 +109,7 @@ const Gallery = () => {
               <div
                 key={item.name}
                 ref={(el) => addCardRef(el)}
-                className='gallery-card absolute w-auto max-w-[90vw] xl:max-w-[60vw] min-w-[60vw] xl:min-w-[40vw] h-auto'
+                className='gallery-card absolute w-auto min-w-[60vw] max-w-[90vw] xl:min-w-[30vw] xl:max-w-[50vw] h-auto'
                 style={{
                   top: item?.top,
                   right: item?.right,
@@ -325,8 +122,6 @@ const Gallery = () => {
                     <figure className="w-full h-full">
                       <Image
                         className='object-cover'
-                        width={item.width/2}
-                        height={item.height/2}
                         src={item.image}
                         alt={item.name}
                         quality={100}

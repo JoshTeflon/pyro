@@ -36,10 +36,11 @@ export interface ITrackInfo {
 export interface IGalleryCard {
   name: string;
   image: any;
-  width: number;
-  height: number;
   top?: string;
   bottom?: string;
   left?: string;
   right?: string;
+  from: gsap.TweenVars;
+  keyframes: gsap.TweenVars[];
+  position?: string;
 }
