@@ -1,14 +1,14 @@
 import Link from 'next/link';
 
 import { menuItems } from '@/lib/data';
-import { MenuItems } from '@/types';
+import { IMenuItems } from '@/types';
 
 const Menu = () => {
   return (
     <nav className='w-full'>
       <ul className='w-full flex items-center justify-center space-x-8 lg:space-x-10'>
         {
-          menuItems?.map((item: MenuItems, idx: number) => (
+          menuItems?.map((item: IMenuItems, idx: number) => (
             <li
               key={item?.item}
               className='text-sm lg:text-base font-medium text-inherit hover:text-body hover:-translate-y-0.5 cursor-pointer transition-all duration-300 ease-in-out'

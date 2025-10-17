@@ -73,7 +73,7 @@ const Home = () => {
               ref={streamRef}
               variant='primary'
               size='lg'
-              className='font-black'
+              className='font-medium uppercase'
             >
               Listen Now
             </Button>

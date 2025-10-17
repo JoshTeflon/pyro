@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 
 import { NavContext } from '@/contexts/NavContext';
-import { NavContextInterface } from '@/types';
+import { INavContext } from '@/types';
 
 const useNav = () => {
-  const context = useContext<NavContextInterface | undefined>(NavContext);
+  const context = useContext<INavContext | undefined>(NavContext);
 
   if (!context) {
     throw new Error('useNav must be used within a NavContextProvider');

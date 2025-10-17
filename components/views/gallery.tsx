@@ -8,127 +8,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { Logo } from '@/components/shared';
 import { newsCycle } from '@/lib/fonts';
-
-import GalleryCardImage0 from '@/public/images/gallery/gallery-card-0.jpg';
-import GalleryCardImage1 from '@/public/images/gallery/gallery-card-1.jpeg';
-import GalleryCardImage2 from '@/public/images/gallery/gallery-card-2.jpg';
-
-type Coordinates = Partial<
-Record<"x" | "y" | "z" | "xPercent" | "yPercent", number | string>
->;
-
-interface IGalleryCard {
-  name: string;
-  image: any;
-  width: number;
-  height: number;
-  top?: string;
-  bottom?: string;
-  left?: string;
-  right?: string;
-  from: Coordinates;
-  fromTo: Coordinates;
-  to?: Coordinates;
-  transformOrigin?: string;
-}
+import { galleryDeck } from '@/lib/data';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const galleryDeck: IGalleryCard[] = [
-  {
-    name: 'resurrection',
-    image: GalleryCardImage0,
-    width: 1080,
-    height: 1080 ,
-    bottom: '-95%',
-    left: '25%',
-    from: { z: -4000 },
-    fromTo: { z: -3100 },
-    transformOrigin: 'top right',
-  },
-  {
-    name: 'awake',
-    image: GalleryCardImage1,
-    width: 1170,
-    height: 1714,
-    top: '-30rem',
-    left: '85%',
-    from: { y: 300, z: -4000 },
-    fromTo: { y: 250, z: -3100 },
-  },
-  {
-    name: 'depth',
-    image: GalleryCardImage2,
-    width: 798,
-    height: 1080,
-    bottom: '70%',
-    left: '20%',
-    from: { z: -4000 },
-    fromTo: { z: -3100 },
-  },
-  {
-    name: 'awake2',
-    image: GalleryCardImage1,
-    width: 1170,
-    height: 1714,
-    top: '50%',
-    left: '90%',
-    from: { z: -4000 },
-    fromTo: { z: -3000 },
-  },
-  {
-    name: 'depth2',
-    image: GalleryCardImage2,
-    width: 798,
-    height: 1080,
-    bottom: '-20%',
-    left: '0',
-    from: { z: -4200 },
-    fromTo: { z: -3300 },
-  },
-  {
-    name: 'resurrection2',
-    image: GalleryCardImage0,
-    width: 1080,
-    height: 1080 ,
-    top: '-20%',
-    left: '70%',
-    from: { z: -4500 },
-    fromTo: { z: -3600 },
-    to: { z: -500 }
-  },
-  {
-    name: 'depth3',
-    image: GalleryCardImage1,
-    width: 1170,
-    height: 1714 ,
-    top: '30%',
-    left: '10%',
-    from: { z: -5200, xPercent: 0, yPercent: 0 },
-    fromTo: { z: -4200,  xPercent: 2.5, yPercent: 0 },
-    to: { z: -800, xPercent: 10, yPercent: 0 }
-  },
-  {
-    name: 'awake3',
-    image: GalleryCardImage2,
-    width: 798,
-    height: 1080,
-    bottom: '-30%',
-    left: '65%',
-    from: { y: 0, z: -4800 },
-    fromTo: { y: '-2rem', z: -4000 },
-    to: { y: '-10rem', z: -800 }
-  },
-];
 
 const Gallery = () => {
   const galleryRef = useRef<HTMLElement>(null);
   const mainGalleryRef = useRef<HTMLDivElement>(null);
-  const galleryItems = useRef<HTMLDivElement>(null);
+  const galleryCardsRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
-  const addCardRef = (el: HTMLDivElement) => {
+  const addCardRef = (el: HTMLDivElement | null) => {
     if (el && !cardsRef.current.includes(el)) {
       cardsRef.current.push(el);
     }
@@ -136,7 +27,7 @@ const Gallery = () => {
 
   useGSAP(() => {
     gsap.set(mainGalleryRef.current, { perspective: 1500 });
-    gsap.set(galleryItems.current, { transformStyle: 'preserve-3d' });
+    gsap.set(galleryCardsRef.current, { transformStyle: 'preserve-3d' });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -148,7 +39,7 @@ const Gallery = () => {
       }
     });
 
-     tl.fromTo(
+    tl.fromTo(
       textRef.current,
       {
         opacity: 0,
@@ -162,6 +53,224 @@ const Gallery = () => {
         duration: 1,
         ease: 'sine.inOut',
       },
+    );
+
+    tl.fromTo(
+      cardsRef.current[0],
+      {
+        opacity: 0,
+        z: -4000,
+      },
+      {
+        ease: "power3.inOut",
+        keyframes: [
+          { 
+            z: -2900,
+            opacity: 1, 
+          },
+          { 
+            z: -1050,
+            opacity: 1,
+          },
+          { 
+            z: 0, 
+            opacity: 0, 
+          },
+        ],
+      },
+      `>-0.5` 
+    );
+
+    tl.fromTo(
+      cardsRef.current[1],
+      {
+        opacity: 0,
+        z: -4000,
+        y: 300,
+      },
+      {
+        ease: "power3.inOut",
+        keyframes: [
+          { 
+            z: -2900,
+            y: 200,
+            opacity: 1, 
+          },
+          { 
+            z: -700,
+            y: 100,
+            opacity: 1,
+          },
+          { 
+            z: 0, 
+            y: 0,
+            opacity: 0, 
+          },
+        ],
+      },
+      `>-1.2`
+    );
+
+    tl.fromTo(
+      cardsRef.current[2],
+      {
+        opacity: 0,
+        z: -4000,
+      },
+      {
+        ease: "power3.inOut",
+        keyframes: [
+          { 
+            z: -2900,
+            opacity: 1, 
+          },
+          { 
+            z: -1050,
+            opacity: 1,
+          },
+          { 
+            z: 0, 
+            opacity: 0, 
+          },
+        ],
+      },
+      `>-1.25` 
+    );
+
+    tl.fromTo(
+      cardsRef.current[3],
+      {
+        opacity: 0,
+        z: -4200,
+      },
+      {
+        ease: "power3.inOut",
+        keyframes: [
+          { 
+            z: -3050,
+            opacity: 1,
+          },
+          { 
+            z: -700,
+            opacity: 1,
+          },
+          { 
+            z: 0, 
+            opacity: 0, 
+          },
+        ],
+      },
+      `>-1.3` 
+    );
+
+    tl.fromTo(
+      cardsRef.current[4],
+      {
+        opacity: 0,
+        z: -4200,
+      },
+      {
+        ease: "power3.inOut",
+        keyframes: [
+          { 
+            z: -3050,
+            opacity: 1, 
+          },
+          { 
+            z: -700,
+            opacity: 1,
+          },
+          { 
+            z: 0, 
+            opacity: 0, 
+          },
+        ],
+      },
+      `>-1.35` 
+    );
+
+    tl.fromTo(
+      cardsRef.current[5],
+      {
+        opacity: 0,
+        z: -4500,
+      },
+      {
+        ease: "power3.inOut",
+        keyframes: [
+          { 
+            z: -3500,
+            opacity: 1, 
+          },
+          { 
+            z: -1500,
+            opacity: 1,
+          },
+          { 
+            z: 0, 
+            opacity: 0, 
+          },
+        ],
+      },
+      `>-1.4` 
+    );
+
+    tl.fromTo(
+      cardsRef.current[6],
+      {
+        opacity: 0,
+        z: -5200,
+      },
+      {
+        ease: "power3.inOut",
+        keyframes: [
+          { 
+            xPercent: '2%',
+            z: -4500,
+            opacity: 1, 
+          },
+          {
+            xPercent: '8%',
+            z: -2000,
+            opacity: 1,
+          },
+          { 
+            xPercent: '10%',
+            z: -800, 
+            opacity: 0, 
+          },
+        ],
+      },
+      `>-1.45` 
+    );
+
+    tl.fromTo(
+      cardsRef.current[7],
+      {
+        opacity: 0,
+        z: -4800,
+      },
+      {
+        ease: "power3.inOut",
+        keyframes: [
+          { 
+            y: -32,
+            z: -4000,
+            opacity: 1, 
+          },
+          {
+            y: -128,
+            z: -1500,
+            opacity: 1,
+          },
+          { 
+            y: -160,
+            z: -800, 
+            opacity: 0, 
+          },
+        ],
+      },
+      `>-1.5` 
     );
   });
 
@@ -195,30 +304,40 @@ const Gallery = () => {
         className='main-gallery sticky top-0 w-full h-screen -mt-[90vh] overflow-hidden max-xl:will-change-transform'
       >
         <div
-          ref={galleryItems}
-          className='gallery-items w-full h-full'
-        >  
-          <div
-            ref={addCardRef}
-            className='gallery-card absolute w-auto max-w-[90vw] xl:max-w-[60vw] min-w-[60vw] xl:min-w-[40vw] h-auto'
-            style={{
-              // top: card.top,
-              // bottom: card.bottom,
-              // left: card.left,
-              // right: card.right,
-              // transformOrigin: card.transformOrigin ?? '50% 50%',
-            }}
-          >
-            <Image
-              className='object-cover rounded-md'
-              width={galleryDeck[0].width/3}
-              height={galleryDeck[0].height/3}
-              src={galleryDeck[0].image}
-              alt={galleryDeck[0].name}
-              quality={100}
-              placeholder='blur'
-            />
-          </div>
+          ref={galleryCardsRef}
+          className='gallery-cards w-full h-full'
+        >
+          {
+            galleryDeck?.map(item => (
+              <div
+                key={item.name}
+                ref={(el) => addCardRef(el)}
+                className='gallery-card absolute w-auto max-w-[90vw] xl:max-w-[60vw] min-w-[60vw] xl:min-w-[40vw] h-auto'
+                style={{
+                  top: item?.top,
+                  right: item?.right,
+                  bottom: item?.bottom,
+                  left: item?.left,
+                }}
+              >
+                <div className="-translate-x-1/2 overflow-hidden">
+                  <div className="w-full h-full">
+                    <figure className="w-full h-full">
+                      <Image
+                        className='object-cover'
+                        width={item.width/2}
+                        height={item.height/2}
+                        src={item.image}
+                        alt={item.name}
+                        quality={100}
+                        placeholder='blur'
+                      />
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>

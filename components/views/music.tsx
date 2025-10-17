@@ -3,18 +3,15 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Zoom, EffectFade } from 'swiper/modules';
-import Lottie from "lottie-react";
 
 import { newsCycle } from '@/lib/fonts';
 import { musicList } from '@/lib/data';
-import { TrackDetails } from '@/types';
+import { ITrackInfo } from '@/types';
 import { AnimatedText } from '@/components/shared';
 import { Button } from '@/components/interfaces';
-import fireAnimation from '@/assets/fire-lottie.json';
 
 import 'swiper/css';
 import 'swiper/css/zoom';
@@ -45,7 +42,7 @@ const swiperConfig = {
 
 interface SlideState {
   isActive: boolean;
-  details: TrackDetails;
+  details: ITrackInfo;
   index: number;
 }
 
@@ -63,7 +60,6 @@ const Music = () => {
   
   // Track the Swiper instance
   const [backgroundSwiper, setBackgroundSwiper] = useState<any>(null);
-  const [mainSwiper, setMainSwiper] = useState<any>(null);
 
   const handleSlideChange = (swiper: any) => {
     const newIndex = swiper.activeIndex;
@@ -123,7 +119,6 @@ const Music = () => {
       <div className="relative my-8 lg:my-16 w-full overflow-hidden">
         <Swiper
           {...swiperConfig}
-          onSwiper={setMainSwiper}
           onSlideChange={handleSlideChange}
           initialSlide={0}
           className="mx-auto px-0"
@@ -146,7 +141,7 @@ const Music = () => {
                     <div className='group relative w-full h-full bg-black/50 rounded-md transition-all duration-300 ease-in-out'>
                       <Image
                         // ref={landingImageRef}
-                        className={`z-10 absolute inset-0 w-full h-full object-cover object-center rounded-md ${isActive ? 'group-hover:opacity-75' : ''}`}
+                        className={`z-10 absolute inset-0 w-full h-full object-cover object-center ${isActive ? 'group-hover:opacity-75' : ''}`}
                         src={item.cover}
                         alt={item.name}
                         quality={100}
@@ -175,15 +170,6 @@ const Music = () => {
       </div>
       <div className='relative my-4 text-center text-xs lg:text-sm text-body uppercase'>{activeSlide.details.name}</div>
       <div className='relative flex justify-center'>
-        {/* <Lottie
-          animationData={fireAnimation}
-          style={{ height: '100%', width: '100%', maxHeight: 100, maxWidth: 100 }}
-          loop
-          autoPlay
-          rendererSettings={{
-            preserveAspectRatio: 'xMidYMid slice',
-          }}
-        /> */}
         <Image
           className='object-cover object-center'
           src='/images/flame.png'

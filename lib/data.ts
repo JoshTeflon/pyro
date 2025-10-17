@@ -1,7 +1,12 @@
-import { Instagram, X, Tiktok, Spotify, Youtube, AppleMusic, Audiomack } from '@/components/icons';
-import { ArtistInterface, MenuItems, TrackDetails } from '@/types';
+import { Instagram, X, Spotify, Youtube, AppleMusic, Audiomack } from '@/components/icons';
 
-export const artist: ArtistInterface = {
+import GalleryCardImage0 from '@/public/images/gallery/gallery-card-0.jpg';
+import GalleryCardImage1 from '@/public/images/gallery/gallery-card-1.jpeg';
+import GalleryCardImage2 from '@/public/images/gallery/gallery-card-2.jpg';
+
+import { IIArtist, IGalleryCard, IMenuItems, ITrackInfo } from '@/types';
+
+export const artist: IIArtist = {
   name: 'ii6 pyro',
   short_name: 'ii6',
   main_image: '/images/ii6-pyro-main.png',
@@ -46,9 +51,9 @@ export const artist: ArtistInterface = {
       // },
     ]
   },
-}
+};
 
-export const menuItems: MenuItems[] = [
+export const menuItems: IMenuItems[] = [
   {
     item: 'music',
     link: '#music'
@@ -65,9 +70,9 @@ export const menuItems: MenuItems[] = [
     item: 'contact',
     link: '#footer'
   },
-]
+];
 
-export const musicList: TrackDetails[] = [
+export const musicList: ITrackInfo[] = [
   {
     name: 'deny',
     cover: '/images/music_covers/deny.jpeg',
@@ -98,4 +103,71 @@ export const musicList: TrackDetails[] = [
     cover: '/images/music_covers/haze_cover.jpg',
     video: '/nvm-visualizer.mp4'
   },
-]
+];
+
+export const galleryDeck: IGalleryCard[] = [
+  {
+    name: 'resurrection',
+    image: GalleryCardImage0,
+    width: 1080,
+    height: 1080 ,
+    bottom: '-20%',
+    left: '30%',
+  },
+  {
+    name: 'awake',
+    image: GalleryCardImage1,
+    width: 1170,
+    height: 1714,
+    top: '-30rem',
+    left: '80%',
+  },
+  {
+    name: 'depth',
+    image: GalleryCardImage2,
+    width: 798,
+    height: 1080,
+    bottom: '70%',
+    left: '20%',
+  },
+  {
+    name: 'awake2',
+    image: GalleryCardImage0,
+    width: 1170,
+    height: 1714,
+    top: '50%',
+    left: '90%',
+  },
+  {
+    name: 'depth2',
+    image: GalleryCardImage1,
+    width: 798,
+    height: 1080,
+    bottom: '-20%',
+    left: '0',
+  },
+  {
+    name: 'resurrection2',
+    image: GalleryCardImage2,
+    width: 1080,
+    height: 1080 ,
+    top: '-20%',
+    left: '70%',
+  },
+  {
+    name: 'depth3',
+    image: GalleryCardImage1,
+    width: 1170,
+    height: 1714 ,
+    top: '30%',
+    left: '10%',
+  },
+  {
+    name: 'awake3',
+    image: GalleryCardImage0,
+    width: 798,
+    height: 1080,
+    bottom: '-40%',
+    left: '65%',
+  },
+];

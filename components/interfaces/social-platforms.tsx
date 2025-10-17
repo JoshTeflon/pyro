@@ -1,4 +1,4 @@
-import { PlatformInterface } from '@/types';
+import { IPlatform } from '@/types';
 import { artist } from '@/lib/data';
 
 interface SocialPlatformsProps {
@@ -10,7 +10,7 @@ const SocialPlatforms: React.FC<SocialPlatformsProps> = ({ className }) => {
     <div className={`${className ?? ''} mx-auto w-full max-w-xs md:max-w-md lg:max-w-2xl`}>
       <ul className='mb-4 lg:mb-8 w-full flex items-center justify-around'>
         {
-          artist?.socials.music?.map((icon: PlatformInterface) => (
+          artist?.socials.music?.map((icon: IPlatform) => (
             <li
               key={icon.name}
               className='w-20 lg:w-28'
@@ -27,7 +27,7 @@ const SocialPlatforms: React.FC<SocialPlatformsProps> = ({ className }) => {
       </ul>
       <ul className='w-full flex items-center justify-around'>
         {
-          artist?.socials.video?.map((icon: PlatformInterface) => (
+          artist?.socials.video?.map((icon: IPlatform) => (
             <li
               key={icon.name}
               className='w-6 lg:w-8'

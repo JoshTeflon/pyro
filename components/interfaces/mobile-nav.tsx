@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import { newsCycle } from '@/lib/fonts';
 import { menuItems } from '@/lib/data';
-import { MenuItems } from '@/types';
+import { IMenuItems } from '@/types';
 import { useNav } from '@/hooks';
 import { SocialPlatforms } from '@/components/interfaces';
 
@@ -34,7 +34,7 @@ const MobileNav = () => {
       <nav className='side-pad w-full'>
         <ul className='w-full flex flex-col items-center space-y-20'>
           {
-            menuItems?.map((item: MenuItems, idx: number) => (
+            menuItems?.map((item: IMenuItems, idx: number) => (
               <li
                 key={item?.item}
                 className={`${newsCycle.className} text-body text-xl uppercase tracking-widest hover:text-body hover:-translate-y-0.5 cursor-pointer transition-all duration-300 ease-in-out`}
