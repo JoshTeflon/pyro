@@ -3,6 +3,7 @@ import { Instagram, X, Spotify, Youtube, AppleMusic, Audiomack } from '@/compone
 import GalleryCardImage0 from '@/public/images/gallery/gallery-card-0.jpg';
 import GalleryCardImage1 from '@/public/images/gallery/gallery-card-1.jpeg';
 import GalleryCardImage2 from '@/public/images/gallery/gallery-card-2.jpg';
+import GalleryCardImage3 from '@/public/images/gallery/tempt-pegs.jpeg';
 
 import { IIArtist, IGalleryCard, IMenuItems, ITrackInfo } from '@/types';
 
@@ -147,7 +148,7 @@ export const galleryDeck: IGalleryCard[] = [
   },
   {
     name: 'awake2',
-    image: GalleryCardImage0,
+    image: GalleryCardImage3,
     top: '50%',
     left: '90%',
     from: { opacity: 0, z: -4200 },
