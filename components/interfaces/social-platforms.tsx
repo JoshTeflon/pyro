@@ -3,46 +3,41 @@ import { artist } from '@/lib/data';
 
 interface SocialPlatformsProps {
   className?: string
+  layout?: 'stack' | 'inline'
 }
 
-const SocialPlatforms: React.FC<SocialPlatformsProps> = ({ className }) => {
+const SocialPlatforms: React.FC<SocialPlatformsProps> = ({ className, layout = 'stack' }) => {
   return (
-    <div className={`${className ?? ''} mx-auto w-full max-w-xs md:max-w-md lg:max-w-2xl`}>
-      <ul className='mb-4 lg:mb-8 w-full flex items-center justify-around'>
-        {
-          artist?.socials.music?.map((icon: IPlatform) => (
-            <li
-              key={icon.name}
-              className='w-20 lg:w-28'
+    <ul
+      className={`${className} flex items-center ${layout === 'stack' ? 'flex-col space-y-6' : 'flex-row space-x-6'}`}
+    >
+      {
+        artist?.socials?.map((icon: IPlatform) => (
+          <li
+            key={icon.name}
+            className='w-6 h-6'
+          >
+            <a
+              className='w-full h-full flex items-center justify-center text-inherit hover:text-body focus:text-body rounded-full transition-colors duration-500 ease-in-out'
+              href='/'
             >
-              <a
-                className='w-full h-full flex items-center justify-center text-inherit hover:bg-main hover:text-body focus:bg-main focus:text-body rounded-full transition-colors duration-500 ease-in-out'
-                href='/'
-              >
-                <icon.icon className="w-full h-full text-inherit" />
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-      <ul className='w-full flex items-center justify-around'>
-        {
-          artist?.socials.video?.map((icon: IPlatform) => (
-            <li
-              key={icon.name}
-              className='w-6 lg:w-8'
-            >
-              <a
-                className='w-full h-full flex items-center justify-center text-inherit hover:bg-main hover:text-body focus:bg-main focus:text-body rounded-full transition-colors duration-500 ease-in-out'
-                href='/'
-              >
-                <icon.icon className="w-full h-full text-inherit" />
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+              <icon.icon className="w-full h-full text-inherit" />
+            </a>
+          </li>
+          // <li
+          //   key={icon.name}
+          //   className='w-10 h-10 flex items-center justify-center bg-primary rounded-full'
+          // >
+          //   <a
+          //     className='w-4 h-4 flex items-center justify-center text-body hover:text-body focus:text-body rounded-full transition-colors duration-500 ease-in-out'
+          //     href='/'
+          //   >
+          //     <icon.icon className="w-full h-full text-inherit" />
+          //   </a>
+          // </li>
+        ))
+      }
+    </ul>
   )
 }
 

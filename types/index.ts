@@ -9,10 +9,7 @@ export interface IIArtist {
   name: string;
   short_name: string;
   main_image: string;
-  socials: {
-    music: IPlatform[],
-    video: IPlatform[]
-  };
+  socials: IPlatform[];
 }
 
 export interface IMenuItems {

@@ -1,4 +1,4 @@
-import { Instagram, X, Spotify, Youtube, AppleMusic, Audiomack, Music, Home, Gallery, Merch } from '@/components/icons';
+import { AppleMusic, Gallery, Home, Instagram, Merch, Music, Snapchat, Spotify, Tiktok, Youtube } from '@/components/icons';
 
 import GalleryCardImage0 from '@/public/images/gallery/gallery-card-0.jpg';
 import GalleryCardImage1 from '@/public/images/gallery/gallery-card-1.jpeg';
@@ -73,47 +73,38 @@ export const artist: IIArtist = {
   name: 'ii6 pyro',
   short_name: 'ii6',
   main_image: '/images/ii6-pyro-main.png',
-  socials: {
-    music: [
-      {
-        name: 'spotify',
-        icon: Spotify,
-        url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-      },
-      {
-        name: 'audiomack',
-        icon: Audiomack,
-        url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-      },
-      {
-        name: 'apple-music',
-        icon: AppleMusic,
-        url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-      },
-    ],
-    video: [
-      {
-        name: 'instagram',
-        icon: Instagram,
-        url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-      },
-      {
-        name: 'x',
-        icon: X,
-        url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-      },
-      {
-        name: 'youtube',
-        icon: Youtube,
-        url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-      },
-      // {
-      //   name: 'tiktok',
-      //   icon: Tiktok,
-      //   url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-      // },
-    ]
-  },
+  socials: [
+    {
+      name: 'spotify',
+      icon: Spotify,
+      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    },
+    {
+      name: 'apple-music',
+      icon: AppleMusic,
+      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    },
+    {
+      name: 'instagram',
+      icon: Instagram,
+      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    },
+    {
+      name: 'youtube',
+      icon: Youtube,
+      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    },
+    {
+      name: 'snapchat',
+      icon: Snapchat,
+      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    },
+    {
+      name: 'tiktok',
+      icon: Tiktok,
+      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    },
+  ],
 };
 
 export const musicList: ITrackInfo[] = [

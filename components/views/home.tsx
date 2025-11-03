@@ -6,7 +6,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { Button } from '@/components/interfaces';
+import { Button, SocialPlatforms } from '@/components/interfaces';
 import { artist } from '@/lib/data';
 import { newsCycle } from '@/lib/fonts';
 
@@ -62,12 +62,12 @@ const Home = () => {
       />
       <div className='z-10 absolute inset-0 w-full h-full bg-overlay'></div>
       <div className='action-content side-pad z-30 relative w-full h-full'>
-        <div className='absolute bottom-16 left-1/2 -translate-x-1/2'>
+        {/* <div className='absolute bottom-16 left-1/2 -translate-x-1/2'>
           <div className='flex flex-col items-center text-center'>
             <p className={`${newsCycle.className} text-base sm:text-lg lg:text-xl font-bold uppercase tracking-wider`}>New Release</p>
             <div className='mt-1 mb-4 lg:mb-6 flex items-baseline space-x-2 font-bold'>
               <span className='outline-text-body text-[4rem] sm:text-8xl lg:text-9xl xl:text-[10rem] font-bold uppercase leading-none'>deny</span>
-              {/* <span className='text-sm lg:text-base tracking-tighter'>ft. wyld chlld</span> */}
+              <span className='text-sm lg:text-base tracking-tighter'>ft. wyld chlld</span>
             </div>
             <Button
               ref={streamRef}
@@ -78,7 +78,8 @@ const Home = () => {
               Listen Now
             </Button>
           </div>
-        </div>
+        </div> */}
+        <SocialPlatforms className='absolute bottom-16 right-4 lg:right-8 xl:right-16 text-primary' />
       </div>
     </section>
   )

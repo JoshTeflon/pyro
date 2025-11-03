@@ -10,4 +10,5 @@ export { default as Youtube } from './youtube';
 export { default as Tiktok } from './tiktok';
 export { default as AppleMusic } from './apple-music';
 export { default as Audiomack } from './audiomack';
+export { default as Snapchat } from './snapchat';
 export { default as Dots } from './dots';

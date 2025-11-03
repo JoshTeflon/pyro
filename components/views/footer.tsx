@@ -25,7 +25,10 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <SocialPlatforms className='text-primary my-10 lg:my-20' />
+        <SocialPlatforms
+          className='text-primary my-10 lg:my-20'
+          layout='inline'
+        />
         <div className='text-center text-primary text-[0.625rem] lg:text-xs -tracking-[0.075rem]'>
           <p className='mb-2'>
             &copy;{new Date().getFullYear()} <span className={`${rockSalt.className}`}>ii6 pyro -</span> All rights reserved.
