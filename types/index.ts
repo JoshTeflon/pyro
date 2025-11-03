@@ -1,5 +1,10 @@
 import { SVGProps } from 'react';
 
+export enum MenuType {
+  NAVIGATION = 'navigation',
+  LANGUAGE = 'language',
+}
+
 export interface IIArtist {
   name: string;
   short_name: string;
@@ -11,8 +16,9 @@ export interface IIArtist {
 }
 
 export interface IMenuItems {
-  item: string;
+  label: string;
   link: string;
+  icon?: React.ComponentType<SVGProps<SVGSVGElement>>;
 }
 
 export interface IPlatform {

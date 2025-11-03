@@ -1,24 +1,145 @@
+'use client';
+
+import { FC, useRef } from 'react';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
-import { menuItems } from '@/lib/data';
-import { IMenuItems } from '@/types';
+import { Dots } from '@/components/icons';
 
-const Menu = () => {
-  return (
-    <nav className='w-full'>
-      <ul className='w-full flex items-center justify-center space-x-8 lg:space-x-10'>
-        {
-          menuItems?.map((item: IMenuItems, idx: number) => (
-            <li
-              key={item?.item}
-              className='text-sm lg:text-base font-medium text-inherit hover:text-body hover:-translate-y-0.5 cursor-pointer transition-all duration-300 ease-in-out'
+import { languageMenuItems, navigationMenuItems } from '@/lib/data';
+import { IMenuItems, MenuType } from '@/types';
+
+interface MenuProps {
+  type: MenuType;
+  className?: string;
+};
+
+const Menu: FC<MenuProps> = ({ type, className }) => {
+  const navRef = useRef<HTMLDivElement>(null);
+  const menuListRef = useRef<HTMLUListElement>(null);
+
+  const params = useParams<{ tag: string; item: string }>()
+ 
+  console.log('params', params)
+
+  const displayNavigationMenu = () => (
+    navigationMenuItems?.map((item: IMenuItems) => (
+      <li key={item.label}>
+        <Link href={item.link} className='menu-link p-1 flex items-center space-x-3'>
+          {
+            item?.icon &&
+            <div
+              id='menu-icon-container'
+              className='flex-center w-8 h-8 bg-body text-primary rounded-lg flex-shrink-0 opacity-0 scale-50 -rotate-[15deg]'
             >
-              <Link href={item?.link} className='flex focus:text-body'>
-               <span className='text-[0.5rem]'>0{idx + 1}/</span><span>{item.item}</span>
-              </Link>
-            </li>
-          ))
+              <item.icon />
+            </div>
+          }
+
+          <div className="text-wrapper">
+            <span className="text-line text-xs tracking-tight">{item.label}</span>
+          </div>
+        </Link>
+      </li>
+    ))
+  );
+
+  const displayLanguageMenu = () => (
+    languageMenuItems?.map((item: IMenuItems) => (
+      <li key={item.label}>
+        <Link href={item.link} className='menu-link p-1 flex items-center space-x-3'>
+          <div className="text-wrapper">
+            <span className="text-line text-xs tracking-tight">{item.label}</span>
+          </div>
+        </Link>
+      </li>
+    ))
+  );
+
+  useGSAP(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ paused: true });
+
+      gsap.to(
+        navRef.current,
+        {
+          opacity: 1,
+          // duration: 0.25,
+          ease: 'power1.in',
         }
+      );
+
+      tl.to(navRef.current, {
+        width: type === MenuType.NAVIGATION ? '12.25rem' : 'max-content',
+        borderRadius: '0.75rem',
+        duration: 0.3,
+        ease: 'sine.inOut',
+      });
+
+      tl.to(
+        menuListRef.current,
+        {
+          opacity: 1,
+          display: 'block',
+          y: 0,
+          duration: 0.3,
+          ease: 'sine.inOut',
+        },
+        '<'
+      );
+
+      tl.to(
+        '#menu-icon-container',
+        {
+          opacity: 1,
+          scale: 1,
+          rotate: 0,
+          duration: 0.35,
+          ease: 'sine.inOut',
+        },
+        '<'
+      )
+
+      // Hover In
+      navRef.current?.addEventListener('mouseenter', () => tl.play());
+      navRef.current?.addEventListener('focusin', () => tl.play());
+
+      // Hover Out
+      navRef.current?.addEventListener('mouseleave', () => tl.reverse());
+      navRef.current?.addEventListener('focusout', () => tl.reverse());
+    }, navRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <nav
+      ref={navRef}
+      className={`${className} py-2.5 w-32 h-auto text-body bg-grey-overlay capitalize flex flex-col items-center backdrop-blur-[2px] rounded-3xl opacity-0`}
+      style={{ width: type === MenuType.NAVIGATION ? '8rem' : 'max-content' }}
+    >
+      <div className='flex-between px-3 w-full space-x-4'>
+        <span className='text-sm font-medium leading-none tracking-tight'>{type === MenuType.NAVIGATION ? navigationMenuItems[0].label : languageMenuItems[0].label}</span>
+
+        <div className='flex space-x-0.5'>
+          {
+            type === MenuType.NAVIGATION ?
+            ['dot1', 'dot2'].map((id) => (
+              <Dots key={id} height={8} />
+            ))
+            :
+            <Dots height={8} />
+          }
+        </div>
+      </div>
+
+      <ul
+        ref={menuListRef}
+        className='menu-links mt-3.5 px-1.5 w-full space-y-0.5 hidden opacity-0 translate-y-2'
+      >
+        { type === MenuType.NAVIGATION ? displayNavigationMenu() : displayLanguageMenu() }
       </ul>
     </nav>
   )

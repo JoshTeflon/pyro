@@ -46,7 +46,7 @@ const CustomCursor: React.FC = () => {
       }}
       dangerouslySetInnerHTML={{
         __html: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9" fill="none" stroke="${hovered ? "black" : "#fff7d1"}" stroke-width="0.5"/>
+                  <circle cx="12" cy="12" r="9" fill="none" stroke="${hovered ? "var(--body-clr)" : "var(--primary-clr)"}" stroke-width="0.5"/>
                 </svg>`,
       }}
     />

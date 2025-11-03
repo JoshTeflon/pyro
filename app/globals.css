@@ -3,17 +3,41 @@
 @tailwind utilities;
 
 :root {
-  /* --primary-clr: hsla(0, 98%, 32%, 0.9); */
-  /* --primary-clr: hsl(0, 98%, 32%); */
-  --primary-clr: hsl(0, 86%, 28%);
+  /* 🌈 Primary Brand Color */
+  --primary-clr: hsl(0, 86%, 28%); /* fallback */
+  --primary-clr: lch(27.37% 59.89 37.03);
+
+  /* 🖤 Main Background / Dark Base */
   --main-clr: hsl(0, 0%, 3%);
-  /* --body-clr: hsl(50, 100%, 91%); */
-  --body-clr: hsl(255, 100%, 100%);
+  --main-clr: lch(2.19% 0 296.81);
+
+  /* 🤍 Body / Background */
+  --body-clr: hsl(0, 3%, 94%);
+  --body-clr: lch(94.52% 0.36 17.65);
+
+  /* 🩶 Neutral Grey */
+  --grey-clr: hsl(0, 0%, 35%);
+  --grey-clr: lch(37.82% 0.01 296.81);
+
+  /* 🕶️ Overlay Colors */
   --overlay-clr: hsla(0, 0%, 0%, 0.3);
+  --overlay-clr: lch(0% 0 0 / 0.3);
+
+  --grey-overlay-clr: hsla(0, 0%, 35%, 0.9);
+  --grey-overlay-clr: lch(37.82% 0.01 296.81 / 0.9);
+
+  /* 🚨 Danger Overlay */
   --danger-overlay-clr: hsla(0, 100%, 32%, 0.4);
+  --danger-overlay-clr: lch(33.53% 74.57 39.77 / 0.4);
+
+  /* 🟡 Scrollbar Styling */
   --scrollbar-thumb: hsla(50, 100%, 91%, 0.3);
+  --scrollbar-thumb: lch(96.98% 19.54 99.87 / 0.3);
+
   --scrollbar-track: hsl(0, 0%, 3%);
+  --scrollbar-track: lch(2.19% 0 296.81);
 }
+
 
 * {
   margin: 0;
@@ -66,6 +90,56 @@ input:-webkit-autofill:active {
   border-radius: 0.25rem;
 }
 
+.menu-link {
+  position: relative; 
+  z-index: 1;
+  border-radius: 0.5rem;
+  color: inherit;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--overlay-clr); 
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-link:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.reveal-line {
+  display: inline-block;
+  transform-origin: bottom;
+}
+
+.text-wrapper {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.text-line {
+  display: inline-block;
+  transform: translateY(100%);
+  animation: slideUp 0.35s ease-in-out forwards;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+  }
+}
+
 @media (pointer: coarse) {
   html {
     /* Use system scrollbars for better touch experience */
@@ -76,7 +150,7 @@ input:-webkit-autofill:active {
 
 @layer utilities {
   .side-pad {
-    @apply mx-auto w-full max-w-7xl px-4 lg:px-6;
+    @apply mx-auto w-full max-w-8xl px-4 lg:px-8 xl:px-16;
   }
 
   .bar {
@@ -96,5 +170,13 @@ input:-webkit-autofill:active {
 
   .absolute-center {
     @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
   }
 }

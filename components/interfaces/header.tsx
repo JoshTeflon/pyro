@@ -8,6 +8,7 @@ import { useGSAP } from '@gsap/react';
 import { Logo, Hamburger } from '@/components/shared';
 import { Menu } from '@/components/interfaces';
 import { useNav } from '@/hooks';
+import { MenuType } from '@/types';
 
 const Header: React.FC = () => {
   const { navOpen, toggleNavOpen } = useNav();
@@ -35,7 +36,7 @@ const Header: React.FC = () => {
     };
   }, [lastScrollY]);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (headerRef.current) {
       gsap.to(headerRef.current, {
         y: isVisible ? 0 : -80,
@@ -51,7 +52,7 @@ const Header: React.FC = () => {
       ref={headerRef}
       className='side-pad z-[75] fixed left-0 right-0 py-8 w-full bg-transparent flex items-center justify-between'
     >
-      <Link href={'/'}>
+      {/* <Link href={'/'}>
         <Logo
           className='-rotate-2'
           variant={navOpen ? 'default' : 'primary'}
@@ -59,16 +60,32 @@ const Header: React.FC = () => {
         />
       </Link>
       <div
-        className='hidden lg:flex p-5 xl:py-5 xl:px-8 items-center justify-between space-x-8 text-primary uppercase'
+        className='hidden lg:flex p-5 xl:py-5 xl:px-8 items-center justify-between space-x-8 text-primary'
       >
         <Menu />
+      </div> */}
+      <div className='relative w-full'>
+        <Menu
+          type={MenuType.NAVIGATION}
+          className='absolute top-0 left-0'
+        />
+        <Link href={'/'} className='mx-auto flex-center w-fit'>
+          <Logo
+            className='-rotate-2'
+            variant='primary'   
+          />
+        </Link>
+        <Menu
+          type={MenuType.LANGUAGE}
+          className='absolute top-0 right-0'
+        />
       </div>
-      <div className='flex lg:hidden'>
+      {/* <div className='flex lg:hidden'>
         <Hamburger
           isOpen={navOpen}
           toggleMenu={toggleNavOpen}
         />
-      </div>
+      </div> */}
     </header>
   )
 }

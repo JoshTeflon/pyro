@@ -1,4 +1,4 @@
-import { Instagram, X, Spotify, Youtube, AppleMusic, Audiomack } from '@/components/icons';
+import { Instagram, X, Spotify, Youtube, AppleMusic, Audiomack, Music, Home, Gallery, Merch } from '@/components/icons';
 
 import GalleryCardImage0 from '@/public/images/gallery/gallery-card-0.jpg';
 import GalleryCardImage1 from '@/public/images/gallery/gallery-card-1.jpeg';
@@ -6,6 +6,68 @@ import GalleryCardImage2 from '@/public/images/gallery/gallery-card-2.jpg';
 import GalleryCardImage3 from '@/public/images/gallery/tempt-pegs.jpeg';
 
 import { IIArtist, IGalleryCard, IMenuItems, ITrackInfo } from '@/types';
+
+export const navigationMenuItems: IMenuItems[] = [
+  {
+    label: 'home',
+    link: '',
+    icon: Home,
+  },
+  {
+    label: 'music',
+    link: '#music',
+    icon: Music,
+  },
+  {
+    label: 'gallery',
+    link: '#gallery',
+    icon: Gallery,
+  },
+  {
+    label: 'merch',
+    link: '',
+    icon: Merch,
+  },
+];
+
+export const languageMenuItems: IMenuItems[] = [
+  {
+    label: 'English',
+    link: 'en'
+  },
+  {
+    label: 'Français',
+    link: 'fr'
+  },
+  {
+    label: 'Español',
+    link: 'es'
+  },
+  {
+    label: 'Deutsch',
+    link: 'de'
+  },
+  {
+    label: 'Italiano',
+    link: 'it'
+  },
+  {
+    label: 'Polski',
+    link: 'pl'
+  },
+  {
+    label: 'Nederlands',
+    link: 'nl'
+  },
+  {
+    label: 'Português',
+    link: 'pt'
+  },
+  {
+    label: 'English(Hong Kong)',
+    link: 'hk'
+  },
+];
 
 export const artist: IIArtist = {
   name: 'ii6 pyro',
@@ -53,25 +115,6 @@ export const artist: IIArtist = {
     ]
   },
 };
-
-export const menuItems: IMenuItems[] = [
-  {
-    item: 'music',
-    link: '#music'
-  },
-  {
-    item: 'gallery',
-    link: '#gallery'
-  },
-  {
-    item: 'merch',
-    link: ''
-  },
-  {
-    item: 'contact',
-    link: '#footer'
-  },
-];
 
 export const musicList: ITrackInfo[] = [
   {

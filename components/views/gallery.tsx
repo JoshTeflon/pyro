@@ -104,35 +104,33 @@ const Gallery = () => {
           ref={galleryCardsRef}
           className='gallery-cards w-full h-full'
         >
-          {
-            galleryDeck?.map(item => (
-              <div
-                key={item.name}
-                ref={(el) => addCardRef(el)}
-                className='gallery-card absolute w-auto min-w-[60vw] max-w-[90vw] xl:min-w-[30vw] xl:max-w-[50vw] h-auto'
-                style={{
-                  top: item?.top,
-                  right: item?.right,
-                  bottom: item?.bottom,
-                  left: item?.left,
-                }}
-              >
-                <div className="-translate-x-1/2 overflow-hidden">
-                  <div className="w-full h-full">
-                    <figure className="w-full h-full">
-                      <Image
-                        className='object-cover'
-                        src={item.image}
-                        alt={item.name}
-                        quality={100}
-                        placeholder='blur'
-                      />
-                    </figure>
-                  </div>
+          {galleryDeck?.map(item => (
+            <div
+              key={item.name}
+              ref={(el) => addCardRef(el)}
+              className='gallery-card absolute w-auto min-w-[60vw] max-w-[90vw] xl:min-w-[30vw] xl:max-w-[50vw] h-auto'
+              style={{
+                top: item?.top,
+                right: item?.right,
+                bottom: item?.bottom,
+                left: item?.left,
+              }}
+            >
+              <div className="-translate-x-1/2 overflow-hidden">
+                <div className="w-full h-full">
+                  <figure className="w-full h-full">
+                    <Image
+                      className='object-cover'
+                      src={item.image}
+                      alt={item.name}
+                      quality={100}
+                      placeholder='blur'
+                    />
+                  </figure>
                 </div>
               </div>
-            ))
-          }
+            </div>
+          ))}
         </div>
       </div>
     </section>

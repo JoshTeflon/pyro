@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { CustomCursor } from '@/components/shared';
 import { Header, MobileNav } from '@/components/interfaces';
 import { Footer, Gallery, Home, Music } from '@/components/views';
+
 import NavContextProvider from '@/contexts/NavContext';
 
 export default function Landing() {

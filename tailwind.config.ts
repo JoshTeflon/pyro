@@ -9,12 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        'body': 'var(--body-clr)',
         'main': 'var(--main-clr)',
         'primary': 'var(--primary-clr)',
-        'body': 'var(--body-clr)',
+        'grey': 'var(--grey-clr)',
         'overlay': 'var(--overlay-clr)',
-        'primary-overlay': 'var(--primary-overlay-clr)',
+        'grey-overlay': 'var(--grey-overlay-clr)',
         'danger-overlay': 'var(--danger-overlay-clr)',
+      },
+      borderRadius: {
+        '4xl': '32px',
+      },
+      maxWidth: {
+        '8xl': '1440px',
       },
       keyframes: {
         'jello-horizontal': {

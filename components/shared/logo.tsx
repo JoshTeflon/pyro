@@ -15,19 +15,19 @@ const logoVariants = cva(
   {
     variants: {
       variant: {
-          default: 'text-main',
-          primary: 'text-primary',
-          secondary: 'text-body',
+        default: 'text-main',
+        primary: 'text-primary',
+        secondary: 'text-body',
       },
       size: {
-          sm: 'text-sm lg:text-base',
-          md: 'text-xl lg:text-2xl',
-          lg: 'text-4xl lg:text-5xl',
+        sm: 'text-sm lg:text-base',
+        md: 'text-3xl lg:text-4xl',
+        lg: 'text-4xl lg:text-5xl',
       },
     },
     defaultVariants: {
-        variant: 'default',
-        size: 'md',
+      variant: 'default',
+      size: 'md',
     },
   }
 );
