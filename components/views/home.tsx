@@ -7,6 +7,8 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { Button, SocialPlatforms } from '@/components/interfaces';
+import { ArrowDown } from '@/components/icons';
+
 import { artist } from '@/lib/data';
 import { newsCycle } from '@/lib/fonts';
 
@@ -79,7 +81,14 @@ const Home = () => {
             </Button>
           </div>
         </div> */}
-        <SocialPlatforms className='absolute bottom-16 right-4 lg:right-8 xl:right-16 text-primary' />
+        <div className='absolute bottom-16 left-0 right-0'>
+          <div className='side-pad flex items-end justify-between'>
+            <div className='w-4 h-6 text-primary bg-body flex items-center justify-center rounded-4xl'>
+              <ArrowDown className='w-3.5' />
+            </div>
+            <SocialPlatforms className='text-primary' />
+          </div>
+        </div>
       </div>
     </section>
   )
