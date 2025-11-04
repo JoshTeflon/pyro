@@ -8,19 +8,19 @@ export const useHash = (): string => {
   const [hash, setHash] = useState('');
 
   useEffect(() => {
-    const initialHash = globalThis.window.location.hash;
+    const initialHash = globalThis.location.hash;
     setHash(initialHash);
 
     const handleHashChange = () => {
-      setHash(globalThis.window.location.hash);
+      setHash(globalThis.location.hash);
     };
 
     // Listen for the hashchange event
-    globalThis.window.addEventListener('hashchange', handleHashChange);
+    globalThis.addEventListener('hashchange', handleHashChange);
 
     // Clean up the event listener when the component unmounts
     return () => {
-      globalThis.window.removeEventListener('hashchange', handleHashChange);
+      globalThis.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
 

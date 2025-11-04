@@ -18,7 +18,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      const currentScrollY = globalThis.scrollY;
 
       if (currentScrollY > lastScrollY && currentScrollY > 40) {
         setIsVisible(false);
@@ -29,10 +29,10 @@ const Header: React.FC = () => {
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    globalThis.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      globalThis.removeEventListener('scroll', handleScroll);
     };
   }, [lastScrollY]);
 

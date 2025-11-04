@@ -59,7 +59,7 @@ const useReveal = (
 
     if (!scroll) return () => tween.kill();
 
-    if (useInView && "IntersectionObserver" in globalThis.window) {
+    if (useInView && "IntersectionObserver" in globalThis) {
       const observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {

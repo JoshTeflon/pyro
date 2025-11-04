@@ -5,8 +5,8 @@ const useWindowDimension = (breakpoinrt: number): boolean => {
   const [isMobileSize, setIsMobileSize] = useState<boolean>(false);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsMobileSize(window.innerWidth <= breakpoinrt);
+    if (typeof globalThis !== 'undefined') {
+      setIsMobileSize(globalThis.innerWidth <= breakpoinrt);
   
       const windowResizeHandler = () => {
         const matchMediaString = `(max-width: ${breakpoinrt}px)`;
@@ -14,8 +14,8 @@ const useWindowDimension = (breakpoinrt: number): boolean => {
         setIsMobileSize(matchMedia(matchMediaString).matches);
       };
 
-      window.addEventListener('resize', windowResizeHandler);
-      return () => window.removeEventListener('resize', windowResizeHandler);
+      globalThis.addEventListener('resize', windowResizeHandler);
+      return () => globalThis.removeEventListener('resize', windowResizeHandler);
     }
   }, [breakpoinrt]);
 
