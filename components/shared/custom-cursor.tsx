@@ -1,8 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, FC } from 'react';
+
+const CursorSVG: FC<{ isHovered: boolean }> = ({ isHovered }) => {
+  const strokeColor = isHovered ? "var(--body-clr)" : "var(--primary-clr)";
+
+  return (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 24 24"
+    >
+      <circle 
+        cx="12" 
+        cy="12" 
+        r="10" 
+        fill="none" 
+        stroke={strokeColor} 
+        strokeWidth="1"
+      />
+    </svg>
+  );
+};
 
 const CustomCursor: React.FC = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [hovered, setHovered] = useState(false);
+  const [position, setPosition] = useState<{ x: number, y: number }>({ x: 0, y: 0 });
+  const [hovered, setHovered] = useState<boolean>(false);
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
@@ -12,22 +32,22 @@ const CustomCursor: React.FC = () => {
     const handleHover = () => setHovered(true);
     const handleLeave = () => setHovered(false);
 
-    window.addEventListener("mousemove", moveCursor);
+    globalThis.addEventListener("mousemove", moveCursor);
 
-    // Handle hover interactions
-    const interactiveElements = document.querySelectorAll("a, button");
-    interactiveElements.forEach((el) => {
+    const interactiveElements = globalThis.document.querySelectorAll("a, button, [data-cursor-interact]");
+
+    for (const el of interactiveElements) {
       el.addEventListener("mouseenter", handleHover);
       el.addEventListener("mouseleave", handleLeave);
-    });
+    }
 
-    // Cleanup event listeners
     return () => {
-      window.removeEventListener("mousemove", moveCursor);
-      interactiveElements.forEach((el) => {
+      globalThis.removeEventListener("mousemove", moveCursor);
+
+      for (const el of interactiveElements) {
         el.removeEventListener("mouseenter", handleHover);
         el.removeEventListener("mouseleave", handleLeave);
-      });
+      }
     };
   }, []);
 
@@ -37,19 +57,16 @@ const CustomCursor: React.FC = () => {
         position: "fixed",
         top: position.y,
         left: position.x,
-        width: hovered ? "30px" : "24px",
-        height: hovered ? "30px" : "24px",
+        width: hovered ? "2rem" : "1.5rem",
+        height: hovered ? "2rem" : "1.5rem",
         zIndex: 9999,
         pointerEvents: "none",
         transform: "translate(-50%, -50%)",
-        transition: "width 0.2s ease, height 0.2s ease",
+        transition: "width 0.2s ease, height 0.2s ease, transform 0.1s linear",
       }}
-      dangerouslySetInnerHTML={{
-        __html: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9" fill="none" stroke="${hovered ? "var(--body-clr)" : "var(--primary-clr)"}" stroke-width="0.5"/>
-                </svg>`,
-      }}
-    />
+    >
+      <CursorSVG isHovered={hovered} />
+    </div>
   );
 };
 
