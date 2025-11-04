@@ -66,8 +66,8 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
         navRef.current,
         {
           opacity: 1,
-          // duration: 0.25,
-          ease: 'power1.in',
+          duration: 0.25,
+          ease: 'power1.inOut',
         }
       );
 

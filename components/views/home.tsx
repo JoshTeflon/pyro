@@ -6,18 +6,15 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { Button, SocialPlatforms } from '@/components/interfaces';
-import { ArrowDown } from '@/components/icons';
+import { SocialPlatforms } from '@/components/interfaces';
+import { ArrowDown, Play } from '@/components/icons';
 
-import { artist } from '@/lib/data';
-import { newsCycle } from '@/lib/fonts';
+import { artist, musicList } from '@/lib/data';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
   const landingImageRef = useRef<HTMLImageElement>(null);
-  const streamRef = useRef<HTMLButtonElement>(null);
-
 
   useGSAP(() => {
     gsap.to(landingImageRef.current, {
@@ -62,30 +59,54 @@ const Home = () => {
         fill
         priority
       />
+
       <div className='z-10 absolute inset-0 w-full h-full bg-overlay'></div>
+
       <div className='action-content side-pad z-30 relative w-full h-full'>
-        {/* <div className='absolute bottom-16 left-1/2 -translate-x-1/2'>
-          <div className='flex flex-col items-center text-center'>
-            <p className={`${newsCycle.className} text-base sm:text-lg lg:text-xl font-bold uppercase tracking-wider`}>New Release</p>
-            <div className='mt-1 mb-4 lg:mb-6 flex items-baseline space-x-2 font-bold'>
-              <span className='outline-text-body text-[4rem] sm:text-8xl lg:text-9xl xl:text-[10rem] font-bold uppercase leading-none'>deny</span>
-              <span className='text-sm lg:text-base tracking-tighter'>ft. wyld chlld</span>
+        <div className='p-4 md:p-5 w-4/5 h-[10.25rem] max-w-[28rem] bg-body rounded-lg absolute top-1/2 -translate-y-1/2'>
+          <div className='w-full h-full flex space-x-4'>
+            <div className='relative min-w-[8.25rem] w-[8.25rem] h-full rounded-lg'>
+              <Image
+                  className='z-10 absolute inset-0 w-full h-full object-cover object-center rounded-lg'
+                  src={musicList[0].cover}
+                  alt={musicList[0].name}
+                  quality={100}
+                  // placeholder='blur'
+                  fill
+                  priority
+                />
             </div>
-            <Button
-              ref={streamRef}
-              variant='primary'
-              size='lg'
-              className='font-medium uppercase'
-            >
-              Listen Now
-            </Button>
+
+            <div className='w-full text-primary uppercase flex flex-col justify-between'>
+              <h3 className='text-base tracking-[5%]'>out now</h3>
+
+              <div className='w-full flex flex-col space-y-px'>
+                <span className='text-3xl font-medium leading-none'>{musicList[0].name}</span>
+
+                <div className='w-full flex items-end justify-between'>
+                  <div className='flex items-center space-x-2'>
+                    <div className='py-px px-1 text-[0.625rem] border border-primary rounded-sm'>
+                      {musicList[0].year}
+                    </div>
+
+                    <div className='py-px px-1 text-[0.625rem] border border-primary rounded-sm'>
+                      {musicList[0].type}
+                    </div>
+                  </div>
+
+                  <Play className='w-8 h-8' />
+                </div>
+              </div>
+            </div>
           </div>
-        </div> */}
+        </div>
+
         <div className='absolute bottom-16 left-0 right-0'>
           <div className='side-pad flex items-end justify-between'>
-            <div className='w-4 h-6 text-primary bg-body flex items-center justify-center rounded-4xl'>
-              <ArrowDown className='w-3.5' />
+            <div className='w-5 h-10 text-primary bg-body flex items-center justify-center rounded-4xl'>
+              <ArrowDown className='w-4' />
             </div>
+
             <SocialPlatforms className='text-primary' />
           </div>
         </div>

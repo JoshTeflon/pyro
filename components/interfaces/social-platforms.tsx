@@ -9,7 +9,7 @@ interface SocialPlatformsProps {
 const SocialPlatforms: React.FC<SocialPlatformsProps> = ({ className, layout = 'stack' }) => {
   return (
     <ul
-      className={`${className} flex items-center ${layout === 'stack' ? 'flex-col space-y-6' : 'flex-row space-x-6'}`}
+      className={`${className} flex items-center ${layout === 'stack' ? 'flex-col space-y-6 xl:space-y-8' : 'flex-row space-x-6 xl:space-x-8'}`}
     >
       {
         artist?.socials?.map((icon: IPlatform) => (

@@ -5,7 +5,7 @@ import GalleryCardImage1 from '@/public/images/gallery/gallery-card-1.jpeg';
 import GalleryCardImage2 from '@/public/images/gallery/gallery-card-2.jpg';
 import GalleryCardImage3 from '@/public/images/gallery/tempt-pegs.jpeg';
 
-import { IIArtist, IGalleryCard, IMenuItems, ITrackInfo } from '@/types';
+import { IIArtist, IGalleryCard, IMenuItems, ITrackInfo, TrackType } from '@/types';
 
 export const navigationMenuItems: IMenuItems[] = [
   {
@@ -109,34 +109,53 @@ export const artist: IIArtist = {
 
 export const musicList: ITrackInfo[] = [
   {
+    name: 'tempt',
+    cover: '/images/music_covers/tempt.png',
+    video: '/tempt-visualizer.mp4',
+    type: TrackType.SINGLE,
+    year: '2025',
+  },
+  {
     name: 'deny',
     cover: '/images/music_covers/deny.jpeg',
-    video: '/surrender-visualizer.mp4'
+    video: '/nvm-visualizer.mp4',
+    type: TrackType.SINGLE,
+    year: '2025',
   },
   {
     name: 'surrender',
     cover: '/images/music_covers/surrender_cover.png',
-    video: '/surrender-visualizer.mp4'
+    video: '/surrender-visualizer.mp4',
+    type: TrackType.SINGLE,
+    year: '2025',
   },
   {
     name: 'go',
     cover: '/images/music_covers/go_cover.jpeg',
-    video: '/surrender-visualizer.mp4'
+    video: '/tempt-visualizer.mp4',
+    type: TrackType.SINGLE,
+    year: '2025',
   },
   {
     name: 'nvm',
     cover: '/images/music_covers/nvm_cover.jpg',
-    video: '/nvm-visualizer.mp4'
+    video: '/nvm-visualizer.mp4',
+    type: TrackType.SINGLE,
+    year: '2025',
   },
   {
     name: 'lma',
     cover: '/images/music_covers/lma_cover.jpg',
-    video: '/surrender-visualizer.mp4'
+    video: '/surrender-visualizer.mp4',
+    type: TrackType.SINGLE,
+    year: '2025',
   },
   {
     name: 'haze',
     cover: '/images/music_covers/haze_cover.jpg',
-    video: '/nvm-visualizer.mp4'
+    video: '/tempt-visualizer.mp4',
+    type: TrackType.SINGLE,
+    year: '2025',
   },
 ];
 

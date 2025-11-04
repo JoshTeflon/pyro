@@ -5,6 +5,12 @@ export enum MenuType {
   LANGUAGE = 'language',
 }
 
+export enum TrackType {
+  SINGLE = 'single',
+  EP = 'ep',
+  ALBUM = 'album',
+}
+
 export interface IIArtist {
   name: string;
   short_name: string;
@@ -34,6 +40,8 @@ export interface ITrackInfo {
   name: string;
   cover: string;
   video: string;
+  type: TrackType;
+  year: string;
 }
 
 export interface IGalleryCard {
