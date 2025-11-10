@@ -26,16 +26,16 @@ export default function Landing() {
           // <Loading />
           <div className='w-full h-screen flex items-center justify-center'>loading...</div>
         ) : ( */}
+          <Header  />
+          <MobileNav />
           <main className='relative w-full h-full flex flex-col grow font-geist-mono tracking-wide'>
-            <Header  />
-            <MobileNav />
             <Home />
             <Music />
             {/* <div className="sticky top-0 h-screen">
               <Music />
             </div> */}
             <Gallery />
-            <Footer />
+            <Footer /> {/* TODO: update this component to 'Contact' or 'Newsletter' */}
           </main>
         {/* )} */}
     </NavContextProvider>

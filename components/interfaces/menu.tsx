@@ -1,13 +1,14 @@
 'use client';
 
 import { FC, useRef } from 'react';
-import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-import { Dots } from '@/components/icons';
+import { Button } from '@/components/interfaces';
+import { Dots, Flame } from '@/components/icons';
 
+import { useActiveSection } from '@/hooks';
 import { languageMenuItems, navigationMenuItems } from '@/lib/data';
 import { IMenuItems, MenuType } from '@/types';
 
@@ -16,47 +17,67 @@ interface MenuProps {
   className?: string;
 };
 
+const DisplayNavigationMenu: FC = () => {
+  const activeSection = useActiveSection(navigationMenuItems.map((item: IMenuItems) => item.label));
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+
+    if (el) {
+      const elementPosition = el.getBoundingClientRect().top + globalThis.scrollY;
+
+      globalThis.scrollTo({
+        top: id === 'gallery' ? elementPosition + (globalThis.innerHeight * 1.5) : elementPosition,
+        behavior: 'smooth',
+      });
+    };
+  };
+  
+  return (
+    navigationMenuItems?.map((item: IMenuItems) => (
+      <li key={item.label}>
+        <Button
+          variant='naked'
+          className='!p-1 w-full menu-link flex items-center justify-between'
+          onClick={() => scrollToSection(item.label)}
+        >
+          <div className='w-full flex items-center space-x-3'>
+            {
+            item?.icon &&
+              <div
+                id='menu-icon-container'
+                className='flex-center w-8 h-8 bg-body text-primary rounded-lg flex-shrink-0 opacity-0 scale-50 -rotate-[15deg]'
+              >
+                <item.icon />
+              </div>
+            }
+
+            <div className="text-wrapper">
+              <span className="text-line text-xs tracking-tight capitalize">{item.label}</span>
+            </div>
+          </div>
+          { activeSection === item.label && <Flame className='mr-1 opacity-95' /> }
+        </Button>
+      </li>
+    ))
+  );
+};
+
+const DisplayLanguageMenu: FC = () => (
+  languageMenuItems?.map((item: IMenuItems) => (
+    <li key={item.label}>
+      <Link href={item.link} className='menu-link py-1 px-1.5 flex items-center space-x-3'>
+        <div className="text-wrapper">
+          <span className="text-line text-xs tracking-tight">{item.label}</span>
+        </div>
+      </Link>
+    </li>
+  ))
+);
+
 const Menu: FC<MenuProps> = ({ type, className }) => {
   const navRef = useRef<HTMLDivElement>(null);
   const menuListRef = useRef<HTMLUListElement>(null);
-
-  const params = useParams<{ tag: string; item: string }>()
- 
-  console.log('params', params)
-
-  const displayNavigationMenu = () => (
-    navigationMenuItems?.map((item: IMenuItems) => (
-      <li key={item.label}>
-        <Link href={item.link} className='menu-link p-1 flex items-center space-x-3'>
-          {
-            item?.icon &&
-            <div
-              id='menu-icon-container'
-              className='flex-center w-8 h-8 bg-body text-primary rounded-lg flex-shrink-0 opacity-0 scale-50 -rotate-[15deg]'
-            >
-              <item.icon />
-            </div>
-          }
-
-          <div className="text-wrapper">
-            <span className="text-line text-xs tracking-tight">{item.label}</span>
-          </div>
-        </Link>
-      </li>
-    ))
-  );
-
-  const displayLanguageMenu = () => (
-    languageMenuItems?.map((item: IMenuItems) => (
-      <li key={item.label}>
-        <Link href={item.link} className='menu-link p-1 flex items-center space-x-3'>
-          <div className="text-wrapper">
-            <span className="text-line text-xs tracking-tight">{item.label}</span>
-          </div>
-        </Link>
-      </li>
-    ))
-  );
 
   useGSAP(() => {
     const ctx = gsap.context(() => {
@@ -90,17 +111,19 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
         '<'
       );
 
-      tl.to(
-        '#menu-icon-container',
-        {
-          opacity: 1,
-          scale: 1,
-          rotate: 0,
-          duration: 0.35,
-          ease: 'sine.inOut',
-        },
-        '<'
-      )
+      if (type === MenuType.NAVIGATION) {
+        tl.to(
+          '#menu-icon-container',
+          {
+            opacity: 1,
+            scale: 1,
+            rotate: 0,
+            duration: 0.35,
+            ease: 'sine.inOut',
+          },
+          '<'
+        );
+      };
 
       // Hover In
       navRef.current?.addEventListener('mouseenter', () => tl.play());
@@ -139,7 +162,7 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
         ref={menuListRef}
         className='menu-links mt-3.5 px-1.5 w-full space-y-0.5 hidden opacity-0 translate-y-2'
       >
-        { type === MenuType.NAVIGATION ? displayNavigationMenu() : displayLanguageMenu() }
+        { type === MenuType.NAVIGATION ? <DisplayNavigationMenu /> : <DisplayLanguageMenu /> }
       </ul>
     </nav>
   )

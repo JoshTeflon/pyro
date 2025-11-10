@@ -24,7 +24,7 @@ export const navigationMenuItems: IMenuItems[] = [
     icon: Gallery,
   },
   {
-    label: 'merch',
+    label: 'connect',
     link: '',
     icon: Merch,
   },

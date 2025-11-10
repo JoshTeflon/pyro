@@ -14,3 +14,4 @@ export { default as Snapchat } from './snapchat';
 export { default as Dots } from './dots';
 export { default as ArrowDown } from './arrow-down';
 export { default as Play } from './play';
+export { default as Flame } from './flame';

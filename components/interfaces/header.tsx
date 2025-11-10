@@ -69,7 +69,7 @@ const Header: React.FC = () => {
           type={MenuType.NAVIGATION}
           className='absolute top-0 left-0'
         />
-        <Link href={'/'} className='mx-auto flex-center w-fit'>
+        <Link href={'/'} className='mx-auto flex-center w-fit outline-none border-none'>
           <Logo
             className='-rotate-2'
             variant='primary'   

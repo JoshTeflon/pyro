@@ -7,7 +7,7 @@ import { Logo } from '@/components/shared';
 const Footer = () => {
   return (
     <footer
-      id='footer'
+      id='connect'
       className='pt-16 md:pt-24 lg:pt-32 pb-8 z-50 relative h-screen bg-main flex flex-col items-center justify-center'
     >
       <div className='side-pad flex flex-col items-center justify-center'>
