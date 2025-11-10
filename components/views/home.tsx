@@ -6,7 +6,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { SocialPlatforms } from '@/components/interfaces';
+import { SocialPlatforms, Button } from '@/components/interfaces';
 import { ArrowDown, Play } from '@/components/icons';
 
 import { artist, musicList } from '@/lib/data';
@@ -101,11 +101,13 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='absolute bottom-16 left-0 right-0'>
+        <div className='absolute bottom-12 left-0 right-0'>
           <div className='side-pad flex items-end justify-between'>
-            <div className='w-5 h-10 text-primary bg-body flex items-center justify-center rounded-4xl'>
-              <ArrowDown className='w-4' />
-            </div>
+            <Button variant='naked' className='group'>
+              <div className='group w-5 h-10 text-primary bg-body flex items-center justify-center border border-primary rounded-4xl transition-colors duration-500 ease-in-out group-hover:bg-primary group-hover:text-body'>
+                <ArrowDown className='w-4 group-hover:animate-jello-horizontal' />
+              </div>
+            </Button>
 
             <SocialPlatforms className='text-primary' />
           </div>

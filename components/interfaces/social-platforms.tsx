@@ -18,7 +18,7 @@ const SocialPlatforms: React.FC<SocialPlatformsProps> = ({ className, layout = '
             className='w-6 h-6'
           >
             <a
-              className='w-full h-full flex items-center justify-center text-inherit hover:text-body focus:text-body rounded-full transition-colors duration-500 ease-in-out'
+              className='w-full h-full flex items-center justify-center text-inherit rounded-full transition-colors duration-500 ease-in-out hover:text-body focus:text-body'
               href='/'
             >
               <icon.icon className="w-full h-full text-inherit" />
