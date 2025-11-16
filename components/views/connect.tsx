@@ -4,7 +4,7 @@ import { EmailInput, SocialPlatforms } from '@/components/interfaces';
 import { rockSalt } from '@/lib/fonts';
 import { Logo } from '@/components/shared';
 
-const Footer = () => {
+const Connect = () => {
   return (
     <footer
       id='connect'
@@ -42,4 +42,4 @@ const Footer = () => {
   )
 }
 
-export default Footer;
+export default Connect;

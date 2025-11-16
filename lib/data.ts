@@ -1,4 +1,4 @@
-import { AppleMusic, Gallery, Home, Instagram, Merch, Music, Snapchat, Spotify, Tiktok, Youtube } from '@/components/icons';
+import { AppleMusic, Connect, Gallery, Home, Instagram, Music, Snapchat, Spotify, Tiktok, Youtube } from '@/components/icons';
 
 import GalleryCardImage0 from '@/public/images/gallery/gallery-card-0.jpg';
 import GalleryCardImage1 from '@/public/images/gallery/gallery-card-1.jpeg';
@@ -26,7 +26,7 @@ export const navigationMenuItems: IMenuItems[] = [
   {
     label: 'connect',
     link: '',
-    icon: Merch,
+    icon: Connect,
   },
 ];
 
