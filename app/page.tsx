@@ -6,7 +6,7 @@ import { CustomCursor } from '@/components/shared';
 import { Header, MobileNav } from '@/components/interfaces';
 import { Connect, Gallery, Home, Music } from '@/components/views';
 
-import NavContextProvider from '@/contexts/NavContext';
+import AppContextProvider from '@/contexts/AppContext';
 
 export default function Landing() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -20,7 +20,7 @@ export default function Landing() {
   }, []);
 
   return (
-    <NavContextProvider>
+    <AppContextProvider>
       <CustomCursor />
       {/* {isLoading ? (
           // <Loading />
@@ -38,6 +38,6 @@ export default function Landing() {
             <Connect />
           </main>
         {/* )} */}
-    </NavContextProvider>
+    </AppContextProvider>
   );
 }

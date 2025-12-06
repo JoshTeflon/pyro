@@ -6,11 +6,11 @@ import Link from 'next/link';
 import { newsCycle } from '@/lib/fonts';
 import { navigationMenuItems } from '@/lib/data';
 import { IMenuItems } from '@/types';
-import { useNav } from '@/hooks';
+import { useApp } from '@/hooks';
 import { SocialPlatforms } from '@/components/interfaces';
 
 const MobileNav = () => {
-  const { navOpen } = useNav();
+  const { navOpen } = useApp();
 
   useEffect(() => {
     const bodyElement = document.body;

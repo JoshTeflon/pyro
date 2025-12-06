@@ -30,10 +30,11 @@ export interface IPlatform {
   url: string;
 }
 
-export interface INavContext {
+export interface IAppContext {
   navOpen: boolean;
   toggleNavOpen: () => void;
   closeNav: () => void;
+  isMobileSize: boolean;
 }
 
 export interface ITrackInfo {

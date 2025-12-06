@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 
-const useWindowDimension = (breakpoinrt: number): boolean => {
+const useWindowDimension = (breakpoinrt = 1024): boolean => {
   const [isMobileSize, setIsMobileSize] = useState<boolean>(false);
 
   useEffect(() => {

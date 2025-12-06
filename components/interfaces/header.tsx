@@ -7,11 +7,11 @@ import { useGSAP } from '@gsap/react';
 
 import { Logo, Hamburger } from '@/components/shared';
 import { Menu } from '@/components/interfaces';
-import { useNav } from '@/hooks';
+import { useApp } from '@/hooks';
 import { MenuType } from '@/types';
 
 const Header: React.FC = () => {
-  const { navOpen, toggleNavOpen } = useNav();
+  const { navOpen, toggleNavOpen } = useApp();
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const headerRef = useRef<HTMLElement>(null);
