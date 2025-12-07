@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 
 import { CustomCursor } from '@/components/shared';
 import { Header, MobileNav } from '@/components/interfaces';
-import { Footer, Gallery, Home, Music } from '@/components/views';
-import NavContextProvider from '@/contexts/NavContext';
+import { Connect, Gallery, Home, Music } from '@/components/views';
+
+import AppContextProvider from '@/contexts/AppContext';
 
 export default function Landing() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -19,24 +20,24 @@ export default function Landing() {
   }, []);
 
   return (
-    <NavContextProvider>
+    <AppContextProvider>
       <CustomCursor />
       {/* {isLoading ? (
           // <Loading />
           <div className='w-full h-screen flex items-center justify-center'>loading...</div>
         ) : ( */}
+          <Header  />
+          <MobileNav />
           <main className='relative w-full h-full flex flex-col grow font-geist-mono tracking-wide'>
-            <Header  />
-            <MobileNav />
             <Home />
             <Music />
             {/* <div className="sticky top-0 h-screen">
               <Music />
             </div> */}
             <Gallery />
-            <Footer />
+            <Connect />
           </main>
         {/* )} */}
-    </NavContextProvider>
+    </AppContextProvider>
   );
 }

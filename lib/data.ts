@@ -1,108 +1,161 @@
-import { Instagram, X, Spotify, Youtube, AppleMusic, Audiomack } from '@/components/icons';
+import { AppleMusic, Connect, Gallery, Home, Instagram, Music, Snapchat, Spotify, Tiktok, Youtube } from '@/components/icons';
 
 import GalleryCardImage0 from '@/public/images/gallery/gallery-card-0.jpg';
 import GalleryCardImage1 from '@/public/images/gallery/gallery-card-1.jpeg';
 import GalleryCardImage2 from '@/public/images/gallery/gallery-card-2.jpg';
 import GalleryCardImage3 from '@/public/images/gallery/tempt-pegs.jpeg';
 
-import { IIArtist, IGalleryCard, IMenuItems, ITrackInfo } from '@/types';
+import { IIArtist, IGalleryCard, IMenuItems, ITrackInfo, TrackType } from '@/types';
+
+export const navigationMenuItems: IMenuItems[] = [
+  {
+    label: 'home',
+    link: '',
+    icon: Home,
+  },
+  {
+    label: 'music',
+    link: '#music',
+    icon: Music,
+  },
+  {
+    label: 'gallery',
+    link: '#gallery',
+    icon: Gallery,
+  },
+  {
+    label: 'connect',
+    link: '',
+    icon: Connect,
+  },
+];
+
+export const languageMenuItems: IMenuItems[] = [
+  {
+    label: 'English',
+    link: 'en'
+  },
+  {
+    label: 'Français',
+    link: 'fr'
+  },
+  {
+    label: 'Español',
+    link: 'es'
+  },
+  {
+    label: 'Deutsch',
+    link: 'de'
+  },
+  {
+    label: 'Italiano',
+    link: 'it'
+  },
+  {
+    label: 'Polski',
+    link: 'pl'
+  },
+  {
+    label: 'Nederlands',
+    link: 'nl'
+  },
+  {
+    label: 'Português',
+    link: 'pt'
+  },
+  {
+    label: 'English(Hong Kong)',
+    link: 'hk'
+  },
+];
 
 export const artist: IIArtist = {
   name: 'ii6 pyro',
   short_name: 'ii6',
   main_image: '/images/ii6-pyro-main.png',
-  socials: {
-    music: [
-      {
-        name: 'spotify',
-        icon: Spotify,
-        url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-      },
-      {
-        name: 'audiomack',
-        icon: Audiomack,
-        url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-      },
-      {
-        name: 'apple-music',
-        icon: AppleMusic,
-        url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-      },
-    ],
-    video: [
-      {
-        name: 'instagram',
-        icon: Instagram,
-        url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-      },
-      {
-        name: 'x',
-        icon: X,
-        url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-      },
-      {
-        name: 'youtube',
-        icon: Youtube,
-        url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-      },
-      // {
-      //   name: 'tiktok',
-      //   icon: Tiktok,
-      //   url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-      // },
-    ]
-  },
+  socials: [
+    {
+      name: 'spotify',
+      icon: Spotify,
+      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    },
+    {
+      name: 'apple-music',
+      icon: AppleMusic,
+      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    },
+    {
+      name: 'instagram',
+      icon: Instagram,
+      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    },
+    {
+      name: 'youtube',
+      icon: Youtube,
+      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    },
+    {
+      name: 'snapchat',
+      icon: Snapchat,
+      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    },
+    {
+      name: 'tiktok',
+      icon: Tiktok,
+      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    },
+  ],
 };
-
-export const menuItems: IMenuItems[] = [
-  {
-    item: 'music',
-    link: '#music'
-  },
-  {
-    item: 'gallery',
-    link: '#gallery'
-  },
-  {
-    item: 'merch',
-    link: ''
-  },
-  {
-    item: 'contact',
-    link: '#footer'
-  },
-];
 
 export const musicList: ITrackInfo[] = [
   {
+    name: 'tempt',
+    cover: '/images/music_covers/tempt.png',
+    video: '/tempt-visualizer.mp4',
+    type: TrackType.SINGLE,
+    year: '2025',
+  },
+  {
     name: 'deny',
     cover: '/images/music_covers/deny.jpeg',
-    video: '/surrender-visualizer.mp4'
+    video: '/nvm-visualizer.mp4',
+    type: TrackType.SINGLE,
+    year: '2025',
   },
   {
     name: 'surrender',
     cover: '/images/music_covers/surrender_cover.png',
-    video: '/surrender-visualizer.mp4'
+    video: '/surrender-visualizer.mp4',
+    type: TrackType.SINGLE,
+    year: '2025',
   },
   {
     name: 'go',
     cover: '/images/music_covers/go_cover.jpeg',
-    video: '/surrender-visualizer.mp4'
+    video: '/tempt-visualizer.mp4',
+    type: TrackType.SINGLE,
+    year: '2025',
   },
   {
     name: 'nvm',
     cover: '/images/music_covers/nvm_cover.jpg',
-    video: '/nvm-visualizer.mp4'
+    video: '/nvm-visualizer.mp4',
+    type: TrackType.SINGLE,
+    year: '2025',
   },
   {
     name: 'lma',
     cover: '/images/music_covers/lma_cover.jpg',
-    video: '/surrender-visualizer.mp4'
+    video: '/surrender-visualizer.mp4',
+    type: TrackType.SINGLE,
+    year: '2025',
   },
   {
     name: 'haze',
     cover: '/images/music_covers/haze_cover.jpg',
-    video: '/nvm-visualizer.mp4'
+    video: '/tempt-visualizer.mp4',
+    type: TrackType.SINGLE,
+    year: '2025',
   },
 ];
 

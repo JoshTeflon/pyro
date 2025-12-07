@@ -1,128 +1,97 @@
-// import { useEffect, useRef } from 'react';
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// interface RevealConfig {
-//   direction?: 'bottom' | 'top' | 'left' | 'right';
-//   distance?: number;
-//   start?: string;
-//   duration?: number;
-//   delay?: number;
-//   ease?: string;
-//   opacity?: {
-//     from: number;
-//     to: number;
-//   };
-// }
-
-// const useReveal = ({
-//   direction = 'bottom',
-//   distance = 100,
-//   start = "top 90%",
-//   duration = 1,
-//   delay = 0,
-//   ease = "power4.out",
-//   opacity = { from: 0, to: 1 }
-// }: RevealConfig = {}) => {
-//   const elementRef = useRef(null);
-
-//   useEffect(() => {
-//     const element = elementRef.current;
-
-//     // Define initial and final positions based on direction
-//     const initialPosition = {
-//       x: direction === 'left' ? -distance : direction === 'right' ? distance : 0,
-//       y: direction === 'top' ? -distance : direction === 'bottom' ? distance : 0,
-//       opacity: opacity.from
-//     };
-
-//     const finalPosition = {
-//       x: 0,
-//       y: 0,
-//       opacity: opacity.to,
-//       duration,
-//       delay,
-//       ease,
-//       scrollTrigger: {
-//         trigger: element,
-//         start,
-//         toggleActions: "play none none reverse"
-//       }
-//     };
-
-//     gsap.fromTo(element, initialPosition, finalPosition);
-
-//     return () => {
-//       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-//     };
-//   }, [direction, distance, start, duration, delay, ease, opacity]);
-
-//   return elementRef;
-// };
-
-// export default useReveal;
-
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, MutableRefObject } from 'react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface RevealConfig {
-  direction?: "bottom" | "top" | "left" | "right";
-  distance?: number;
-  start?: string;
-  duration?: number;
+type RevealOptions = {
+  scroll?: boolean;
+  once?: boolean;
+  direction?: "up" | "down" | "left" | "right";
   delay?: number;
-  ease?: string;
-  opacity?: {
-    from: number;
-    to: number;
-  };
-}
+  duration?: number;
+  start?: string;
+  useInView?: boolean;
+};
 
-const useReveal = ({
-  direction = "bottom",
-  distance = 100,
-  start = "top 90%",
-  duration = 1,
-  delay = 0,
-  ease = "power4.out",
-  opacity = { from: 0, to: 1 },
-}: RevealConfig = {}) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const elementRef = useRef<HTMLDivElement>(null);
-
+const useReveal = (
+  ref: MutableRefObject<HTMLElement | null>,
+  {
+    scroll = false,
+    once = false,
+    direction = "up",
+    delay = 0,
+    duration = 1.2,
+    start = "top 80%",
+    useInView = false,
+  }: RevealOptions = {}
+) => {
   useEffect(() => {
-    const element = elementRef.current;
-    const container = containerRef.current;
+    const el = ref.current;
+    if (!el) return;
 
-    if (!element || !container) return;
+    const fromVars: gsap.TweenVars = { opacity: 0 };
+    switch (direction) {
+      case "up":
+        fromVars.yPercent = 100;
+        break;
+      case "down":
+        fromVars.yPercent = -100;
+        break;
+      case "left":
+        fromVars.xPercent = 100;
+        break;
+      case "right":
+        fromVars.xPercent = -100;
+        break;
+    }
 
-    gsap.set(container, { overflow: "hidden", position: "relative" });
-    gsap.set(element, { position: "absolute", bottom: "-100%", opacity: opacity.from });
-
-    gsap.to(element, {
-      bottom: "0%",
-      opacity: opacity.to,
+    const toVars: gsap.TweenVars = {
+      opacity: 1,
+      xPercent: 0,
+      yPercent: 0,
       duration,
       delay,
-      ease,
-      scrollTrigger: {
-        trigger: container,
-        start,
-        toggleActions: "play none none none",
-      },
+      ease: "power4.out",
+    };
+
+    const tween = gsap.fromTo(el, fromVars, toVars);
+
+    if (!scroll) return () => tween.kill();
+
+    if (useInView && "IntersectionObserver" in globalThis) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              tween.play();
+              if (once) observer.unobserve(entry.target);
+            } else if (!once) {
+              tween.reverse();
+            }
+          };
+        },
+        { threshold: 0.2 }
+      );
+      observer.observe(el);
+      return () => observer.disconnect();
+    }
+
+    // ✅ ScrollTrigger-powered version
+    const trigger = ScrollTrigger.create({
+      trigger: el,
+      start,
+      toggleActions: once
+        ? "play none none none"
+        : "play none none reverse",
+      animation: tween,
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      trigger.kill();
+      tween.kill();
     };
-  }, [direction, distance, start, duration, delay, ease, opacity]);
-
-  return { containerRef, elementRef };
-};
+  }, [scroll, once, direction, delay, duration, start, useInView, ref]);
+}
 
 export default useReveal;

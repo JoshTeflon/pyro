@@ -4,13 +4,13 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 
 import { newsCycle } from '@/lib/fonts';
-import { menuItems } from '@/lib/data';
+import { navigationMenuItems } from '@/lib/data';
 import { IMenuItems } from '@/types';
-import { useNav } from '@/hooks';
+import { useApp } from '@/hooks';
 import { SocialPlatforms } from '@/components/interfaces';
 
 const MobileNav = () => {
-  const { navOpen } = useNav();
+  const { navOpen } = useApp();
 
   useEffect(() => {
     const bodyElement = document.body;
@@ -34,14 +34,14 @@ const MobileNav = () => {
       <nav className='side-pad w-full'>
         <ul className='w-full flex flex-col items-center space-y-20'>
           {
-            menuItems?.map((item: IMenuItems, idx: number) => (
+            navigationMenuItems?.map((item: IMenuItems, idx: number) => (
               <li
-                key={item?.item}
+                key={item?.label}
                 className={`${newsCycle.className} text-body text-xl uppercase tracking-widest hover:text-body hover:-translate-y-0.5 cursor-pointer transition-all duration-300 ease-in-out`}
               >
                 <Link href='/' className='flex focus:text-body'>
                   <span className='text-[0.5rem]'>{`${String(idx + 1).padStart(2, '0')}/`}</span>
-                  <span>{item.item}</span>
+                  <span>{item.label}</span>
                 </Link>
               </li>
             ))

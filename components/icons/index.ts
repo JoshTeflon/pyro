@@ -1,3 +1,7 @@
+export { default as Home } from './home';
+export { default as Music } from './music';
+export { default as Gallery } from './gallery';
+export { default as Merch } from './merch';
 export { default as Spotify } from './spotify';
 export { default as Instagram } from './instagram';
 export { default as X } from './x';
@@ -6,3 +10,9 @@ export { default as Youtube } from './youtube';
 export { default as Tiktok } from './tiktok';
 export { default as AppleMusic } from './apple-music';
 export { default as Audiomack } from './audiomack';
+export { default as Snapchat } from './snapchat';
+export { default as Dots } from './dots';
+export { default as ArrowDown } from './arrow-down';
+export { default as Play } from './play';
+export { default as Connect } from './connect';
+export { default as Flame } from './flame';

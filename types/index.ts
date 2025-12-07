@@ -1,18 +1,27 @@
 import { SVGProps } from 'react';
 
+export enum MenuType {
+  NAVIGATION = 'navigation',
+  LANGUAGE = 'language',
+}
+
+export enum TrackType {
+  SINGLE = 'single',
+  EP = 'ep',
+  ALBUM = 'album',
+}
+
 export interface IIArtist {
   name: string;
   short_name: string;
   main_image: string;
-  socials: {
-    music: IPlatform[],
-    video: IPlatform[]
-  };
+  socials: IPlatform[];
 }
 
 export interface IMenuItems {
-  item: string;
+  label: string;
   link: string;
+  icon?: React.ComponentType<SVGProps<SVGSVGElement>>;
 }
 
 export interface IPlatform {
@@ -21,16 +30,19 @@ export interface IPlatform {
   url: string;
 }
 
-export interface INavContext {
+export interface IAppContext {
   navOpen: boolean;
   toggleNavOpen: () => void;
   closeNav: () => void;
+  isMobileSize: boolean;
 }
 
 export interface ITrackInfo {
   name: string;
   cover: string;
   video: string;
+  type: TrackType;
+  year: string;
 }
 
 export interface IGalleryCard {
