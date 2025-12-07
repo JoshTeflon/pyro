@@ -1,9 +1,11 @@
 import { forwardRef } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import { rockSalt } from '@/lib/fonts';
-import { artist } from '@/lib/data';
 import { AnimatedText } from '@/components/shared';
+
+import { useApp } from '@/hooks';
+import { artist } from '@/lib/data';
+import { rockSalt } from '@/lib/fonts';
 
 interface LogoProps extends VariantProps<typeof logoVariants> {
   className?: string;
@@ -36,13 +38,15 @@ const logoVariants = cva(
 );
 
 const Logo = forwardRef<HTMLDivElement, LogoProps>(({ className, variant, size, shortname, animate = true }, ref) => {
+  const { isMobileSize } = useApp();
+
   return (
     <div
       ref={ref}
       className={logoVariants({ variant, size })}
     >
       <h1 className={`tracking-wide lg:tracking-wider ${className} ${animate ? 'hover:animate-jello-horizontal' : ''}`}>
-        <AnimatedText text={shortname ? artist?.short_name : artist?.name} />
+        <AnimatedText text={shortname || isMobileSize ? artist?.short_name : artist?.name} />
       </h1>
     </div>
   )

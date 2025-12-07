@@ -3,16 +3,20 @@ import React from 'react';
 import { Logo } from '@/components/shared';
 import { EmailInput, SocialPlatforms } from '@/components/interfaces';
 
+import { useApp } from '@/hooks';
+import { artist } from '@/lib/data';
 import { rockSalt } from '@/lib/fonts';
 
 const Connect = () => {
+  const { isMobileSize } = useApp();
+
   return (
     <footer
       id='connect'
-      className='p-4 md:p-8 z-50 relative h-screen bg-transparent flex flex-col items-center justify-center'
+      className='p-4 md:p-6 xl:p-8 z-50 relative h-screen bg-transparent flex flex-col items-center justify-center'
     >
       <div className='side-pad pt-36 h-full bg-primary flex flex-col justify-between rounded-4xl overflow-y-hidden'>
-        <div className='mx-auto w-full max-w-xl lg:max-w-2xl'>
+        <div className='flex-center flex-col -mt-32 mx-auto w-full max-w-xl lg:max-w-2xl h-full'>
           <h1 className={`${rockSalt.className} outline-connect-header text-body text-4xl md:text-5xl lg:text-6xl flex items-center justify-center space-x-4`}>
             <span>Join</span>
             <span>The</span>
@@ -31,15 +35,12 @@ const Connect = () => {
           <SocialPlatforms className='text-body justify-center' layout='inline' />
         </div>
 
-
-        {/* <div className='flex-between'> */}
         <div className='relative'>
-          <Logo
-            variant='burn'
-            size='xl'
-            animate={false}
-            className='outline-connect-footer-logo absolute -bottom-12 hover:bottom-3 duration-700 ease-in-out'
-          />
+          <span
+            className={`${rockSalt.className} outline-connect-footer-logo text-[7rem] lg:text-[6rem] xl:text-[7rem] absolute xl:left-8 -bottom-[4.75rem] lg:-bottom-[4rem] xl:-bottom-[4.75rem] hover:-bottom-[0.75rem] transition-all duration-700 ease-in-out`}
+          >
+            { isMobileSize ? artist?.short_name : artist?.name }
+          </span>
 
           <div className='mb-8 text-right text-burn text-[0.625rem] md:text-xs -tracking-[0.075rem]'>
             <p>

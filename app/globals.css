@@ -165,10 +165,9 @@ input:-webkit-autofill:active {
   }
 
   .outline-connect-footer-logo {
-    color: currentColor;
-    font-size: 7rem;
+    color: var(--burn-clr);
     --stroke-clr: var(--main-clr);
-    --s: 7px;
+    --s: 0.5rem;
 
     text-shadow:
       calc(var(--s) * 1) 0 var(--stroke-clr),
