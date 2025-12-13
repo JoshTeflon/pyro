@@ -85,8 +85,8 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
 
   const isMenuNavigation = useMemo(() => type === MenuType.NAVIGATION, [type]);
   const menuConfig = useMemo(() => ({
-    width: isMenuNavigation ? '12.25rem' : 'max-content',
-    initialWidth: isMenuNavigation ? '8rem' : 'max-content',
+    expandedWidth: isMenuNavigation ? '12.25rem' : '10.25rem',
+    expandedHeight: isMenuNavigation ? '13rem' : '21.75rem',
     transformOrigin: isMenuNavigation ? 'top left' : 'top right',
     firstItemLabel: isMenuNavigation ? navigationMenuItems[0].label : languageMenuItems[0].label,
     dotsCount: isMenuNavigation ? 2 : 1,
@@ -100,28 +100,18 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
     globalThis.addEventListener('resize', checkMobile);
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ paused: true });
+      const tl = gsap.timeline({ paused: true, ease: 'sine.inOut' });
       timelineRef.current = tl;
 
       // Initial fade in
       gsap.set(navRef.current, { opacity: 1 });
 
-      // gsap.to(
-      //   navRef.current,
-      //   {
-      //     opacity: 1,
-      //     duration: 0.25,
-      //     ease: 'power1.inOut',
-      //   }
-      // );
-
       tl.to(navRef.current, {
-        width: menuConfig.width,
-        height: 'auto',
-        borderRadius: '0.75rem',
+        width: menuConfig.expandedWidth,
+        height: menuConfig.expandedHeight,
+        borderRadius: '0.875rem',
         transformOrigin: menuConfig.transformOrigin,
         duration: 0.3,
-        ease: 'sine.inOut',
       });
 
       tl.to(
@@ -131,7 +121,6 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
           display: 'block',
           y: 0,
           duration: 0.3,
-          ease: 'sine.inOut',
         },
         '<'
       );
@@ -144,7 +133,6 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
             scale: 1,
             rotate: 0,
             duration: 0.35,
-            ease: 'sine.inOut',
           },
           '<'
         );
@@ -192,11 +180,8 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
   return (
     <nav
       ref={navRef}
-      className={`${className} py-2.5 w-32 h-auto text-body bg-grey-overlay capitalize flex flex-col items-center backdrop-blur-[2px] rounded-3xl opacity-0 transition-opacity duration-250`}
-      style={{ 
-        width: menuConfig.initialWidth,
-        transformOrigin: menuConfig.transformOrigin,
-      }}
+      className={`${className} py-2.5 w-32 h-[2.1875rem] text-body bg-grey-overlay capitalize flex flex-col items-center backdrop-blur-[2px] rounded-2xl opacity-0`}
+      style={{ transformOrigin: menuConfig.transformOrigin }}
       onClick={handleMobileToggle}
       role='navigation'
       aria-label={isMenuNavigation ? 'Main navigation' : 'Language selection'}
@@ -205,14 +190,6 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
         <span className='text-sm font-medium leading-none tracking-tight'>{menuConfig.firstItemLabel}</span>
 
         <div className='flex space-x-0.5'>
-          {/* {
-            type === MenuType.NAVIGATION ?
-            ['dot1', 'dot2'].map((id) => (
-              <Dots key={id} height={8} />
-            ))
-            :
-            <Dots height={8} />
-          } */}
           {Array.from({ length: menuConfig.dotsCount }).map((_, index) => (
             <Dots key={`dot-${index}`} height={8} />
           ))}

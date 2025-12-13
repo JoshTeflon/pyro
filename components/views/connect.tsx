@@ -43,7 +43,7 @@ const Connect = () => {
               const logoText = isMobileSize ? artist?.short_name : artist?.name;
               
               return logoText.split('').map((char, idx) => (
-                <span key={`${char}-${idx}`} className='inline-block hover:-translate-y-9 transition-all duration-700 ease-in-out'>
+                <span key={`${char}-${idx}`} className='inline-block hover:-translate-y-9 transition-all duration-500 ease-in-out'>
                   {char}
                 </span>
               ));
