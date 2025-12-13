@@ -17,7 +17,7 @@ const Connect = () => {
     >
       <div className='side-pad pt-36 h-full bg-primary flex flex-col justify-between rounded-4xl overflow-y-hidden'>
         <div className='flex-center flex-col -mt-32 mx-auto w-full max-w-xl lg:max-w-2xl h-full'>
-          <h1 className={`${rockSalt.className} outline-connect-header text-body text-4xl md:text-5xl lg:text-6xl flex items-center justify-center space-x-4`}>
+          <h1 className={`${rockSalt.className} outline-connect-header text-body text-3xl md:text-4xl lg:text-5xl xl:text-6xl flex items-center justify-center space-x-4`}>
             <span>Join</span>
             <span>The</span>
             <Logo variant='secondary' size='xl' shortname />
@@ -37,9 +37,17 @@ const Connect = () => {
 
         <div className='relative'>
           <span
-            className={`${rockSalt.className} outline-connect-footer-logo text-[7rem] lg:text-[6rem] xl:text-[7rem] absolute xl:left-8 -bottom-[4.75rem] lg:-bottom-[4rem] xl:-bottom-[4.75rem] hover:-bottom-[0.75rem] transition-all duration-700 ease-in-out`}
+            className={`${rockSalt.className} outline-connect-footer-logo text-[7rem] lg:text-[6rem] xl:text-[7rem] absolute xl:left-8 -bottom-[4.75rem] lg:-bottom-[4rem] xl:-bottom-[4.75rem]`}
           >
-            { isMobileSize ? artist?.short_name : artist?.name }
+            {(() => {
+              const logoText = isMobileSize ? artist?.short_name : artist?.name;
+              
+              return logoText.split('').map((char, idx) => (
+                <span key={`${char}-${idx}`} className='inline-block hover:-translate-y-9 transition-all duration-700 ease-in-out'>
+                  {char}
+                </span>
+              ));
+            })()}
           </span>
 
           <div className='mb-8 text-right text-burn text-[0.625rem] md:text-xs -tracking-[0.075rem]'>
