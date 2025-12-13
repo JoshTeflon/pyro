@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { CustomCursor } from '@/components/shared';
+// import { CustomCursor } from '@/components/shared';
 import { Header, MobileNav } from '@/components/interfaces';
 import { Connect, Gallery, Home, Music } from '@/components/views';
 
@@ -21,7 +21,7 @@ export default function Landing() {
 
   return (
     <AppContextProvider>
-      <CustomCursor />
+      {/* <CustomCursor /> */}
       {/* {isLoading ? (
           // <Loading />
           <div className='w-full h-screen flex items-center justify-center'>loading...</div>

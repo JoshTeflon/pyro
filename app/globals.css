@@ -67,9 +67,9 @@ body {
   backface-visibility: hidden;
 }
 
-body, button, a {
+/* body, button, a {
   cursor: none;
-}
+} */
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
