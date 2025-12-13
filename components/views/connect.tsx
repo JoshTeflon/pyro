@@ -18,10 +18,10 @@ const Connect = () => {
       <div className='side-pad pt-36 h-full bg-primary flex flex-col justify-between rounded-4xl overflow-y-hidden'>
         <div className='flex-center flex-col -mt-32 mx-auto w-full max-w-xl lg:max-w-2xl h-full'>
           <h1 className={`${rockSalt.className} outline-connect-header text-body text-3xl md:text-4xl lg:text-5xl xl:text-6xl flex items-center justify-center space-x-4`}>
-            <span>Join</span>
-            <span>The</span>
+            <span className='capitalize'>join</span>
+            <span className='capitalize'>the</span>
             <Logo variant='secondary' size='xl' shortname />
-            <span>Pack</span> 
+            <span className='capitalize'>pack</span> 
           </h1>
 
           <p className='mt-12 text-sm lg:text-base text-primary-100 text-center'>
