@@ -1,0 +1,37 @@
+{
+  "navigation": {
+    "home": "accueil",
+    "music": "musique",
+    "gallery": "galerie",
+    "connect": "contact"
+  },
+  "newTrackTitle": {
+    "outNow": "disponible maintenant"
+  },
+  "trackTypes": {
+    "single": "single",
+    "ep": "ep",
+    "album": "album"
+  },
+  "musicSection": {
+    "title": "musique",
+    "explore": "explorer",
+    "videoError": "Votre navigateur ne prend pas en charge la vidéo",
+    "trackCta": "écouter",
+    "videoCta": "regarder"
+  },
+  "gallerySection": {
+    "title": "galerie"
+  },
+  "connectSection": {
+    "titleStart": "rejoignez la",
+    "titleEnd": "meute",
+    "subtitle": "Soyez les premiers informés ! Accédez en avant-première aux nouvelles sorties, aux mises à jour exclusives et au contenu inédit.",
+    "emailLabel": "Adresse e-mail",
+    "submitCta": "rejoindre",
+    "allRightsReserved": "Tous droits réservés.",
+    "siteText": "En utilisant ce site, vous acceptez notre",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d’utilisation"
+  }
+}

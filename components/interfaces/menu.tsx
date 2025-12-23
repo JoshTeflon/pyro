@@ -1,7 +1,8 @@
 'use client';
 
 import { FC, useCallback, useMemo, useRef, useState } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { useLocale, useTranslations } from 'next-intl';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -17,8 +18,8 @@ interface MenuProps {
   className?: string;
 };
 
-const DisplayNavigationMenu: FC = () => {
-  const activeSection = useActiveSection(navigationMenuItems.map((item: IMenuItems) => item.label));
+const DisplayNavigationMenu: FC<{ activeSection: string }> = ({ activeSection }) => {
+  const navigationLang = useTranslations('navigation');
 
   const scrollToSection = useCallback((id: string) => {
     const el = document.getElementById(id);
@@ -53,7 +54,9 @@ const DisplayNavigationMenu: FC = () => {
             }
 
             <div className="text-wrapper">
-              <span className="text-line text-xs tracking-tight capitalize">{item.label}</span>
+              <span className="text-line text-xs tracking-tight capitalize">
+                { navigationLang(item.label) }
+              </span>
             </div>
           </div>
           { activeSection === item.label && <Flame className='mr-1 opacity-95' /> }
@@ -63,19 +66,27 @@ const DisplayNavigationMenu: FC = () => {
   );
 };
 
-const DisplayLanguageMenu: FC = () => (
-  languageMenuItems?.map((item: IMenuItems) => (
-    <li key={item.label}>
-      <Link href={item.link} className='menu-link py-1 px-1.5 flex items-center space-x-3'>
-        <div className="text-wrapper">
-          <span className="text-line text-xs tracking-tight">{item.label}</span>
-        </div>
-      </Link>
-    </li>
+const DisplayLanguageMenu: FC<{ locale: string }> = ({ locale }) => (
+  languageMenuItems
+    ?.filter((item: IMenuItems) => item.link !== locale)
+    ?.map((item: IMenuItems) => (
+      <li key={item.label}>
+        <Link href={item.link} className='menu-link py-1 px-1.5 flex items-center space-x-3'>
+          <div className="text-wrapper">
+            <span className="text-line text-xs tracking-tight">{item.label}</span>
+          </div>
+        </Link>
+      </li>
   ))
 );
 
 const Menu: FC<MenuProps> = ({ type, className }) => {
+  const locale = useLocale();
+
+  const activeSection = useActiveSection(navigationMenuItems.map((item: IMenuItems) => item.label)) ?? 'home';
+
+  const navigationLang = useTranslations('navigation');
+
   const navRef = useRef<HTMLDivElement>(null);
   const menuListRef = useRef<HTMLUListElement>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
@@ -86,11 +97,11 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
   const isMenuNavigation = useMemo(() => type === MenuType.NAVIGATION, [type]);
   const menuConfig = useMemo(() => ({
     expandedWidth: isMenuNavigation ? '12.25rem' : '10.25rem',
-    expandedHeight: isMenuNavigation ? '13rem' : '21.75rem',
+    expandedHeight: isMenuNavigation ? '13rem' : '17.5rem',
     transformOrigin: isMenuNavigation ? 'top left' : 'top right',
-    firstItemLabel: isMenuNavigation ? navigationMenuItems[0].label : languageMenuItems[0].label,
+    activeLabel: isMenuNavigation ? navigationLang(activeSection) : languageMenuItems?.find(item => item.link === locale)?.label,
     dotsCount: isMenuNavigation ? 2 : 1,
-  }), [isMenuNavigation]);
+  }), [isMenuNavigation, locale, activeSection, navigationLang]);
 
   useGSAP(() => {
     const checkMobile = () => {
@@ -180,14 +191,14 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
   return (
     <nav
       ref={navRef}
-      className={`${className} py-2.5 w-32 h-[2.1875rem] text-body bg-grey-overlay capitalize flex flex-col items-center backdrop-blur-[2px] rounded-2xl opacity-0`}
+      className={`${className} py-2.5 min-w-32 h-[2.1875rem] text-body bg-grey-overlay capitalize flex flex-col items-center backdrop-blur-[2px] rounded-2xl opacity-0`}
       style={{ transformOrigin: menuConfig.transformOrigin }}
       onClick={handleMobileToggle}
       role='navigation'
       aria-label={isMenuNavigation ? 'Main navigation' : 'Language selection'}
     >
       <div className='flex-between px-3 w-full space-x-4 cursor-pointer md:cursor-default'>
-        <span className='text-sm font-medium leading-none tracking-tight'>{menuConfig.firstItemLabel}</span>
+        <span className='text-sm font-medium leading-none tracking-tight'>{ menuConfig.activeLabel }</span>
 
         <div className='flex space-x-0.5'>
           {Array.from({ length: menuConfig.dotsCount }).map((_, index) => (
@@ -201,7 +212,7 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
         className='menu-links mt-3.5 px-1.5 w-full space-y-0.5 hidden opacity-0 translate-y-2'
         role='list'
       >
-        { isMenuNavigation ? <DisplayNavigationMenu /> : <DisplayLanguageMenu /> }
+        { isMenuNavigation ? <DisplayNavigationMenu activeSection={activeSection} /> : <DisplayLanguageMenu locale={locale} /> }
       </ul>
     </nav>
   )

@@ -1,9 +1,13 @@
 import React, { ChangeEvent, FormEvent, useCallback, useState } from 'react'
+import { useTranslations } from 'next-intl';
+
 import Button from './button';
 import { Email } from '@/components/icons';
 
 const EmailInput: React.FC = () => {
   const [email, setEmail] = useState<string>('');
+
+  const connectLang = useTranslations('connectSection');
 
   const handleEmailChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -25,12 +29,12 @@ const EmailInput: React.FC = () => {
         </div>
 
         <div className='w-full'>
-          <label htmlFor='email' className='sr-only'>Email Address:</label>
+          <label htmlFor='email' className='sr-only'>{ connectLang('emailLabel') }:</label>
           <input
             id='email'
             aria-label='Email'
             autoComplete='email'
-            placeholder='Email Address'
+            placeholder={connectLang('emailLabel')}
             type='email'
             value={email}
             onChange={handleEmailChange}
@@ -40,9 +44,9 @@ const EmailInput: React.FC = () => {
 
         <Button
           type='submit'
-          className='w-full max-w-24 h-full xl:text-lg text-body uppercase'
+          className='w-max h-full xl:text-lg text-body uppercase'
         >
-          join
+          { connectLang('submitCta') }
         </Button>
       </div>
     </form>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslations } from 'next-intl';
 
 import { Logo } from '@/components/shared';
 import { EmailInput, SocialPlatforms } from '@/components/interfaces';
@@ -10,6 +11,8 @@ import { rockSalt } from '@/lib/fonts';
 const Connect = () => {
   const { isMobileSize } = useApp();
 
+  const connectLang = useTranslations('connectSection');
+
   return (
     <footer
       id='connect'
@@ -17,15 +20,14 @@ const Connect = () => {
     >
       <div className='side-pad pt-36 h-full bg-primary flex flex-col justify-between rounded-4xl overflow-y-hidden'>
         <div className='flex-center flex-col -mt-32 mx-auto w-full max-w-xl lg:max-w-2xl h-full'>
-          <h1 className={`${rockSalt.className} outline-connect-header text-body text-3xl md:text-4xl lg:text-5xl xl:text-6xl flex items-center justify-center space-x-4`}>
-            <span className='capitalize'>join</span>
-            <span className='capitalize'>the</span>
+          <h1 className={`${rockSalt.className} outline-connect-header text-body text-3xl md:text-4xl lg:text-5xl xl:text-6xl flex items-center justify-center flex-wrap space-x-4`}>
+            <span className='capitalize tracking-tight whitespace-nowrap'>{ connectLang('titleStart') }</span>
             <Logo variant='secondary' size='xl' shortname />
-            <span className='capitalize'>pack</span> 
+            <span className='capitalize'>{ connectLang('titleEnd') }</span> 
           </h1>
 
           <p className='mt-12 text-sm lg:text-base text-primary-100 text-center'>
-            Be the first to hear! Get early access to new releases, insider updates, and exclusive content straight to your inbox. By entering your email, you agree to receive occasional updates.
+            { connectLang('subtitle') }
           </p>
 
           <div className='mt-16 mb-12 mx-auto w-full max-w-xl lg:max-w-3xl'>
@@ -52,10 +54,10 @@ const Connect = () => {
 
           <div className='mb-8 text-right text-burn text-[0.625rem] md:text-xs -tracking-[0.075rem]'>
             <p>
-              &copy;{new Date().getFullYear()} <span className={`${rockSalt.className}`}>ii6 pyro.</span> All rights reserved.
+              &copy;{new Date().getFullYear()} <span className={`${rockSalt.className}`}>ii6 pyro.</span> { connectLang('allRightsReserved') }
             </p>
             <p>
-              By using this site, you agree to our <a className='underline'>Privacy Policy</a> and <a className='underline'>Terms of Service.</a>
+              { connectLang('siteText') }: <a className='underline'>{ connectLang('privacyPolicy') }</a> | <a className='underline'>{ connectLang('termsOfService') }.</a>
             </p>
           </div>
         </div>
