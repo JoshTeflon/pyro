@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -51,6 +52,8 @@ gsap.registerPlugin(ScrollTrigger);
 const Music = () => {
   const musicRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLHeadingElement>(null);
+
+  const musicSectionLang = useTranslations('musicSection');
 
   const [activeSlide, setActiveSlide] = useState<SlideState>({
     isActive: false,
@@ -104,16 +107,19 @@ const Music = () => {
                 muted
               >
                 <source type='video/mp4' src={item.video} />
-                Your browser does not support the video tag.
+                { musicSectionLang('videoError') }
               </video>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
       <div className={`${newsCycle.className} side-pad relative text-center uppercase`}>
-        <span className='text-xs'>explore</span>
+        <span className='text-xs'>{ musicSectionLang('explore') }</span>
         <h3 ref={headerRef} className='text-2xl xl:text-[1.75rem] tracking-wider'>
-          <AnimatedText text='music' scrollConfig={{ toggleActions: 'restart none restart none' }} />
+          <AnimatedText
+            text={musicSectionLang('title')}
+            scrollConfig={{ toggleActions: 'restart none restart none' }}
+          />
         </h3>
       </div>
       <div className="relative my-8 lg:my-16 w-full overflow-hidden">
@@ -158,7 +164,9 @@ const Music = () => {
                           variant='secondary-primary'
                           roundness='pill'
                           size='xs'
-                        >listen</Button>
+                        >
+                          { musicSectionLang('trackCta') }
+                        </Button>
                       </div>
                     </div>
                   </div>

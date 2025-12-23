@@ -1,0 +1,37 @@
+{
+  "navigation": {
+    "home": "home",
+    "music": "muziek",
+    "gallery": "galerij",
+    "connect": "contact"
+  },
+  "newTrackTitle": {
+    "outNow": "nu uit"
+  },
+  "trackTypes": {
+    "single": "single",
+    "ep": "ep",
+    "album": "album"
+  },
+  "musicSection": {
+    "title": "muziek",
+    "explore": "ontdek",
+    "videoError": "Je browser ondersteunt deze video niet",
+    "trackCta": "luisteren",
+    "videoCta": "bekijken"
+  },
+  "gallerySection": {
+    "title": "galerij"
+  },
+  "connectSection": {
+    "titleStart": "word lid van de",
+    "titleEnd": "roedel",
+    "subtitle": "Wees de eerste! Krijg vroege toegang en exclusieve content.",
+    "emailLabel": "E-mailadres",
+    "submitCta": "meedoen",
+    "allRightsReserved": "Alle rechten voorbehouden.",
+    "siteText": "Door deze site te gebruiken ga je akkoord met onze",
+    "privacyPolicy": "Privacyverklaring",
+    "termsOfService": "Servicevoorwaarden"
+  }
+}

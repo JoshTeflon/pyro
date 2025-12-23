@@ -1,0 +1,37 @@
+{
+  "navigation": {
+    "home": "home",
+    "music": "musica",
+    "gallery": "galleria",
+    "connect": "contatti"
+  },
+  "newTrackTitle": {
+    "outNow": "ora disponibile"
+  },
+  "trackTypes": {
+    "single": "singolo",
+    "ep": "ep",
+    "album": "album"
+  },
+  "musicSection": {
+    "title": "musica",
+    "explore": "esplora",
+    "videoError": "Il tuo browser non supporta il video",
+    "trackCta": "ascolta",
+    "videoCta": "guarda"
+  },
+  "gallerySection": {
+    "title": "galleria"
+  },
+  "connectSection": {
+    "titleStart": "unisciti al",
+    "titleEnd": "branco",
+    "subtitle": "Sii il primo a sapere! Accesso anticipato e contenuti esclusivi.",
+    "emailLabel": "Indirizzo email",
+    "submitCta": "unisciti",
+    "allRightsReserved": "Tutti i diritti riservati.",
+    "siteText": "Utilizzando questo sito accetti la nostra",
+    "privacyPolicy": "Informativa sulla privacy",
+    "termsOfService": "Termini di servizio"
+  }
+}

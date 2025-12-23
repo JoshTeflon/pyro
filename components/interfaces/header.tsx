@@ -5,13 +5,11 @@ import Link from 'next/link';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-import { Logo, Hamburger } from '@/components/shared';
+import { Logo } from '@/components/shared';
 import { Menu } from '@/components/interfaces';
-import { useApp } from '@/hooks';
 import { MenuType } from '@/types';
 
 const Header: React.FC = () => {
-  const { navOpen, toggleNavOpen } = useApp();
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const headerRef = useRef<HTMLElement>(null);
@@ -52,18 +50,6 @@ const Header: React.FC = () => {
       ref={headerRef}
       className='side-pad z-[75] fixed left-0 right-0 py-8 w-full bg-transparent flex items-center justify-between'
     >
-      {/* <Link href={'/'}>
-        <Logo
-          className='-rotate-2'
-          variant={navOpen ? 'default' : 'primary'}
-          size={navOpen ? 'md' : 'lg'}        
-        />
-      </Link>
-      <div
-        className='hidden lg:flex p-5 xl:py-5 xl:px-8 items-center justify-between space-x-8 text-primary'
-      >
-        <Menu />
-      </div> */}
       <div className='relative w-full'>
         <Menu
           type={MenuType.NAVIGATION}
@@ -80,12 +66,6 @@ const Header: React.FC = () => {
           className='absolute top-0 right-0'
         />
       </div>
-      {/* <div className='flex lg:hidden'>
-        <Hamburger
-          isOpen={navOpen}
-          toggleMenu={toggleNavOpen}
-        />
-      </div> */}
     </header>
   )
 }

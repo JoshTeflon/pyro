@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -18,6 +19,8 @@ const Gallery = () => {
   const galleryCardsRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
+
+  const galleryLang = useTranslations('gallerySection');
 
   const addCardRef = (el: HTMLDivElement | null) => {
     if (el && !cardsRef.current.includes(el)) {
@@ -88,7 +91,7 @@ const Gallery = () => {
                 <Logo variant='secondary' size='sm' className='-rotate-2' shortname />
 
                 <span className='text-5xl md:text-8xl font-medium uppercase leading-none tracking-tight'>
-                  Gallery
+                  { galleryLang('title') }
                 </span>
               </div>
             </span>

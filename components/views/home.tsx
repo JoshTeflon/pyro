@@ -10,10 +10,14 @@ import { SocialPlatforms, Button } from '@/components/interfaces';
 import { ArrowDown, Play } from '@/components/icons';
 
 import { artist, musicList } from '@/lib/data';
+import { useTranslations } from 'next-intl';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
+  const newTrackTitleLang = useTranslations('newTrackTitle');
+  const trackTypesLang = useTranslations('trackTypes');
+
   const landingImageRef = useRef<HTMLImageElement>(null);
 
   useGSAP(() => {
@@ -78,7 +82,7 @@ const Home = () => {
             </div>
 
             <div className='w-full text-primary uppercase flex flex-col justify-between'>
-              <h3 className='text-base tracking-[5%]'>out now</h3>
+              <h3 className='text-base tracking-[5%]'>{ newTrackTitleLang('outNow') }</h3>
 
               <div className='w-full flex flex-col space-y-px'>
                 <span className='text-3xl font-medium leading-none'>{musicList[0].name}</span>
@@ -90,7 +94,7 @@ const Home = () => {
                     </div>
 
                     <div className='py-px px-1 text-[0.625rem] border border-primary rounded-sm'>
-                      {musicList[0].type}
+                      { trackTypesLang(musicList[0].type) }
                     </div>
                   </div>
 

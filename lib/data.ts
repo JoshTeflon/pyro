@@ -25,7 +25,7 @@ export const navigationMenuItems: IMenuItems[] = [
   },
   {
     label: 'connect',
-    link: '',
+    link: '#connect',
     icon: Connect,
   },
 ];
@@ -52,10 +52,6 @@ export const languageMenuItems: IMenuItems[] = [
     link: 'it'
   },
   {
-    label: 'Polski',
-    link: 'pl'
-  },
-  {
     label: 'Nederlands',
     link: 'nl'
   },
@@ -64,8 +60,8 @@ export const languageMenuItems: IMenuItems[] = [
     link: 'pt'
   },
   {
-    label: 'English(Hong Kong)',
-    link: 'hk'
+    label: 'Japanese',
+    link: 'ja'
   },
 ];
 

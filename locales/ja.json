@@ -1,0 +1,37 @@
+{
+  "navigation": {
+    "home": "ホーム",
+    "music": "ミュージック",
+    "gallery": "ギャラリー",
+    "connect": "コネクト"
+  },
+  "newTrackTitle": {
+    "outNow": "配信中"
+  },
+  "trackTypes": {
+    "single": "シングル",
+    "ep": "EP",
+    "album": "アルバム"
+  },
+  "musicSection": {
+    "title": "ミュージック",
+    "explore": "探索する",
+    "videoError": "お使いのブラウザは動画タグに対応していません",
+    "trackCta": "聴く",
+    "videoCta": "観る"
+  },
+  "gallerySection": {
+    "title": "ギャラリー"
+  },
+  "connectSection": {
+    "titleStart": "参加しよう",
+    "titleEnd": "パックに",
+    "subtitle": "最新リリースや限定コンテンツをいち早くお届けします。メールアドレスを入力することで、不定期のアップデートを受け取ることに同意したものとみなされます。",
+    "emailLabel": "メールアドレス",
+    "submitCta": "参加する",
+    "allRightsReserved": "全著作権所有。",
+    "siteText": "このサイトを利用することで、以下に同意したものとします：",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfService": "利用規約"
+  }
+}

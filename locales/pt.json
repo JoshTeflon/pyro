@@ -1,0 +1,37 @@
+{
+  "navigation": {
+    "home": "início",
+    "music": "música",
+    "gallery": "galeria",
+    "connect": "contato"
+  },
+  "newTrackTitle": {
+    "outNow": "já disponível"
+  },
+  "trackTypes": {
+    "single": "single",
+    "ep": "ep",
+    "album": "álbum"
+  },
+  "musicSection": {
+    "title": "música",
+    "explore": "explorar",
+    "videoError": "Seu navegador não suporta vídeo",
+    "trackCta": "ouvir",
+    "videoCta": "assistir"
+  },
+  "gallerySection": {
+    "title": "galeria"
+  },
+  "connectSection": {
+    "titleStart": "junte-se à",
+    "titleEnd": "matilha",
+    "subtitle": "Seja o primeiro a ouvir! Conteúdo exclusivo e lançamentos antecipados.",
+    "emailLabel": "Endereço de email",
+    "submitCta": "participar",
+    "allRightsReserved": "Todos os direitos reservados.",
+    "siteText": "Ao usar este site, você concorda com nossa",
+    "privacyPolicy": "Política de Privacidade",
+    "termsOfService": "Termos de Serviço"
+  }
+}
