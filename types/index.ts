@@ -15,6 +15,7 @@ export interface IIArtist {
   name: string;
   short_name: string;
   main_image: string;
+  latest_release_link: string;
   socials: IPlatform[];
 }
 

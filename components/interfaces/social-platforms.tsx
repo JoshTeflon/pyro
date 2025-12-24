@@ -19,7 +19,10 @@ const SocialPlatforms: React.FC<SocialPlatformsProps> = ({ className, layout = '
           >
             <a
               className='w-full h-full flex items-center justify-center text-inherit rounded-full transition-colors duration-500 ease-in-out hover:text-body focus:text-body'
-              href='/'
+              href={icon.url}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label={icon.name}
             >
               <icon.icon className="w-full h-full text-inherit" />
             </a>
