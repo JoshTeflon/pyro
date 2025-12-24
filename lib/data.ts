@@ -69,36 +69,37 @@ export const artist: IIArtist = {
   name: 'ii6 pyro',
   short_name: 'ii6',
   main_image: '/images/ii6-pyro-main.png',
+  latest_release_link: 'https://distrokid.com/hyperfollow/ii6pyro/tempt',
   socials: [
     {
       name: 'spotify',
       icon: Spotify,
-      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+      url: 'https://open.spotify.com/artist/6laAkWba8MQXFXnwVZ84Ig?si=Ii67c6D2T1eA4rh41xS1rg',
     },
     {
       name: 'apple-music',
       icon: AppleMusic,
-      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+      url: 'https://music.apple.com/ng/artist/pyro/1588251176',
     },
     {
       name: 'instagram',
       icon: Instagram,
-      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+      url: 'https://www.instagram.com/pyrobaby__/',
     },
     {
       name: 'youtube',
       icon: Youtube,
-      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+      url: 'https://www.youtube.com/@pyro247_',
     },
     {
       name: 'snapchat',
       icon: Snapchat,
-      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+      url: 'https://snapchat.com/t/oDldruSv',
     },
     {
       name: 'tiktok',
       icon: Tiktok,
-      url: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+      url: 'https://www.tiktok.com/@ii6pyro',
     },
   ],
 };
