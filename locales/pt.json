@@ -17,7 +17,8 @@
     "title": "música",
     "explore": "explorar",
     "videoError": "Seu navegador não suporta a tag de vídeo",
-    "trackCta": "assistir ao vídeo"
+    "trackCta": "assistir ao vídeo",
+    "closeCta": "fechar"
   },
   "gallerySection": {
     "title": "galeria"

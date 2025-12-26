@@ -17,7 +17,8 @@
     "title": "ミュージック",
     "explore": "探索する",
     "videoError": "お使いのブラウザはビデオタグをサポートしていません",
-    "trackCta": "ビデオを見る"
+    "trackCta": "ビデオを見る",
+    "closeCta": "閉じる"
   },
   "gallerySection": {
     "title": "ギャラリー"

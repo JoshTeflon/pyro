@@ -17,7 +17,8 @@
     "title": "musik",
     "explore": "entdecken",
     "videoError": "Ihr Browser unterstützt das Video-Tag nicht",
-    "trackCta": "video ansehen"
+    "trackCta": "video ansehen",
+    "closeCta": "schließen"
   },
   "gallerySection": {
     "title": "galerie"

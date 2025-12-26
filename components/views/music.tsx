@@ -13,6 +13,7 @@ import { musicList } from '@/lib/data';
 import { ITrackInfo } from '@/types';
 import { AnimatedText } from '@/components/shared';
 import { Button } from '@/components/interfaces';
+import { Close } from '@/components/icons';
 
 import 'swiper/css';
 import 'swiper/css/zoom';
@@ -63,6 +64,8 @@ const Music = () => {
   
   // Track the Swiper instance
   const [backgroundSwiper, setBackgroundSwiper] = useState<any>(null);
+  
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   const handleSlideChange = (swiper: any) => {
     const newIndex = swiper.activeIndex;
@@ -113,8 +116,10 @@ const Music = () => {
           ))}
         </Swiper>
       </div>
+
       <div className={`${newsCycle.className} side-pad relative text-center uppercase`}>
         <span className='text-xs'>{ musicSectionLang('explore') }</span>
+
         <h3 ref={headerRef} className='text-2xl xl:text-[1.75rem] tracking-wider'>
           <AnimatedText
             text={musicSectionLang('title')}
@@ -141,8 +146,11 @@ const Music = () => {
               {({ isActive }) => (
                 <div className='w-full h-full flex items-center justify-center'>
                   <div
-                    className={`w-full max-w-96 h-96 flex items-center justify-center rounded-md cursor-grab transition-all duration-300 ease-in-out
-                      ${isActive ? 'scale-100 opacity-100' : 'scale-50 opacity-50'}`}
+                    className={
+                      `w-full max-w-96 h-96 flex items-center justify-center rounded-md cursor-grab transition-all duration-300 ease-in-out
+                      ${isActive ? 'scale-100 opacity-100' : 'scale-50 opacity-50'}`
+                    }
+                    onClick={() => isActive && setActiveVideo(item.youtubeId)}
                   >
                     <div className='group relative w-full h-full bg-black/50 rounded-md transition-all duration-300 ease-in-out'>
                       <Image
@@ -156,6 +164,7 @@ const Music = () => {
                         fill
                         priority
                       />
+
                       <div
                         className={`w-full h-full items-center justify-center hidden ${isActive ? 'group-hover:flex' : ''}`}
                       >
@@ -175,8 +184,38 @@ const Music = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+
+        {activeVideo && (
+          <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm'>
+            <div className='flex flex-col items-center gap-y-12 gap-x-4 w-full max-w-4xl px-4'>
+              <div className='relative w-full aspect-video rounded-lg overflow-hidden'>
+                <iframe
+                  className='w-full h-full'
+                  src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1`}
+                  title={activeSlide.details.name}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin" 
+                  allowFullScreen
+                />
+              </div>
+
+              <Button
+                onClick={() => setActiveVideo(null)}
+                variant='secondary-primary'
+                roundness='pill'
+                size='sm'
+                className='!py-1.5 !px-2 flex items-center space-x-2 group'
+              >
+                <Close width={24} height={24} className='group-hover:fill-primary' />
+                <span className='capitalize'>{ musicSectionLang('closeCta') }</span>
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
+
       <div className='relative my-4 text-center text-xs lg:text-sm text-body uppercase'>{activeSlide.details.name}</div>
+
       <div className='relative flex justify-center'>
         <Image
           className='object-cover object-center'

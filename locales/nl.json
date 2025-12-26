@@ -17,7 +17,8 @@
     "title": "muziek",
     "explore": "ontdek",
     "videoError": "Uw browser ondersteunt de videotag niet",
-    "trackCta": "bekijk video"
+    "trackCta": "bekijk video",
+    "closeCta": "sluiten"
   },
   "gallerySection": {
     "title": "galerij"
