@@ -51,13 +51,6 @@ const Home = () => {
     );
   }, []);
 
-  const handleOpenLatestRelease = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    globalThis.open(artist.latest_release_link, '_blank', 'noopener,noreferrer');
-  };
-
   const scrollToMusic = useCallback(() => {
     const el = document.getElementById('music');
 
@@ -87,7 +80,12 @@ const Home = () => {
       <div className='z-10 absolute inset-0 w-full h-full bg-overlay'></div>
 
       <div className='action-content side-pad z-30 relative w-full h-full'>
-        <div className='z-20 p-4 md:p-5 w-4/5 h-[10.25rem] max-w-[28rem] bg-body rounded-lg absolute top-1/2 -translate-y-1/2'>
+        <a
+          href={artist.latest_release_link}
+          target='_blank'
+          rel='noopener noreferrer'
+          className='z-20 p-4 md:p-5 w-4/5 h-[10.25rem] max-w-[28rem] bg-body rounded-lg absolute top-1/2 -translate-y-1/2'
+        >
           <div className='w-full h-full flex space-x-4'>
             <div className='relative min-w-[8.25rem] w-[8.25rem] h-full rounded-lg'>
               <Image
@@ -117,19 +115,13 @@ const Home = () => {
                       { trackTypesLang(musicList[0].type) }
                     </div>
                   </div>
-
-                  <Button
-                    variant='naked'
-                    className='!p-0 hover:scale-105 duration-300 ease-in-out'
-                    onClick={handleOpenLatestRelease}
-                  >
-                    <Play className='w-8 h-8' />
-                  </Button>
+                  
+                  <Play className='w-8 h-8 duration-300 ease-in-out hover:scale-105' />
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </a>
 
         <div className='absolute bottom-12 left-0 right-0'>
           <div className='side-pad flex items-end justify-between'>
