@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const buttonVariants = cva(
-  'h-fit transition-all duration-150 ease-in-out active:translate-y-0.5 active:scale-95',
+  'h-fit transition-all duration-150 ease-in-out focus:opacity-90 active:translate-y-0.5 active:scale-95',
   {
     variants: {
       variant: {

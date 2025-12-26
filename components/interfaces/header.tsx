@@ -57,8 +57,9 @@ const Header: React.FC = () => {
         />
         <Link href={'/'} className='mx-auto flex-center w-fit outline-none border-none'>
           <Logo
-            className='-rotate-2'
+            className='-rotate-2 hover:rotate-0 hover:tracking-[0.075em] transition-all duration-500 ease-in-out'
             variant='primary'   
+            animate={false}
           />
         </Link>
         <Menu

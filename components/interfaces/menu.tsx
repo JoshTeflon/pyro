@@ -28,8 +28,8 @@ const DisplayNavigationMenu: FC<{ activeSection: string }> = ({ activeSection })
       const elementPosition = el.getBoundingClientRect().top + globalThis.scrollY;
 
       globalThis.scrollTo({
-        // top: id === 'gallery' ? elementPosition + (globalThis.innerHeight * 1.5) : elementPosition,
-        top: elementPosition,
+        top: id === 'gallery' ? elementPosition + (globalThis.innerHeight * 1.5) : elementPosition,
+        // top: elementPosition,
         behavior: 'smooth',
       });
     };
