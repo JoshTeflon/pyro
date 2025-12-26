@@ -86,7 +86,6 @@ const Music = () => {
       id='music'
       ref={musicRef}
       className='z-40 relative py-8 w-full h-screen bg-main flex flex-col justify-around overflow-hidden'
-      // className='z-40 relative py-8 w-full h-screen bg-body flex flex-col justify-around overflow-hidden'
     >
       <div className='absolute inset-0 w-full h-screen opacity-40 transition-all ease-in-out'>
         <Swiper
@@ -143,12 +142,14 @@ const Music = () => {
                 zIndex: activeSlide.index === idx ? 1 : 0
               }}
             >
-              {({ isActive }) => (
-                <div className='w-full h-full flex items-center justify-center'>
+              {({ isActive, isPrev, isNext }) => (
+                <div
+                  className={`w-full h-full flex items-center justify-center ${isPrev ? 'cursor-w-resize' : isNext ? 'cursor-e-resize' : ''}`}
+                >
                   <div
                     className={
                       `w-full max-w-96 h-96 flex items-center justify-center rounded-md cursor-grab transition-all duration-300 ease-in-out
-                      ${isActive ? 'scale-100 opacity-100' : 'scale-50 opacity-50'}`
+                      ${isActive ? 'scale-100 opacity-100 cursor-pointer' : 'scale-50 opacity-50'}`
                     }
                     onClick={() => isActive && setActiveVideo(item.youtubeId)}
                   >
