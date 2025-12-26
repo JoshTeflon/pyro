@@ -58,7 +58,7 @@ const Home = () => {
     globalThis.open(artist.latest_release_link, '_blank', 'noopener,noreferrer');
   };
 
-  const scrollToGallery = useCallback(() => {
+  const scrollToMusic = useCallback(() => {
     const el = document.getElementById('music');
 
     if (el) {
@@ -120,7 +120,7 @@ const Home = () => {
 
                   <Button
                     variant='naked'
-                    className='!p-0'
+                    className='!p-0 hover:scale-105 duration-300 ease-in-out'
                     onClick={handleOpenLatestRelease}
                   >
                     <Play className='w-8 h-8' />
@@ -136,7 +136,7 @@ const Home = () => {
             <Button
               variant='naked'
               className='group'
-              onClick={scrollToGallery}
+              onClick={scrollToMusic}
             >
               <div className='group w-5 h-10 text-primary bg-body flex items-center justify-center border border-primary rounded-4xl transition-colors duration-500 ease-in-out group-hover:bg-primary group-hover:text-body'>
                 <ArrowDown className='w-4 group-hover:animate-jello-horizontal' />
