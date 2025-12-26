@@ -16,9 +16,8 @@
   "musicSection": {
     "title": "musique",
     "explore": "explorer",
-    "videoError": "Votre navigateur ne prend pas en charge la vidéo",
-    "trackCta": "écouter",
-    "videoCta": "regarder"
+    "videoError": "Votre navigateur ne prend pas en charge la balise vidéo",
+    "trackCta": "regarder la vidéo"
   },
   "gallerySection": {
     "title": "galerie"

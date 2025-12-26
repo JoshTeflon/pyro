@@ -16,9 +16,8 @@
   "musicSection": {
     "title": "musica",
     "explore": "esplora",
-    "videoError": "Il tuo browser non supporta il video",
-    "trackCta": "ascolta",
-    "videoCta": "guarda"
+    "videoError": "Il tuo browser non supporta il tag video",
+    "trackCta": "guarda il video"
   },
   "gallerySection": {
     "title": "galleria"

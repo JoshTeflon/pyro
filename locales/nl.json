@@ -16,9 +16,8 @@
   "musicSection": {
     "title": "muziek",
     "explore": "ontdek",
-    "videoError": "Je browser ondersteunt deze video niet",
-    "trackCta": "luisteren",
-    "videoCta": "bekijken"
+    "videoError": "Uw browser ondersteunt de videotag niet",
+    "trackCta": "bekijk video"
   },
   "gallerySection": {
     "title": "galerij"
