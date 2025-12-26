@@ -17,8 +17,8 @@
     "title": "music",
     "explore": "explore",
     "videoError": "Your browser does not support the video tag",
-    "trackCta": "listen",
-    "videoCta": "watch"
+    "trackCta": "watch video",
+    "closeCta": "close"
   },
   "gallerySection": {
     "title": "gallery"

@@ -42,6 +42,7 @@ export interface ITrackInfo {
   name: string;
   cover: string;
   video: string;
+  youtubeId: string;
   type: TrackType;
   year: string;
 }

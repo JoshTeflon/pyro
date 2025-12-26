@@ -16,3 +16,4 @@ export { default as ArrowDown } from './arrow-down';
 export { default as Play } from './play';
 export { default as Connect } from './connect';
 export { default as Flame } from './flame';
+export { default as Close } from './close';

@@ -16,9 +16,9 @@
   "musicSection": {
     "title": "música",
     "explore": "explorar",
-    "videoError": "Tu navegador no soporta el video",
-    "trackCta": "escuchar",
-    "videoCta": "ver"
+    "videoError": "Tu navegador no es compatible con la etiqueta de video",
+    "trackCta": "ver video",
+    "closeCta": "cerrar"
   },
   "gallerySection": {
     "title": "galería"
