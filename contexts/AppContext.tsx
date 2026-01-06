@@ -7,7 +7,7 @@ import { IAppContext } from '@/types';
 
 export const AppContext = createContext<IAppContext | undefined>(undefined)
 
-const NavContextProvider = ({ children }: { children: ReactNode }) => {
+const AppContextProvider = ({ children, ready }: { children: ReactNode, ready: boolean }) => {
   const [navOpen, setNavOpen] = useState<boolean>(false);
   const isMobileSize = useWindowDimension();
 
@@ -20,8 +20,9 @@ const NavContextProvider = ({ children }: { children: ReactNode }) => {
     navOpen,
     toggleNavOpen,
     closeNav,
-    isMobileSize
-  }), [navOpen, toggleNavOpen, closeNav, isMobileSize])
+    isMobileSize,
+    ready,
+  }), [navOpen, toggleNavOpen, closeNav, isMobileSize, ready])
 
   return (
     <AppContext.Provider value={contextValue}>
@@ -30,4 +31,4 @@ const NavContextProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default NavContextProvider;
+export default AppContextProvider;

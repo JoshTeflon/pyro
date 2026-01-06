@@ -8,9 +8,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Zoom, EffectFade } from 'swiper/modules';
 
+import { useModal } from '@/hooks';
 import { newsCycle } from '@/lib/fonts';
 import { musicList } from '@/lib/data';
 import { ITrackInfo } from '@/types';
+
 import { AnimatedText } from '@/components/shared';
 import { Button } from '@/components/interfaces';
 import { Close } from '@/components/icons';
@@ -53,6 +55,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Music = () => {
   const musicRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLHeadingElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const musicSectionLang = useTranslations('musicSection');
 
@@ -66,6 +69,17 @@ const Music = () => {
   const [backgroundSwiper, setBackgroundSwiper] = useState<any>(null);
   
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+
+  useModal(
+    modalRef,
+    () => setActiveVideo(null),
+    {
+      enabled: !!activeVideo,
+      closeOnOutsideClick: true,
+      closeOnEsc: true,
+      lockScroll: true,
+    }
+  );
 
   const handleSlideChange = (swiper: any) => {
     const newIndex = swiper.activeIndex;
@@ -102,11 +116,10 @@ const Music = () => {
                 key={item.name}
                 title={item.video}
                 className='w-full h-screen object-cover'
-                preload='none'
                 playsInline
                 autoPlay
-                loop
                 muted
+                loop
               >
                 <source type='video/mp4' src={item.video} />
                 { musicSectionLang('videoError') }
@@ -188,8 +201,11 @@ const Music = () => {
 
         {activeVideo && (
           <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm'>
-            <div className='flex flex-col items-center gap-y-12 gap-x-4 w-full max-w-4xl px-4'>
-              <div className='relative w-full aspect-video rounded-lg overflow-hidden'>
+            <div
+              ref={modalRef}
+              className='flex flex-col items-center gap-y-12 gap-x-4 w-full max-w-4xl px-4'
+            >
+              <div className='relative w-full aspect-video overflow-hidden'>
                 <iframe
                   className='w-full h-full'
                   src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1`}

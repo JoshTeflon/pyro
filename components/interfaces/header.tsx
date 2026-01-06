@@ -1,15 +1,19 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 import { Logo } from '@/components/shared';
 import { Menu } from '@/components/interfaces';
+
+import { useApp } from '@/hooks';
 import { MenuType } from '@/types';
 
 const Header: React.FC = () => {
+  const { ready } = useApp();
+
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const headerRef = useRef<HTMLElement>(null);
@@ -35,14 +39,14 @@ const Header: React.FC = () => {
   }, [lastScrollY]);
 
   useGSAP(() => {
-    if (headerRef.current) {
-      gsap.to(headerRef.current, {
-        y: isVisible ? 0 : -80,
-        opacity: isVisible ? 1 : 0,
-        duration: 0.5,
-        ease: 'power2.out',
-      });
-    }
+    if (!ready || !headerRef.current) return;
+
+    gsap.to(headerRef.current, {
+      y: isVisible ? 0 : -80,
+      opacity: isVisible ? 1 : 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    });
   }, [isVisible]);
 
   return (
