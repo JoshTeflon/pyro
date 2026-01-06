@@ -116,11 +116,10 @@ const Music = () => {
                 key={item.name}
                 title={item.video}
                 className='w-full h-screen object-cover'
-                preload='none'
                 playsInline
                 autoPlay
-                loop
                 muted
+                loop
               >
                 <source type='video/mp4' src={item.video} />
                 { musicSectionLang('videoError') }

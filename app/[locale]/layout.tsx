@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
+import { Analytics } from '@vercel/analytics/next';
 
 import { routing } from '@/i18n/routing';
 
@@ -37,6 +38,7 @@ export default async function RootLayout({ children, params }: Readonly<{
       >
         <NextIntlClientProvider locale={locale}>
           {children}
+          <Analytics />
         </NextIntlClientProvider>
       </body>
     </html>

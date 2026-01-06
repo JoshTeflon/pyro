@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { useApp } from "@/hooks";
+
 interface AnimatedTextProps {
   className?: string;
   text: string;
@@ -24,6 +26,8 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
     toggleActions: "play none none none",
   },
 }) => {
+  const { ready } = useApp();
+
   const containerRef = useRef<HTMLDivElement>(null);
   const wordRefs = useRef<HTMLSpanElement[]>([]);
   wordRefs.current = [];
@@ -35,6 +39,8 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   };
 
   useGSAP(() => {
+    if (!ready) return;
+
     const text_twn = gsap.fromTo(
       wordRefs.current,
       { y: 0, opacity: 0 },

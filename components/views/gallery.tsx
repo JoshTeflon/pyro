@@ -8,12 +8,16 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { Logo } from '@/components/shared';
+
+import { useApp } from '@/hooks';
 import { newsCycle } from '@/lib/fonts';
 import { galleryDeck } from '@/lib/data';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Gallery = () => {
+  const { ready } = useApp();
+
   const galleryRef = useRef<HTMLElement>(null);
   const mainGalleryRef = useRef<HTMLDivElement>(null);
   const galleryCardsRef = useRef<HTMLDivElement>(null);
@@ -29,6 +33,8 @@ const Gallery = () => {
   };
 
   useGSAP(() => {
+    if (!ready) return;
+
     gsap.set(mainGalleryRef.current, { perspective: 1500 });
     gsap.set(galleryCardsRef.current, { transformStyle: 'preserve-3d' });
 

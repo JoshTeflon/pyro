@@ -180,7 +180,6 @@ input:-webkit-autofill:active {
       calc(var(--s) * -0.7) calc(var(--s) * 0.7) var(--stroke-clr);
   }
 
-
   .outline-connect-header {
     color: currentColor;
     -webkit-text-stroke: 2px var(--main-clr);

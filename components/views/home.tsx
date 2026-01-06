@@ -9,47 +9,57 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SocialPlatforms, Button } from '@/components/interfaces';
 import { ArrowDown, Play } from '@/components/icons';
 
+import { useApp } from '@/hooks';
 import { artist, musicList } from '@/lib/data';
 import { useTranslations } from 'next-intl';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
+  const { ready } = useApp();
+
   const newTrackTitleLang = useTranslations('newTrackTitle');
   const trackTypesLang = useTranslations('trackTypes');
 
   const landingImageRef = useRef<HTMLImageElement>(null);
 
   useGSAP(() => {
-    gsap.to(landingImageRef.current, {
-      scale: 2,
-      scrollTrigger: {
-        trigger: landingImageRef.current,
-        start: 'bottom 95%',
-        scrub: 1,
-        toggleActions: 'restart none none none',
-      }
-    });
+    if (!ready) return;
 
-    gsap.fromTo(
-      '.action-content',
-      {
-        y: 0,
-        // scale: 1,
-      },
-      {
-        y: -50,
-        duration: 1,
-        // scale: 0.9,
-        ease: 'sine.inOut',
+    gsap.set(landingImageRef, { scale: 1 });
+
+    const ctx = gsap.context(() => {
+      gsap.to(landingImageRef.current, {
+        scale: 2,
         scrollTrigger: {
           trigger: landingImageRef.current,
-          start: 'bottom 90%',
-          scrub: true,
+          start: 'bottom 95%',
+          scrub: 1,
+          toggleActions: 'restart none none none',
+        },
+      });
+
+      gsap.fromTo(
+        '.action-content',
+        { y: 0 },
+        {
+          y: -50,
+          duration: 1,
+          ease: 'sine.inOut',
+          scrollTrigger: {
+            trigger: landingImageRef.current,
+            start: 'bottom 90%',
+            scrub: true,
+          },
         }
-      }
-    );
-  }, []);
+      );
+    });
+
+    ScrollTrigger.refresh(true);
+
+    return () => ctx.revert();
+  }, [ready]);
+
 
   const scrollToMusic = useCallback(() => {
     const el = document.getElementById('music');
@@ -65,7 +75,7 @@ const Home = () => {
   }, []);
 
   return (
-    <section id='home' className='relative w-full h-screen overflow-hidden'>
+    <section id='home' className='relative w-full h-screen min-h-svh overflow-hidden'>
       <Image
         ref={landingImageRef}
         className='landing-img z-10 absolute inset-0 w-full h-full object-cover object-center'
@@ -75,6 +85,7 @@ const Home = () => {
         // placeholder='blur'
         fill
         priority
+        sizes='100vw'
       />
 
       <div className='z-10 absolute inset-0 w-full h-full bg-overlay'></div>

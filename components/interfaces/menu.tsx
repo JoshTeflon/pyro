@@ -9,7 +9,7 @@ import { useGSAP } from '@gsap/react';
 import { Button } from '@/components/interfaces';
 import { Dots, Flame } from '@/components/icons';
 
-import { useActiveSection } from '@/hooks';
+import { useActiveSection, useApp } from '@/hooks';
 import { languageMenuItems, navigationMenuItems } from '@/lib/data';
 import { IMenuItems, MenuType } from '@/types';
 
@@ -81,6 +81,7 @@ const DisplayLanguageMenu: FC<{ locale: string }> = ({ locale }) => (
 );
 
 const Menu: FC<MenuProps> = ({ type, className }) => {
+  const { ready } = useApp();
   const locale = useLocale();
 
   const activeSection = useActiveSection(navigationMenuItems.map((item: IMenuItems) => item.label)) ?? 'home';
@@ -104,6 +105,8 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
   }), [isMenuNavigation, locale, activeSection, navigationLang]);
 
   useGSAP(() => {
+    if (!ready) return;
+
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };

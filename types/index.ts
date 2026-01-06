@@ -36,6 +36,7 @@ export interface IAppContext {
   toggleNavOpen: () => void;
   closeNav: () => void;
   isMobileSize: boolean;
+  ready: boolean;
 }
 
 export interface ITrackInfo {

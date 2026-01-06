@@ -3,3 +3,4 @@ export { default as useWindowDimension } from './useWindowDimension';
 export { default as useReveal } from './useReveal';
 export { default as useActiveSection } from './useActiveSection';
 export { default as useModal } from './useModal';
+export { default as useAppReady } from './useAppReady';
