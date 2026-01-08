@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  /* 🌈 Primary Brand Color */
+  /* 🦍 Primary Brand Color */
   --primary-clr: hsl(0, 86%, 28%); /* fallback */
   --primary-clr: lch(27.37% 59.89 37.03);
 
@@ -24,6 +24,14 @@
   /* 🩶 Neutral Grey */
   --grey-clr: hsl(0, 0%, 35%);
   --grey-clr: lch(37.82% 0.01 296.81);
+
+  /* ✅ Success Green */
+  --success-clr: hsl(120, 60%, 75%);
+  --success-clr: lch(84.83% 49.09 142.02);
+
+  /* ❌ Error Red */
+  --error-clr: hsl(0, 100%, 90%);
+  --error-clr: lch(86.41% 19.27 20.85);
 
   /* 🕶️ Overlay Colors */
   --overlay-clr: hsla(0, 0%, 0%, 0.3);

@@ -1,22 +1,67 @@
 import React, { ChangeEvent, FormEvent, useCallback, useState } from 'react'
 import { useTranslations } from 'next-intl';
 
-import Button from './button';
+import { Button } from '@/components/interfaces';
 import { Email } from '@/components/icons';
+
+import { newsCycle, rockSalt } from '@/lib/fonts';
 
 const EmailInput: React.FC = () => {
   const [email, setEmail] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
 
   const connectLang = useTranslations('connectSection');
 
   const handleEmailChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-  }, []);
 
-  const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
+    if (message) setMessage(null);
+  }, [message]);
+
+  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission
-  }, []);
+
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    
+    if (!email || !emailRegex.test(email.trim())) {
+      setMessage({ type: 'error', text: connectLang('emailRequired') });
+      return;
+    }
+
+    setIsLoading(true);
+    setMessage(null);
+
+    try {
+      const response = await fetch('api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error ?? connectLang('joinFailed'))
+      }
+
+      setMessage({
+        type: 'success',
+        text: connectLang('joinSuccess'),
+      })
+      setEmail('');
+    } catch (error) {
+      console.error('Error joining pack', error);
+      setMessage({
+        type: 'error',
+        text: error instanceof Error ? error.message : connectLang('joinFailed'),
+      })
+    } finally {
+      setIsLoading(false);
+    }
+  }, [connectLang, email]);
 
   return (
     <form
@@ -48,6 +93,23 @@ const EmailInput: React.FC = () => {
         >
           { connectLang('submitCta') }
         </Button>
+      </div>
+
+      <div
+        className='mt-1 lg:mt-2 min-h-6 lg:min-h-8'
+        role="alert"
+        aria-live="polite"
+      >
+        {message && (
+          <span
+            className={`
+              tracking-widest transition-all duration-300
+              ${message.type === 'success' ? `${rockSalt.className} text-success text-xs lg:text-sm` : `${newsCycle.className} text-error text-sm lg:text-base`}
+            `}
+          >
+            { message.text }
+          </span>
+        )}
       </div>
     </form>
   )

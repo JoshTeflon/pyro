@@ -26,8 +26,6 @@ const Home = () => {
   useGSAP(() => {
     if (!ready) return;
 
-    gsap.set(landingImageRef, { scale: 1 });
-
     const ctx = gsap.context(() => {
       gsap.to(landingImageRef.current, {
         scale: 2,
