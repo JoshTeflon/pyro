@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/interfaces';
 import { Email } from '@/components/icons';
+import { LoadingDots } from '@/components/shared';
 
 import { newsCycle, rockSalt } from '@/lib/fonts';
 
@@ -89,9 +90,17 @@ const EmailInput: React.FC = () => {
 
         <Button
           type='submit'
-          className='w-max h-full xl:text-lg text-body uppercase'
+          className='w-max h-full relative xl:text-lg text-body uppercase'
+          disabled={isLoading}
         >
           { connectLang('submitCta') }
+
+          {
+            isLoading &&
+            <div className='absolute inset-0 inline-flex items-center justify-center'>
+              <LoadingDots />
+            </div>
+          }
         </Button>
       </div>
 

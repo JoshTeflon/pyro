@@ -18,7 +18,7 @@ export default function Landing() {
     <AppContextProvider ready={!isLoading}>
       {/* <CustomCursor /> */}
       <Header  />
-      <main className='relative w-full h-full flex flex-col grow font-geist-mono tracking-wide'>
+      <main className='relative w-full h-full flex flex-col grow font-geist-mono tracking-wide overflow-hidden'>
         <Home />
         <Music />
         <Gallery />
