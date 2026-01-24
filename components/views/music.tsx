@@ -7,6 +7,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Zoom, EffectFade } from 'swiper/modules';
+import type { Swiper as SwiperInstance } from 'swiper';
 
 import { useModal } from '@/hooks';
 import { newsCycle } from '@/lib/fonts';
@@ -66,7 +67,7 @@ const Music = () => {
   });
   
   // Track the Swiper instance
-  const [backgroundSwiper, setBackgroundSwiper] = useState<any>(null);
+  const [backgroundSwiper, setBackgroundSwiper] = useState<SwiperInstance | null>(null);
   
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
@@ -81,7 +82,7 @@ const Music = () => {
     }
   );
 
-  const handleSlideChange = (swiper: any) => {
+  const handleSlideChange = (swiper: SwiperInstance) => {
     const newIndex = swiper.activeIndex;
     setActiveSlide({
       isActive: true,
