@@ -1,3 +1,4 @@
+import { StaticImageData } from 'next/image';
 import { SVGProps } from 'react';
 
 export enum MenuType {
@@ -50,7 +51,7 @@ export interface ITrackInfo {
 
 export interface IGalleryCard {
   name: string;
-  image: any;
+  image: StaticImageData;
   top?: string;
   bottom?: string;
   left?: string;

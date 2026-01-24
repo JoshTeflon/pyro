@@ -15,6 +15,8 @@ const config: Config = {
         'primary-100': 'var(--primary-clr-100)',
         'grey': 'var(--grey-clr)',
         'burn': 'var(--burn-clr)',
+        'success': 'var(--success-clr)',
+        'error': 'var(--error-clr)',
         'overlay': 'var(--overlay-clr)',
         'grey-overlay': 'var(--grey-overlay-clr)',
         'danger-overlay': 'var(--danger-overlay-clr)',
