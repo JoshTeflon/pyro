@@ -1,7 +1,6 @@
 'use client';
 
 import { FC, useCallback, useMemo, useRef, useState } from 'react';
-import { Link } from '@/i18n/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -9,6 +8,7 @@ import { useGSAP } from '@gsap/react';
 import { Button } from '@/components/interfaces';
 import { Dots, Flame } from '@/components/icons';
 
+import { useRouter } from '@/i18n/navigation';
 import { useActiveSection, useApp } from '@/hooks';
 import { languageMenuItems, navigationMenuItems } from '@/lib/data';
 import { IMenuItems, MenuType } from '@/types';
@@ -40,7 +40,7 @@ const DisplayNavigationMenu: FC<{ activeSection: string }> = ({ activeSection })
       <li key={item.label}>
         <Button
           variant='naked'
-          className='!p-1 w-full menu-link flex items-center justify-between'
+          className='menu-link !p-1 w-full flex items-center justify-between'
           onClick={() => scrollToSection(item.label)}
         >
           <div className='w-full flex items-center space-x-3'>
@@ -66,19 +66,34 @@ const DisplayNavigationMenu: FC<{ activeSection: string }> = ({ activeSection })
   );
 };
 
-const DisplayLanguageMenu: FC<{ locale: string }> = ({ locale }) => (
-  languageMenuItems
+const DisplayLanguageMenu: FC<{ locale: string }> = ({ locale }) => {
+  const router = useRouter();
+
+  const switchLocale = (newLocale: string) => {
+    if (newLocale !== locale) {
+      router.push('/', { locale: newLocale });
+      router.refresh();
+    }
+  };
+
+  return (
+    languageMenuItems
     ?.filter((item: IMenuItems) => item.link !== locale)
     ?.map((item: IMenuItems) => (
       <li key={item.label}>
-        <Link href={item.link} className='menu-link py-1 px-1.5 flex items-center space-x-3'>
+        <Button
+          variant='naked'
+          className='menu-link !p-1 w-full flex items-center space-x-3'
+          onClick={() => switchLocale(item.link)}
+        >
           <div className="text-wrapper">
             <span className="text-line text-xs tracking-tight">{item.label}</span>
           </div>
-        </Link>
+        </Button>
       </li>
-  ))
-);
+    ))
+  );
+};
 
 const Menu: FC<MenuProps> = ({ type, className }) => {
   const { ready } = useApp();

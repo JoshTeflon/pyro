@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useRef, useEffect, useState, useContext } from 'react';
-import Link from 'next/link';
+import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 import { Logo } from '@/components/shared';
 import { Menu } from '@/components/interfaces';
 
+import { Link } from '@/i18n/navigation';
 import { useApp } from '@/hooks';
 import { MenuType } from '@/types';
 
@@ -59,7 +59,10 @@ const Header: React.FC = () => {
           type={MenuType.NAVIGATION}
           className='absolute top-0 left-0'
         />
-        <Link href={'/'} className='mx-auto flex-center w-fit outline-none border-none'>
+        <Link
+          href={'/'}
+          className='mx-auto flex-center w-fit outline-none border-none'
+        >
           <Logo
             className='-rotate-2 hover:rotate-0 hover:tracking-[0.075em] transition-all duration-500 ease-in-out'
             variant='primary'   
