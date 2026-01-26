@@ -1,3 +1,5 @@
+'use client';
+
 import React, { ChangeEvent, FormEvent, useCallback, useState } from 'react'
 import { useTranslations } from 'next-intl';
 

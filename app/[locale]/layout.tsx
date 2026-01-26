@@ -13,6 +13,17 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'ii6 pyro',
   description: 'Official website of ii6 pyro',
+  keywords: ['ii6 pyro', 'ii6', 'pyro', 'music', 'artist', 'official', 'website', 'afrobeats', 'R&B/Soul', 'alternative', 'nigeria', 'next.js', 'react', 'typescript', 'tailwindcss'],
+  applicationName: 'ii6 pyro official website',
+  creator: 'JoshTeflon and ii6 pyro',
+  authors: [
+    { name: 'JoshTeflon', url: 'https://joshteflon.xyz' },
+    { name: 'ii6 pyro', url: 'https://ii6pyro.africa' },
+  ],
+  category: 'Music',
+  other: {
+    'google': 'notranslate',
+  },
 };
 
 export function generateStaticParams() {
@@ -32,11 +43,9 @@ export default async function RootLayout({ children, params }: Readonly<{
   setRequestLocale(locale);
 
   return (
-    <html lang={locale}>
-      <body
-        className={`${GeistMono.className} ${GeistMono.variable}`}
-      >
-        <NextIntlClientProvider locale={locale}>
+    <html lang={locale} translate='no'>
+      <body className={`${GeistMono.className} ${GeistMono.variable}`}>
+        <NextIntlClientProvider locale={locale} >
           {children}
           <Analytics />
         </NextIntlClientProvider>
