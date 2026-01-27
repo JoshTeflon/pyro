@@ -192,6 +192,24 @@ input:-webkit-autofill:active {
   }
 }
 
+.animate-drag-line {
+  animation: drag-line 1.6s ease-in-out infinite;
+}
+
+@keyframes drag-line {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
 @media (pointer: coarse) {
   html {
     /* Use system scrollbars for better touch experience */
