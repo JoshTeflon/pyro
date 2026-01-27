@@ -1,11 +1,10 @@
 import { SVGProps } from 'react';
-import clsx from 'clsx';
 
 type ArrowDirection = 'up' | 'down' | 'left' | 'right';
 
 interface ArrowProps extends SVGProps<SVGSVGElement> {
   direction?: ArrowDirection;
-}
+};
 
 const rotationMap: Record<ArrowDirection, number> = {
   down: 0,
@@ -27,7 +26,7 @@ const Arrow = ({
       viewBox="0 0 20 19"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={clsx('inline-block', className)}
+      className={`${className} inline-block`}
       style={{
         transform: `rotate(${rotationMap[direction]}deg)`,
         transformOrigin: '50% 50%',
