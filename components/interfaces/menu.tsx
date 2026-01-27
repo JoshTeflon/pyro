@@ -9,7 +9,7 @@ import { Button } from '@/components/interfaces';
 import { Dots, Flame } from '@/components/icons';
 
 import { useRouter } from '@/i18n/navigation';
-import { useActiveSection, useApp } from '@/hooks';
+import { useActiveSection, useApp, useWindowDimension } from '@/hooks';
 import { languageMenuItems, navigationMenuItems } from '@/lib/data';
 import { IMenuItems, MenuType } from '@/types';
 
@@ -99,7 +99,10 @@ const DisplayLanguageMenu: FC<{ locale: string }> = ({ locale }) => {
 
 const Menu: FC<MenuProps> = ({ type, className }) => {
   const { ready } = useApp();
+
   const locale = useLocale();
+  
+  const isMobile = useWindowDimension();
 
   const activeSection = useActiveSection(navigationMenuItems.map((item: IMenuItems) => item.label)) ?? 'home';
 
@@ -110,7 +113,6 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   const isMenuNavigation = useMemo(() => type === MenuType.NAVIGATION, [type]);
   const menuConfig = useMemo(() => ({
@@ -222,17 +224,6 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
       document.removeEventListener('pointerdown', handleOutsideClick);
     };
   }, [isMobile, isOpen]);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-
-    window.addEventListener('resize', checkMobile);
-
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-    };
-  }, []);
 
   return (
     <nav

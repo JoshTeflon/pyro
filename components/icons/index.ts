@@ -12,7 +12,7 @@ export { default as AppleMusic } from './apple-music';
 export { default as Audiomack } from './audiomack';
 export { default as Snapchat } from './snapchat';
 export { default as Dots } from './dots';
-export { default as ArrowDown } from './arrow-down';
+export { default as Arrow } from './arrow';
 export { default as Play } from './play';
 export { default as Connect } from './connect';
 export { default as Flame } from './flame';

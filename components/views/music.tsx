@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import gsap from 'gsap';
@@ -9,14 +9,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Zoom, EffectFade } from 'swiper/modules';
 import type { Swiper as SwiperInstance } from 'swiper';
 
-import { useModal } from '@/hooks';
+import { AnimatedText } from '@/components/shared';
+import { Button } from '@/components/interfaces';
+import { Arrow, Close } from '@/components/icons';
+
+import { useModal, useWindowDimension } from '@/hooks';
 import { newsCycle } from '@/lib/fonts';
 import { musicList } from '@/lib/data';
 import { ITrackInfo } from '@/types';
-
-import { AnimatedText } from '@/components/shared';
-import { Button } from '@/components/interfaces';
-import { Close } from '@/components/icons';
 
 import 'swiper/css';
 import 'swiper/css/zoom';
@@ -53,23 +53,47 @@ interface SlideState {
 
 gsap.registerPlugin(ScrollTrigger);
 
+const DragHint = ({ visible }: { visible: boolean }) => {
+  return (
+    <div
+      className={`pointer-events-none absolute right-6 top-1/2 -translate-y-1/2 transition-all duration-700 ease-out
+      ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}
+    >
+      <div className="flex items-center space-x-0.5 text-body uppercase text-xs tracking-widest">
+        <span className="opacity-75">drag</span>
+
+        <div className="relative w-5 h-0.5 bg-body/50 overflow-hidden">
+          <div className="absolute inset-0 bg-body animate-drag-line" />
+        </div>
+
+        <Arrow direction="right" className='w-4' />
+      </div>
+    </div>
+  );
+};
+
+
 const Music = () => {
+  const musicSectionLang = useTranslations('musicSection');
+
+  const isMobileSize = useWindowDimension();
+
   const musicRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLHeadingElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
-
-  const musicSectionLang = useTranslations('musicSection');
 
   const [activeSlide, setActiveSlide] = useState<SlideState>({
     isActive: false,
     details: musicList[0],
     index: 0
   });
-  
+
   // Track the Swiper instance
   const [backgroundSwiper, setBackgroundSwiper] = useState<SwiperInstance | null>(null);
   
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+
+  const [showDragHint, setShowDragHint] = useState<boolean>(!isMobileSize);
 
   useModal(
     modalRef,
@@ -81,6 +105,10 @@ const Music = () => {
       lockScroll: true,
     }
   );
+
+  useEffect(() => {
+    setShowDragHint(!isMobileSize);
+  }, [isMobileSize]);
 
   const handleSlideChange = (swiper: SwiperInstance) => {
     const newIndex = swiper.activeIndex;
@@ -141,9 +169,14 @@ const Music = () => {
         </h3>
       </div>
       <div className="relative my-8 lg:my-16 w-full overflow-hidden">
+        <DragHint visible={showDragHint} />
+
         <Swiper
           {...swiperConfig}
           onSlideChange={handleSlideChange}
+          onTouchStart={() => setShowDragHint(false)}
+          onDragStart={() => setShowDragHint(false)}
+          onClick={() => setShowDragHint(false)}
           initialSlide={0}
           className="mx-auto px-0"
           style={{ width: '150%', marginLeft: '-25%' }}

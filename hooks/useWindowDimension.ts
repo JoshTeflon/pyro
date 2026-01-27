@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 
 
-const useWindowDimension = (breakpoinrt = 1023): boolean => {
+const useWindowDimension = (breakpoint = 768): boolean => {
   const [isMobileSize, setIsMobileSize] = useState<boolean>(false);
 
   useEffect(() => {
     if (typeof globalThis !== 'undefined') {
-      setIsMobileSize(globalThis.innerWidth <= breakpoinrt);
+      setIsMobileSize(globalThis.innerWidth < breakpoint);
   
       const windowResizeHandler = () => {
-        const matchMediaString = `(max-width: ${breakpoinrt}px)`;
+        const matchMediaString = `(max-width: ${breakpoint}px)`;
 
         setIsMobileSize(matchMedia(matchMediaString).matches);
       };
@@ -17,7 +17,7 @@ const useWindowDimension = (breakpoinrt = 1023): boolean => {
       globalThis.addEventListener('resize', windowResizeHandler);
       return () => globalThis.removeEventListener('resize', windowResizeHandler);
     }
-  }, [breakpoinrt]);
+  }, [breakpoint]);
 
   return isMobileSize;
 };

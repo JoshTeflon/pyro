@@ -7,7 +7,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { SocialPlatforms, Button } from '@/components/interfaces';
-import { ArrowDown, Play } from '@/components/icons';
+import { Arrow, Play } from '@/components/icons';
 
 import { useApp } from '@/hooks';
 import { artist, musicList } from '@/lib/data';
@@ -140,7 +140,10 @@ const Home = () => {
               onClick={scrollToMusic}
             >
               <div className='group w-5 h-10 text-primary bg-body flex items-center justify-center border border-primary rounded-4xl transition-colors duration-500 ease-in-out group-hover:bg-primary group-hover:text-body'>
-                <ArrowDown className='w-4 group-hover:animate-jello-horizontal' />
+                <Arrow
+                  direction='down'
+                  className='w-4 group-hover:animate-jello-horizontal'
+                />
               </div>
             </Button>
 
