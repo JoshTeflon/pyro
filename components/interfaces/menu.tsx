@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useCallback, useMemo, useRef, useState } from 'react';
+import { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -83,11 +83,13 @@ const DisplayLanguageMenu: FC<{ locale: string }> = ({ locale }) => {
       <li key={item.label}>
         <Button
           variant='naked'
-          className='menu-link !p-1 w-full flex items-center space-x-3'
+          className='menu-link !p-1 w-full flex items-center space-x-3 leading-6'
           onClick={() => switchLocale(item.link)}
         >
           <div className="text-wrapper">
-            <span className="text-line text-xs tracking-tight">{item.label}</span>
+            <span className="text-line text-xs tracking-tight">
+              {item.label}
+            </span>
           </div>
         </Button>
       </li>
@@ -120,91 +122,117 @@ const Menu: FC<MenuProps> = ({ type, className }) => {
   }), [isMenuNavigation, locale, activeSection, navigationLang]);
 
   useGSAP(() => {
-    if (!ready) return;
+    if (!ready || !navRef.current || !menuListRef.current) return;
 
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+    const tl = gsap.timeline({
+      paused: true,
+      defaults: { ease: 'sine.inOut' },
+    });
+
+    tl.to(navRef.current, {
+      width: menuConfig.expandedWidth,
+      height: menuConfig.expandedHeight,
+      borderRadius: '0.875rem',
+      duration: 0.3,
+    });
+
+    tl.to(menuListRef.current, {
+      opacity: 1,
+      display: 'block',
+      y: 0,
+      duration: 0.3,
+    }, '<');
+
+    if (isMenuNavigation) {
+      tl.to('.menu-icon-container', {
+        opacity: 1,
+        scale: 1,
+        rotate: 0,
+        duration: 0.35,
+      }, '<');
+    }
+
+    timelineRef.current = tl;
+
+    gsap.set(navRef.current, { opacity: 1 });
+
+    return () => {
+      tl.kill();
+      timelineRef.current = null;
     };
-    checkMobile();
-    globalThis.addEventListener('resize', checkMobile);
+  }, [ready, isMenuNavigation]);
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ paused: true, ease: 'sine.inOut' });
-      timelineRef.current = tl;
+  const openMenu = () => {
+    timelineRef.current?.play();
+    setIsOpen(true);
+  };
 
-      // Initial fade in
-      gsap.set(navRef.current, { opacity: 1 });
-
-      tl.to(navRef.current, {
-        width: menuConfig.expandedWidth,
-        height: menuConfig.expandedHeight,
-        borderRadius: '0.875rem',
-        transformOrigin: menuConfig.transformOrigin,
-        duration: 0.3,
-      });
-
-      tl.to(
-        menuListRef.current,
-        {
-          opacity: 1,
-          display: 'block',
-          y: 0,
-          duration: 0.3,
-        },
-        '<'
-      );
-
-      if (isMenuNavigation) {
-        tl.to(
-          '.menu-icon-container',
-          {
-            opacity: 1,
-            scale: 1,
-            rotate: 0,
-            duration: 0.35,
-          },
-          '<'
-        );
-      };
-
-      const handleMouseEnter = () => {
-        if (!isMobile) {
-          tl.play();
-          setIsOpen(true);
-        }
-      };
-
-      const handleMouseLeave = () => {
-        if (!isMobile) {
-          tl.reverse();
-          setIsOpen(false);
-        }
-      };
-
-      navRef.current?.addEventListener('mouseenter', handleMouseEnter);
-      navRef.current?.addEventListener('mouseleave', handleMouseLeave);
-      navRef.current?.addEventListener('focusin', handleMouseEnter);
-      navRef.current?.addEventListener('focusout', handleMouseLeave);
-
-      return () => {
-        window.removeEventListener('resize', checkMobile);
-      };
-    }, navRef);
-
-    return () => ctx.revert();
-  }, [menuConfig, isMenuNavigation, isMobile]);
+  const closeMenu = () => {
+    timelineRef.current?.reverse();
+    setIsOpen(false);
+  };
 
   const handleMobileToggle = useCallback(() => {
-    if (isMobile && timelineRef.current) {
-      if (isOpen) {
-        timelineRef.current.reverse();
-        setIsOpen(false);
-      } else {
-        timelineRef.current.play();
-        setIsOpen(true);
-      }
+    if (!isMobile || !timelineRef.current) return;
+
+    const tl = timelineRef.current;
+
+    if (isOpen) {
+      tl.timeScale(1).reverse();
+      setIsOpen(false);
+    } else {
+      tl.timeScale(1).play();
+      setIsOpen(true);
     }
   }, [isMobile, isOpen]);
+
+  useEffect(() => {
+    if (!navRef.current || isMobile) return;
+
+    const el = navRef.current;
+
+    el.addEventListener('mouseenter', openMenu);
+    el.addEventListener('mouseleave', closeMenu);
+    el.addEventListener('focusin', openMenu);
+    el.addEventListener('focusout', closeMenu);
+
+    return () => {
+      el.removeEventListener('mouseenter', openMenu);
+      el.removeEventListener('mouseleave', closeMenu);
+      el.removeEventListener('focusin', openMenu);
+      el.removeEventListener('focusout', closeMenu);
+    };
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (!isMobile || !isOpen) return;
+
+    const handleOutsideClick = (event: PointerEvent) => {
+      if (!navRef.current) return;
+
+      if (!navRef.current.contains(event.target as Node)) {
+        timelineRef.current?.reverse();
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('pointerdown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('pointerdown', handleOutsideClick);
+    };
+  }, [isMobile, isOpen]);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   return (
     <nav

@@ -60,7 +60,7 @@ const Home = () => {
 
 
   const scrollToMusic = useCallback(() => {
-    const el = document.getElementById('music');
+    const el = document.getElementById('connect');
 
     if (el) {
       const elementPosition = el.getBoundingClientRect().top + globalThis.scrollY;
