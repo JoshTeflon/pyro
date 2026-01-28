@@ -15,7 +15,7 @@ export enum TrackType {
 export interface IIArtist {
   name: string;
   short_name: string;
-  main_image: string;
+  main_image: string | StaticImageData;
   latest_release_link: string;
   siteUrl: string;
   socials: IPlatform[];

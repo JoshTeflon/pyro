@@ -1,3 +1,5 @@
+import MainImage from '@/public/images/ii6-pyro-main.png';
+
 import { AppleMusic, Connect, Gallery, Home, Instagram, Music, Snapchat, Spotify, Tiktok, Youtube } from '@/components/icons';
 
 import GalleryCardImage0 from '@/public/images/gallery/gallery-card-0.jpg';
@@ -68,7 +70,7 @@ export const languageMenuItems: IMenuItems[] = [
 export const artist: IIArtist = {
   name: 'ii6 pyro',
   short_name: 'ii6',
-  main_image: '/images/ii6-pyro-main.png',
+  main_image: MainImage,
   latest_release_link: 'https://distrokid.com/hyperfollow/ii6pyro/tempt',
   siteUrl: 'https://ii6pyro.xyz',
   socials: [

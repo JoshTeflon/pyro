@@ -80,7 +80,7 @@ const Home = () => {
         src={artist.main_image}
         alt='ii6 pyro artiste-themed background'
         quality={100}
-        // placeholder='blur'
+        placeholder='blur'
         fill
         priority
         sizes='100vw'
