@@ -99,7 +99,7 @@ const EmailInput: React.FC = () => {
 
           {
             isLoading &&
-            <div className='absolute inset-0 inline-flex items-center justify-center'>
+            <div className='w-full h-full bg-main opacity-95 absolute inset-0 inline-flex items-center justify-center'>
               <LoadingDots />
             </div>
           }

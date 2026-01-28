@@ -70,6 +70,7 @@ export const artist: IIArtist = {
   short_name: 'ii6',
   main_image: '/images/ii6-pyro-main.png',
   latest_release_link: 'https://distrokid.com/hyperfollow/ii6pyro/tempt',
+  siteUrl: 'https://ii6pyro.xyz',
   socials: [
     {
       name: 'spotify',
