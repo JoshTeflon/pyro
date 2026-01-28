@@ -72,7 +72,6 @@ const DragHint = ({ visible }: { visible: boolean }) => {
   );
 };
 
-
 const Music = () => {
   const musicSectionLang = useTranslations('musicSection');
 
@@ -145,6 +144,7 @@ const Music = () => {
                 key={item.name}
                 title={item.video}
                 className='w-full h-screen object-cover'
+                preload='metadata'
                 playsInline
                 autoPlay
                 muted
@@ -208,9 +208,9 @@ const Music = () => {
                         alt={item.name}
                         quality={100}
                         sizes="(max-width: 768px) 23rem, 24rem"
-                        // placeholder='blur'
+                        placeholder='blur'
                         fill
-                        priority
+                        priority={isActive}
                       />
 
                       <div
@@ -275,7 +275,6 @@ const Music = () => {
           width={40}
           height={40}
           quality={100}
-          priority
         />
       </div>
     </section>

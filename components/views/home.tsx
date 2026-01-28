@@ -98,14 +98,13 @@ const Home = () => {
           <div className='w-full h-full flex space-x-4'>
             <div className='relative min-w-[8.25rem] w-[8.25rem] h-full rounded-lg'>
               <Image
-                  className='z-10 absolute inset-0 w-full h-full object-cover object-center rounded-lg'
-                  src={musicList[0].cover}
-                  alt={musicList[0].name}
-                  quality={100}
-                  // placeholder='blur'
-                  fill
-                  priority
-                />
+                className='z-10 absolute inset-0 w-full h-full object-cover object-center rounded-lg'
+                src={musicList[0].cover}
+                alt={musicList[0].name}
+                quality={100}
+                placeholder='blur'
+                fill
+              />
             </div>
 
             <div className='w-full text-primary uppercase flex flex-col justify-between'>

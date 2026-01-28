@@ -1,11 +1,19 @@
 import MainImage from '@/public/images/ii6-pyro-main.png';
 
-import { AppleMusic, Connect, Gallery, Home, Instagram, Music, Snapchat, Spotify, Tiktok, Youtube } from '@/components/icons';
+import TemptCover from '@/public/images/music_covers/tempt.png';
+import DenyCover from '@/public/images/music_covers/deny.jpeg';
+import SurrenderCover from '@/public/images/music_covers/surrender.png';
+import GoCover from '@/public/images/music_covers/go.jpeg';
+import NvmCover from '@/public/images/music_covers/nvm.jpg';
+import LmaCover from '@/public/images/music_covers/lma.jpg';
+import HazeCover from '@/public/images/music_covers/haze.jpg';
 
 import GalleryCardImage0 from '@/public/images/gallery/gallery-card-0.jpg';
 import GalleryCardImage1 from '@/public/images/gallery/gallery-card-1.jpeg';
 import GalleryCardImage2 from '@/public/images/gallery/gallery-card-2.jpg';
 import GalleryCardImage3 from '@/public/images/gallery/tempt-pegs.jpeg';
+ 
+import { AppleMusic, Connect, Gallery, Home, Instagram, Music, Snapchat, Spotify, Tiktok, Youtube } from '@/components/icons';
 
 import { IIArtist, IGalleryCard, IMenuItems, ITrackInfo, TrackType } from '@/types';
 
@@ -110,56 +118,63 @@ export const artist: IIArtist = {
 export const musicList: ITrackInfo[] = [
   {
     name: 'tempt',
-    cover: '/images/music_covers/tempt.png',
+    cover: TemptCover,
     video: '/tempt-visualizer.mp4',
+    videoPoster: '/images/video_posters/tempt.png',
     youtubeId: 'dbdcWhkyvEI',
     type: TrackType.SINGLE,
     year: '2025',
   },
   {
     name: 'deny',
-    cover: '/images/music_covers/deny.jpeg',
+    cover: DenyCover,
     video: '/nvm-visualizer.mp4',
+    videoPoster: '/images/video_posters/nvm.png',
     youtubeId: 'Y-nU_3fG2uc',
     type: TrackType.SINGLE,
     year: '2025',
   },
   {
     name: 'surrender',
-    cover: '/images/music_covers/surrender_cover.png',
+    cover: SurrenderCover,
     video: '/surrender-visualizer.mp4',
+    videoPoster: '/images/video_posters/surrender.png',
     youtubeId: 'SAQXk6rP4ww',
     type: TrackType.SINGLE,
     year: '2025',
   },
   {
     name: 'go',
-    cover: '/images/music_covers/go_cover.jpeg',
+    cover: GoCover,
     video: '/tempt-visualizer.mp4',
+    videoPoster: '/images/video_posters/tempt.png',
     youtubeId: 'dr0zGaZKja4',
     type: TrackType.SINGLE,
     year: '2025',
   },
   {
     name: 'nvm',
-    cover: '/images/music_covers/nvm_cover.jpg',
+    cover: NvmCover,
     video: '/nvm-visualizer.mp4',
+    videoPoster: '/images/video_posters/nvm.png',
     youtubeId: 'bGffXgRrckU',
     type: TrackType.SINGLE,
     year: '2025',
   },
   {
     name: 'lma',
-    cover: '/images/music_covers/lma_cover.jpg',
+    cover: LmaCover,
     video: '/surrender-visualizer.mp4',
+    videoPoster: '/images/video_posters/surrender.png',
     youtubeId: 'qn7haRe2QE4',
     type: TrackType.SINGLE,
     year: '2025',
   },
   {
     name: 'haze',
-    cover: '/images/music_covers/haze_cover.jpg',
+    cover: HazeCover,
     video: '/tempt-visualizer.mp4',
+    videoPoster: '/images/video_posters/tempt.png',
     youtubeId: 'h53pPUN0PZE',
     type: TrackType.SINGLE,
     year: '2025',

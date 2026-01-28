@@ -43,8 +43,9 @@ export interface IAppContext {
 
 export interface ITrackInfo {
   name: string;
-  cover: string;
+  cover: string | StaticImageData;
   video: string;
+  videoPoster?: string;
   youtubeId: string;
   type: TrackType;
   year: string;
