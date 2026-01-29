@@ -90,15 +90,15 @@ const Music = () => {
   // Track the Swiper instance
   const [backgroundSwiper, setBackgroundSwiper] = useState<SwiperInstance | null>(null);
   
-  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [activeYtVideo, setActiveYtVideo] = useState<string | null>(null);
 
   const [showDragHint, setShowDragHint] = useState<boolean>(!isMobileSize);
 
   useModal(
     modalRef,
-    () => setActiveVideo(null),
+    () => setActiveYtVideo(null),
     {
-      enabled: !!activeVideo,
+      enabled: !!activeYtVideo,
       closeOnOutsideClick: true,
       closeOnEsc: true,
       lockScroll: true,
@@ -198,7 +198,7 @@ const Music = () => {
                       `w-full max-w-96 h-96 flex items-center justify-center rounded-md cursor-grab transition-all duration-300 ease-in-out
                       ${isActive ? 'scale-100 opacity-100 cursor-pointer' : 'scale-50 opacity-50'}`
                     }
-                    onClick={() => isActive && setActiveVideo(item.youtubeId)}
+                    onClick={() => isActive && setActiveYtVideo(item.youtubeId)}
                   >
                     <div className='group relative w-full h-full bg-black/50 rounded-md transition-all duration-300 ease-in-out'>
                       <Image
@@ -233,7 +233,7 @@ const Music = () => {
           ))}
         </Swiper>
 
-        {activeVideo && (
+        {activeYtVideo && (
           <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm'>
             <div
               ref={modalRef}
@@ -242,7 +242,7 @@ const Music = () => {
               <div className='relative w-full aspect-video overflow-hidden'>
                 <iframe
                   className='w-full h-full'
-                  src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1`}
+                  src={`https://www.youtube.com/embed/${activeYtVideo}?autoplay=1`}
                   title={activeSlide.details.name}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin" 
@@ -251,7 +251,7 @@ const Music = () => {
               </div>
 
               <Button
-                onClick={() => setActiveVideo(null)}
+                onClick={() => setActiveYtVideo(null)}
                 variant='secondary-primary'
                 roundness='pill'
                 size='sm'
