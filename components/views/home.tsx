@@ -59,7 +59,7 @@ const Home = () => {
   }, [ready]);
 
 
-  const scrollToMusic = useCallback(() => {
+  const scrollToBottom = useCallback(() => {
     const el = document.getElementById('connect');
 
     if (el) {
@@ -98,7 +98,7 @@ const Home = () => {
           <div className='w-full h-full flex space-x-4'>
             <div className='relative min-w-[8.25rem] w-[8.25rem] h-full rounded-lg'>
               <Image
-                className='z-10 absolute inset-0 w-full h-full object-cover object-center rounded-lg'
+                className='z-10 absolute inset-0 w-full h-full bg-primary object-cover object-center rounded-lg'
                 src={musicList[0].cover}
                 alt={musicList[0].name}
                 quality={100}
@@ -107,8 +107,8 @@ const Home = () => {
               />
             </div>
 
-            <div className='w-full text-primary uppercase flex flex-col justify-between'>
-              <h3 className='text-base tracking-[5%]'>{ newTrackTitleLang('outNow') }</h3>
+            <div className='py-0.5 w-full text-primary uppercase flex flex-col justify-between'>
+              <h3 className='text-base leading-none tracking-[5%]'>{ newTrackTitleLang('outNow') }</h3>
 
               <div className='w-full flex flex-col space-y-px'>
                 <span className='text-3xl font-medium leading-none'>{musicList[0].name}</span>
@@ -136,7 +136,8 @@ const Home = () => {
             <Button
               variant='naked'
               className='group'
-              onClick={scrollToMusic}
+              aria-label='scroll to bottom'
+              onClick={scrollToBottom}
             >
               <div className='group w-5 h-10 text-primary bg-body flex items-center justify-center border border-primary rounded-4xl transition-colors duration-500 ease-in-out group-hover:bg-primary group-hover:text-body'>
                 <Arrow

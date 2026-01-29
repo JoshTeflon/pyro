@@ -8,10 +8,14 @@ import NvmCover from '@/public/images/music_covers/nvm.jpg';
 import LmaCover from '@/public/images/music_covers/lma.jpg';
 import HazeCover from '@/public/images/music_covers/haze.jpg';
 
-import GalleryCardImage0 from '@/public/images/gallery/gallery-card-0.jpg';
-import GalleryCardImage1 from '@/public/images/gallery/gallery-card-1.jpeg';
-import GalleryCardImage2 from '@/public/images/gallery/gallery-card-2.jpg';
-import GalleryCardImage3 from '@/public/images/gallery/tempt-pegs.jpeg';
+import ToonedImage from '@/public/images/gallery/tooned.jpg';
+import SpaceImage from '@/public/images/gallery/space.jpg';
+import TemptImage from '@/public/images/gallery/tempt.jpeg';
+import AwakeImage from '@/public/images/gallery/awake.jpeg';
+import UndergroundImage from '@/public/images/gallery/underground.jpg';
+import ColdImage from '@/public/images/gallery/cold.jpg';
+import DepthImage from '@/public/images/gallery/depth.jpeg';
+import TempImage from '@/public/images/gallery/temp.jpg';
  
 import { AppleMusic, Connect, Gallery, Home, Instagram, Music, Snapchat, Spotify, Tiktok, Youtube } from '@/components/icons';
 
@@ -183,8 +187,8 @@ export const musicList: ITrackInfo[] = [
 
 export const galleryDeck: IGalleryCard[] = [
   {
-    name: 'resurrection',
-    image: GalleryCardImage0,
+    name: 'tooned',
+    image: ToonedImage,
     bottom: '-20%',
     left: '30%',
     from: { z: -4000, opacity: 0 },
@@ -196,8 +200,8 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-0.5`,
   },
   {
-    name: 'awake',
-    image: GalleryCardImage1,
+    name: 'space',
+    image: SpaceImage,
     top: '-30rem',
     left: '80%',
     from: { z: -4000, y: 300, opacity: 0 },
@@ -209,8 +213,8 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.2`,
   },
   {
-    name: 'depth',
-    image: GalleryCardImage2,
+    name: 'awake',
+    image: AwakeImage,
     bottom: '70%',
     left: '20%',
     from: { opacity: 0, z: -4000 },
@@ -222,21 +226,21 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.25`,
   },
   {
-    name: 'awake2',
-    image: GalleryCardImage3,
+    name: 'underground',
+    image: UndergroundImage,
     top: '50%',
     left: '90%',
     from: { opacity: 0, z: -4200 },
     keyframes: [
       { z: -3050, opacity: 1 },
-      { z: -700, opacity: 1 },
+      { z: -1500, opacity: 1 },
       { z: 0, opacity: 0 },
     ],
     position: `>-1.3`,
   },
   {
-    name: 'depth2',
-    image: GalleryCardImage1,
+    name: 'tempt',
+    image: TemptImage,
     bottom: '-20%',
     left: '0',
     from: { z: -4200, opacity: 0 },
@@ -248,8 +252,8 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.35`,
   },
   {
-    name: 'resurrection2',
-    image: GalleryCardImage2,
+    name: 'cold',
+    image: ColdImage,
     top: '-20%',
     left: '70%',
     from: { z: -4500, opacity: 0 },
@@ -261,8 +265,8 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.3`,
   },
   {
-    name: 'depth3',
-    image: GalleryCardImage1,
+    name: 'temp',
+    image: TempImage,
     top: '30%',
     left: '10%',
     from: { z: -5200, opacity: 0 },
@@ -274,8 +278,8 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.25`,
   },
   {
-    name: 'awake3',
-    image: GalleryCardImage0,
+    name: 'depth',
+    image: DepthImage,
     bottom: '-40%',
     left: '65%',
     from: { z: -4800, opacity: 0},

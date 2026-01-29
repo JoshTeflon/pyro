@@ -129,7 +129,7 @@ const Gallery = () => {
                 <div className="w-full h-full">
                   <figure className="w-full h-full">
                     <Image
-                      className='object-cover'
+                      className='bg-primary object-cover'
                       src={item.image}
                       alt={item.name}
                       quality={100}
