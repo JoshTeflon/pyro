@@ -1,12 +1,11 @@
 import MainImage from '@/public/images/ii6-pyro-main-bg.jpg';
 
+import AwkCover from '@/public/images/music_covers/awk.jpeg';
+import HypedCover from '@/public/images/music_covers/hyped.jpg';
 import TemptCover from '@/public/images/music_covers/tempt.png';
 import DenyCover from '@/public/images/music_covers/deny.jpeg';
 import SurrenderCover from '@/public/images/music_covers/surrender.png';
-import GoCover from '@/public/images/music_covers/go.jpeg';
 import NvmCover from '@/public/images/music_covers/nvm.jpg';
-import LmaCover from '@/public/images/music_covers/lma.jpg';
-import HazeCover from '@/public/images/music_covers/haze.jpg';
 
 import ToonedImage from '@/public/images/gallery/tooned.jpg';
 import SpaceImage from '@/public/images/gallery/space.jpg';
@@ -81,7 +80,7 @@ export const artist: IIArtist = {
   name: 'ii6 pyro',
   short_name: 'ii6',
   main_image: MainImage,
-  latest_release_link: 'https://distrokid.com/hyperfollow/ii6pyro/tempt',
+  latest_release_link: 'https://distrokid.com/hyperfollow/ii6pyro/awk',
   siteUrl: 'https://ii6pyro.xyz',
   socials: [
     {
@@ -119,9 +118,27 @@ export const artist: IIArtist = {
 
 export const musicList: ITrackInfo[] = [
   {
+    name: 'awk',
+    cover: AwkCover,
+    video: '/videos/awk-visualizer.mp4',
+    videoPoster: '/images/video_posters/awk.png',
+    youtubeId: 'dbdcWhkyvEI',
+    type: TrackType.SINGLE,
+    year: '2026',
+  },
+  {
+    name: 'hyped',
+    cover: HypedCover,
+    video: '/videos/hyped-maria-visualizer.mp4',
+    videoPoster: '/images/video_posters/hyped-maria.png',
+    youtubeId: 'dbdcWhkyvEI',
+    type: TrackType.EP,
+    year: '2025',
+  },
+  {
     name: 'tempt',
     cover: TemptCover,
-    video: '/tempt-visualizer.mp4',
+    video: '/videos/tempt-visualizer.mp4',
     videoPoster: '/images/video_posters/tempt.png',
     youtubeId: 'dbdcWhkyvEI',
     type: TrackType.SINGLE,
@@ -130,8 +147,8 @@ export const musicList: ITrackInfo[] = [
   {
     name: 'deny',
     cover: DenyCover,
-    video: '/nvm-visualizer.mp4',
-    videoPoster: '/images/video_posters/nvm.png',
+    video: '/videos/deny-visualizer.mp4',
+    videoPoster: '/images/video_posters/deny.png',
     youtubeId: 'Y-nU_3fG2uc',
     type: TrackType.SINGLE,
     year: '2025',
@@ -139,47 +156,20 @@ export const musicList: ITrackInfo[] = [
   {
     name: 'surrender',
     cover: SurrenderCover,
-    video: '/surrender-visualizer.mp4',
+    video: '/videos/surrender-visualizer.mp4',
     videoPoster: '/images/video_posters/surrender.png',
     youtubeId: 'SAQXk6rP4ww',
     type: TrackType.SINGLE,
-    year: '2025',
-  },
-  {
-    name: 'go',
-    cover: GoCover,
-    video: '/tempt-visualizer.mp4',
-    videoPoster: '/images/video_posters/tempt.png',
-    youtubeId: 'dr0zGaZKja4',
-    type: TrackType.SINGLE,
-    year: '2025',
+    year: '2024',
   },
   {
     name: 'nvm',
     cover: NvmCover,
-    video: '/nvm-visualizer.mp4',
+    video: '/videos/nvm-visualizer.mp4',
     videoPoster: '/images/video_posters/nvm.png',
     youtubeId: 'bGffXgRrckU',
     type: TrackType.SINGLE,
-    year: '2025',
-  },
-  {
-    name: 'lma',
-    cover: LmaCover,
-    video: '/surrender-visualizer.mp4',
-    videoPoster: '/images/video_posters/surrender.png',
-    youtubeId: 'qn7haRe2QE4',
-    type: TrackType.SINGLE,
-    year: '2025',
-  },
-  {
-    name: 'haze',
-    cover: HazeCover,
-    video: '/tempt-visualizer.mp4',
-    videoPoster: '/images/video_posters/tempt.png',
-    youtubeId: 'h53pPUN0PZE',
-    type: TrackType.SINGLE,
-    year: '2025',
+    year: '2024',
   },
 ];
 

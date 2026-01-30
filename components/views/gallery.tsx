@@ -132,7 +132,7 @@ const Gallery = () => {
                       <video
                         key={String(item.src)}
                         title={item.name}
-                        className="w-full h-full bg-primary object-cover"
+                        className="w-full h-full object-cover"
                         src={String(item.src)}
                         poster={item.videoPoster}
                         preload="metadata"

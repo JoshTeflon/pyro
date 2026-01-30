@@ -96,9 +96,9 @@ const Home = () => {
           className='z-20 p-3 md:p-4 w-4/5 max-w-[28rem] h-40 md:h-[10.25rem] bg-body rounded-lg absolute top-1/2 -translate-y-1/2'
         >
           <div className='w-full h-full flex space-x-3 md:space-x-4'>
-            <div className='relative min-w-[7.75rem] w-[7.75rem] md:min-w-[8.25rem] md:w-[8.25rem] h-full rounded-lg'>
+            <div className='group relative min-w-[7.75rem] w-[7.75rem] md:min-w-[8.25rem] md:w-[8.25rem] h-full rounded-lg overflow-hidden'>
               <Image
-                className='z-10 absolute inset-0 w-full h-full bg-primary object-cover object-center rounded-lg'
+                className='z-10 absolute inset-0 w-full h-full bg-primary object-cover object-center rounded-lg group-hover:scale-110 transition-all ease-in-out duration-300'
                 src={musicList[0].cover}
                 alt={musicList[0].name}
                 quality={100}

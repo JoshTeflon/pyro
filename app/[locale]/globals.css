@@ -34,6 +34,9 @@
   --error-clr: lch(86.41% 19.27 20.85);
 
   /* 🕶️ Overlay Colors */
+  --overlay-clr: hsla(0, 0%, 0%, 0.3);
+  --overlay-clr: lch(0% 0 0 / 0.3);
+
   --home-overlay-clr: hsla(0, 0%, 0%, 0.5);
   --home-overlay-clr: lch(0% 0 0 / 0.5);
 
