@@ -78,7 +78,6 @@ const Music = () => {
   const isMobileSize = useWindowDimension();
 
   const musicRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const headerRef = useRef<HTMLHeadingElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -106,43 +105,6 @@ const Music = () => {
   );
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.src = musicList[0].video;
-    video.load();
-
-    video.onloadeddata = () => {
-      video.play().catch(() => {});
-      video.style.opacity = '1';
-    };
-  }, []);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const nextSrc = activeTrackVideo.video;
-
-    if (video.dataset.src === nextSrc) return;
-    video.dataset.src = nextSrc;
-
-    video.pause();
-    video.style.opacity = '0';
-
-    video.src = nextSrc;
-    video.load();
-
-    video.onloadeddata = () => {
-      video.play().catch(() => {});
-      requestAnimationFrame(() => {
-        video.style.opacity = '1';
-      });
-    };
-  }, [activeTrackVideo.video]);
-
-
-  useEffect(() => {
     setShowDragHint(!isMobileSize);
   }, [isMobileSize]);
 
@@ -163,19 +125,21 @@ const Music = () => {
       ref={musicRef}
       className='z-40 relative py-8 w-full h-screen bg-main flex flex-col justify-around overflow-hidden'
     >
-      <div className='absolute inset-0 w-full h-screen opacity-40 transition-all ease-in-out'>
+      <div className='absolute inset-0 w-full h-screen opacity-40 transition-all ease-in-out duration-300'>
         <video
-          id='music-video-bg'
-          ref={videoRef}
+          key={activeTrackVideo.video}
           title={activeTrackVideo.name}
-          className='w-full h-screen object-cover transition-all ease-in-out duration-300'
+          className='w-full h-screen object-cover'
           poster={activeTrackVideo.videoPoster}
           preload='metadata'
           autoPlay
           playsInline
           muted
           loop
-        />
+        >
+          <source type='video/mp4' src={activeTrackVideo.video} />
+          { musicSectionLang('videoError') }
+        </video>
       </div>
 
       <div className={`${newsCycle.className} side-pad relative text-center uppercase`}>
