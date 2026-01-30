@@ -34,13 +34,12 @@
   --error-clr: lch(86.41% 19.27 20.85);
 
   /* 🕶️ Overlay Colors */
-  --overlay-clr: hsla(0, 0%, 0%, 0.3);
-  --overlay-clr: lch(0% 0 0 / 0.3);
+  --home-overlay-clr: hsla(0, 0%, 0%, 0.5);
+  --home-overlay-clr: lch(0% 0 0 / 0.5);
 
   --grey-overlay-clr: hsla(0, 0%, 35%, 0.9);
   --grey-overlay-clr: lch(37.82% 0.01 296.81 / 0.9);
 
-  /* 🚨 Danger Overlay */
   --danger-overlay-clr: hsla(0, 100%, 32%, 0.4);
   --danger-overlay-clr: lch(33.53% 74.57 39.77 / 0.4);
 

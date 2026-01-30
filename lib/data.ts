@@ -1,4 +1,4 @@
-import MainImage from '@/public/images/ii6-pyro-main.png';
+import MainImage from '@/public/images/ii6-pyro-main-bg.jpg';
 
 import TemptCover from '@/public/images/music_covers/tempt.png';
 import DenyCover from '@/public/images/music_covers/deny.jpeg';
@@ -12,10 +12,8 @@ import ToonedImage from '@/public/images/gallery/tooned.jpg';
 import SpaceImage from '@/public/images/gallery/space.jpg';
 import TemptImage from '@/public/images/gallery/tempt.jpeg';
 import AwakeImage from '@/public/images/gallery/awake.jpeg';
-import UndergroundImage from '@/public/images/gallery/underground.jpg';
 import ColdImage from '@/public/images/gallery/cold.jpg';
-import DepthImage from '@/public/images/gallery/depth.jpeg';
-import TempImage from '@/public/images/gallery/temp.jpg';
+import StareImage from '@/public/images/gallery/stare.jpg';
  
 import { AppleMusic, Connect, Gallery, Home, Instagram, Music, Snapchat, Spotify, Tiktok, Youtube } from '@/components/icons';
 
@@ -188,7 +186,8 @@ export const musicList: ITrackInfo[] = [
 export const galleryDeck: IGalleryCard[] = [
   {
     name: 'tooned',
-    image: ToonedImage,
+    type: 'image',
+    src: ToonedImage,
     bottom: '-20%',
     left: '30%',
     from: { z: -4000, opacity: 0 },
@@ -201,7 +200,8 @@ export const galleryDeck: IGalleryCard[] = [
   },
   {
     name: 'space',
-    image: SpaceImage,
+    type: 'image',
+    src: SpaceImage,
     top: '-30rem',
     left: '80%',
     from: { z: -4000, y: 300, opacity: 0 },
@@ -213,8 +213,9 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.2`,
   },
   {
-    name: 'awake',
-    image: AwakeImage,
+    name: 'tempt',
+    type: 'image',
+    src: TemptImage,
     bottom: '70%',
     left: '20%',
     from: { opacity: 0, z: -4000 },
@@ -226,8 +227,10 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.25`,
   },
   {
-    name: 'underground',
-    image: UndergroundImage,
+    name: 'motion',
+    type: 'video',
+    src: '/images/gallery/motion.mp4',
+    videoPoster: '/images/video_posters/motion.png',
     top: '50%',
     left: '90%',
     from: { opacity: 0, z: -4200 },
@@ -239,8 +242,9 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.3`,
   },
   {
-    name: 'tempt',
-    image: TemptImage,
+    name: 'awake',
+    type: 'image',
+    src: AwakeImage,
     bottom: '-20%',
     left: '0',
     from: { z: -4200, opacity: 0 },
@@ -253,7 +257,8 @@ export const galleryDeck: IGalleryCard[] = [
   },
   {
     name: 'cold',
-    image: ColdImage,
+    type: 'image',
+    src: ColdImage,
     top: '-20%',
     left: '70%',
     from: { z: -4500, opacity: 0 },
@@ -265,8 +270,10 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.3`,
   },
   {
-    name: 'temp',
-    image: TempImage,
+    name: 'dance',
+    type: 'video',
+    src: '/images/gallery/dance.mp4',
+    videoPoster: '/images/video_posters/dance.png',
     top: '30%',
     left: '10%',
     from: { z: -5200, opacity: 0 },
@@ -278,8 +285,9 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.25`,
   },
   {
-    name: 'depth',
-    image: DepthImage,
+    name: 'stare',
+    type: 'image',
+    src: StareImage,
     bottom: '-40%',
     left: '65%',
     from: { z: -4800, opacity: 0},

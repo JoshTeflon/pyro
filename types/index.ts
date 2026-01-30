@@ -51,9 +51,13 @@ export interface ITrackInfo {
   year: string;
 }
 
+export type GalleryMediaType = 'image' | 'video';
+
 export interface IGalleryCard {
   name: string;
-  image: StaticImageData;
+  type: GalleryMediaType;
+  src: StaticImageData | string;
+  videoPoster?: string;
   top?: string;
   bottom?: string;
   left?: string;
