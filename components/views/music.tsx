@@ -127,9 +127,9 @@ const Music = () => {
     >
       <div className='absolute inset-0 w-full h-screen opacity-40 transition-all ease-in-out'>
         <video
-          key={activeTrackVideo.video}
+          id='music-video-bg'
           title={activeTrackVideo.name}
-          className='w-full h-screen object-cover'
+          className='w-full h-screen object-cover transition-all ease-in-out duration-300'
           poster={activeTrackVideo.videoPoster}
           preload='metadata'
           autoPlay
