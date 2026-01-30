@@ -21,6 +21,7 @@ const useAppReady = (): LoadingState => {
       styles: false,
       layout: false,
       heroImage: false,
+      firstVideo: false,
     };
 
     const TOTAL = Object.keys(checkpoints).length;
@@ -95,6 +96,18 @@ const useAppReady = (): LoadingState => {
           img.addEventListener('error', done, { once: true });
         }
       });
+    }
+
+    /* ---------------- Styles ---------------- */
+    const video = document.querySelector('video');
+
+    if (video) {
+      video.onloadeddata = () => {
+        checkpoints.firstVideo = true;
+        updateProgress();
+      };
+    } else {
+      checkpoints.firstVideo = true;
     }
 
     /* ---------------- Styles ---------------- */

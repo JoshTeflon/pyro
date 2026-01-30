@@ -59,7 +59,7 @@ const Home = () => {
   }, [ready]);
 
 
-  const scrollToMusic = useCallback(() => {
+  const scrollToBottom = useCallback(() => {
     const el = document.getElementById('connect');
 
     if (el) {
@@ -80,36 +80,34 @@ const Home = () => {
         src={artist.main_image}
         alt='ii6 pyro artiste-themed background'
         quality={100}
-        // placeholder='blur'
+        placeholder='blur'
         fill
         priority
         sizes='100vw'
       />
 
-      <div className='z-10 absolute inset-0 w-full h-full bg-overlay'></div>
+      <div className='z-10 absolute inset-0 w-full h-full bg-home-overlay'></div>
 
       <div className='action-content side-pad z-30 relative w-full h-full'>
         <a
           href={artist.latest_release_link}
           target='_blank'
           rel='noopener noreferrer'
-          className='z-20 p-4 md:p-5 w-4/5 h-[10.25rem] max-w-[28rem] bg-body rounded-lg absolute top-1/2 -translate-y-1/2'
+          className='z-20 p-3 md:p-4 w-4/5 max-w-[28rem] h-40 md:h-[10.25rem] bg-body rounded-lg absolute top-1/2 -translate-y-1/2'
         >
-          <div className='w-full h-full flex space-x-4'>
-            <div className='relative min-w-[8.25rem] w-[8.25rem] h-full rounded-lg'>
+          <div className='w-full h-full flex space-x-3 md:space-x-4'>
+            <div className='group relative min-w-[7.75rem] w-[7.75rem] md:min-w-[8.25rem] md:w-[8.25rem] h-full rounded-lg overflow-hidden'>
               <Image
-                  className='z-10 absolute inset-0 w-full h-full object-cover object-center rounded-lg'
-                  src={musicList[0].cover}
-                  alt={musicList[0].name}
-                  quality={100}
-                  // placeholder='blur'
-                  fill
-                  priority
-                />
+                className='z-10 absolute inset-0 w-full h-full bg-primary object-cover object-center rounded-lg group-hover:scale-110 transition-all ease-in-out duration-300'
+                src={musicList[0].cover}
+                alt={musicList[0].name}
+                quality={100}
+                placeholder='blur'
+              />
             </div>
 
-            <div className='w-full text-primary uppercase flex flex-col justify-between'>
-              <h3 className='text-base tracking-[5%]'>{ newTrackTitleLang('outNow') }</h3>
+            <div className='py-0.5 w-full text-primary uppercase flex flex-col justify-between'>
+              <h3 className='text-base leading-none tracking-[5%]'>{ newTrackTitleLang('outNow') }</h3>
 
               <div className='w-full flex flex-col space-y-px'>
                 <span className='text-3xl font-medium leading-none'>{musicList[0].name}</span>
@@ -137,7 +135,8 @@ const Home = () => {
             <Button
               variant='naked'
               className='group'
-              onClick={scrollToMusic}
+              aria-label='scroll to bottom'
+              onClick={scrollToBottom}
             >
               <div className='group w-5 h-10 text-primary bg-body flex items-center justify-center border border-primary rounded-4xl transition-colors duration-500 ease-in-out group-hover:bg-primary group-hover:text-body'>
                 <Arrow

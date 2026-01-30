@@ -6,7 +6,7 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Zoom, EffectFade } from 'swiper/modules';
+import { Zoom } from 'swiper/modules';
 import type { Swiper as SwiperInstance } from 'swiper';
 
 import { AnimatedText } from '@/components/shared';
@@ -72,7 +72,6 @@ const DragHint = ({ visible }: { visible: boolean }) => {
   );
 };
 
-
 const Music = () => {
   const musicSectionLang = useTranslations('musicSection');
 
@@ -87,19 +86,18 @@ const Music = () => {
     details: musicList[0],
     index: 0
   });
-
-  // Track the Swiper instance
-  const [backgroundSwiper, setBackgroundSwiper] = useState<SwiperInstance | null>(null);
   
-  const [activeVideo, setActiveVideo] = useState<string | null>(null);
-
+  const [activeYtVideo, setActiveYtVideo] = useState<string | null>(null);
+  
   const [showDragHint, setShowDragHint] = useState<boolean>(!isMobileSize);
+
+  const activeTrackVideo = musicList[activeSlide.index];
 
   useModal(
     modalRef,
-    () => setActiveVideo(null),
+    () => setActiveYtVideo(null),
     {
-      enabled: !!activeVideo,
+      enabled: !!activeYtVideo,
       closeOnOutsideClick: true,
       closeOnEsc: true,
       lockScroll: true,
@@ -111,17 +109,14 @@ const Music = () => {
   }, [isMobileSize]);
 
   const handleSlideChange = (swiper: SwiperInstance) => {
+    if (swiper.activeIndex === activeSlide.index) return;
+  
     const newIndex = swiper.activeIndex;
     setActiveSlide({
       isActive: true,
       details: musicList[newIndex],
       index: newIndex,
     });
-
-    // Update the first slider to match the second one
-    if (backgroundSwiper) {
-      backgroundSwiper.slideTo(newIndex);
-    }
   };
 
   return (
@@ -130,32 +125,21 @@ const Music = () => {
       ref={musicRef}
       className='z-40 relative py-8 w-full h-screen bg-main flex flex-col justify-around overflow-hidden'
     >
-      <div className='absolute inset-0 w-full h-screen opacity-40 transition-all ease-in-out'>
-        <Swiper
-          effect="fade"
-          fadeEffect={{ crossFade: true }}
-          modules={[EffectFade]}
-          onSwiper={setBackgroundSwiper}
-          initialSlide={0}
-          allowTouchMove={false}
+      <div className='absolute inset-0 w-full h-screen opacity-40 transition-all ease-in-out duration-300'>
+        <video
+          key={activeTrackVideo.video}
+          title={activeTrackVideo.name}
+          className='w-full h-screen object-cover'
+          poster={activeTrackVideo.videoPoster}
+          preload='metadata'
+          autoPlay
+          playsInline
+          muted
+          loop
         >
-          {musicList.map((item, idx) => (
-            <SwiperSlide key={item.name}>
-              <video
-                key={item.name}
-                title={item.video}
-                className='w-full h-screen object-cover'
-                playsInline
-                autoPlay
-                muted
-                loop
-              >
-                <source type='video/mp4' src={item.video} />
-                { musicSectionLang('videoError') }
-              </video>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+          <source type='video/mp4' src={activeTrackVideo.video} />
+          { musicSectionLang('videoError') }
+        </video>
       </div>
 
       <div className={`${newsCycle.className} side-pad relative text-center uppercase`}>
@@ -168,6 +152,7 @@ const Music = () => {
           />
         </h3>
       </div>
+
       <div className="relative my-8 lg:my-16 w-full overflow-hidden">
         <DragHint visible={showDragHint} />
 
@@ -185,9 +170,7 @@ const Music = () => {
             <SwiperSlide
               key={item.name}
               className="transition-all duration-300 ease-in-out"
-              style={{
-                zIndex: activeSlide.index === idx ? 1 : 0
-              }}
+              style={{ zIndex: activeSlide.index === idx ? 1 : 0 }}
             >
               {({ isActive, isPrev, isNext }) => (
                 <div
@@ -198,19 +181,19 @@ const Music = () => {
                       `w-full max-w-96 h-96 flex items-center justify-center rounded-md cursor-grab transition-all duration-300 ease-in-out
                       ${isActive ? 'scale-100 opacity-100 cursor-pointer' : 'scale-50 opacity-50'}`
                     }
-                    onClick={() => isActive && setActiveVideo(item.youtubeId)}
+                    onClick={() => isActive && setActiveYtVideo(item.youtubeId)}
                   >
                     <div className='group relative w-full h-full bg-black/50 rounded-md transition-all duration-300 ease-in-out'>
                       <Image
-                        // ref={landingImageRef}
-                        className={`z-10 absolute inset-0 w-full h-full object-cover object-center ${isActive ? 'group-hover:opacity-75' : ''}`}
+                        className={`z-10 absolute inset-0 w-full h-full bg-primary object-cover object-center ${isActive ? 'group-hover:opacity-90' : ''}`}
                         src={item.cover}
                         alt={item.name}
                         quality={100}
                         sizes="(max-width: 768px) 23rem, 24rem"
-                        // placeholder='blur'
+                        placeholder='blur'
+                        priority={isActive}
+                        loading={isActive ? 'eager' : 'lazy'}
                         fill
-                        priority
                       />
 
                       <div
@@ -233,7 +216,7 @@ const Music = () => {
           ))}
         </Swiper>
 
-        {activeVideo && (
+        {activeYtVideo && (
           <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm'>
             <div
               ref={modalRef}
@@ -242,7 +225,7 @@ const Music = () => {
               <div className='relative w-full aspect-video overflow-hidden'>
                 <iframe
                   className='w-full h-full'
-                  src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1`}
+                  src={`https://www.youtube.com/embed/${activeYtVideo}?autoplay=1`}
                   title={activeSlide.details.name}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin" 
@@ -251,7 +234,7 @@ const Music = () => {
               </div>
 
               <Button
-                onClick={() => setActiveVideo(null)}
+                onClick={() => setActiveYtVideo(null)}
                 variant='secondary-primary'
                 roundness='pill'
                 size='sm'
@@ -265,7 +248,9 @@ const Music = () => {
         )}
       </div>
 
-      <div className='relative my-4 text-center text-xs lg:text-sm text-body uppercase'>{activeSlide.details.name}</div>
+      <div className='relative my-4 text-center text-xs lg:text-sm text-body uppercase'>
+        {activeSlide.details.name}
+      </div>
 
       <div className='relative flex justify-center'>
         <Image
@@ -275,7 +260,6 @@ const Music = () => {
           width={40}
           height={40}
           quality={100}
-          priority
         />
       </div>
     </section>

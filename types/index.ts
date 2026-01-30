@@ -15,7 +15,7 @@ export enum TrackType {
 export interface IIArtist {
   name: string;
   short_name: string;
-  main_image: string;
+  main_image: string | StaticImageData;
   latest_release_link: string;
   siteUrl: string;
   socials: IPlatform[];
@@ -43,16 +43,21 @@ export interface IAppContext {
 
 export interface ITrackInfo {
   name: string;
-  cover: string;
+  cover: string | StaticImageData;
   video: string;
+  videoPoster?: string;
   youtubeId: string;
   type: TrackType;
   year: string;
 }
 
+export type GalleryMediaType = 'image' | 'video';
+
 export interface IGalleryCard {
   name: string;
-  image: StaticImageData;
+  type: GalleryMediaType;
+  src: StaticImageData | string;
+  videoPoster?: string;
   top?: string;
   bottom?: string;
   left?: string;

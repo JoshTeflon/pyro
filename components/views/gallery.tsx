@@ -127,15 +127,30 @@ const Gallery = () => {
             >
               <div className="-translate-x-1/2 overflow-hidden">
                 <div className="w-full h-full">
-                  <figure className="w-full h-full">
+                  <figure className="w-full h-full relative">
+                   {item.type === 'video' ? (
+                      <video
+                        key={String(item.src)}
+                        title={item.name}
+                        className="w-full h-full object-cover"
+                        src={String(item.src)}
+                        poster={item.videoPoster}
+                        preload="metadata"
+                        autoPlay
+                        muted
+                        playsInline
+                        loop
+                      />
+                    ) : (
                     <Image
-                      className='object-cover'
-                      src={item.image}
+                      className='bg-primary object-cover'
+                      src={item.src}
                       alt={item.name}
                       quality={100}
                       placeholder='blur'
                     />
-                  </figure>
+                  )}
+                </figure>
                 </div>
               </div>
             </div>

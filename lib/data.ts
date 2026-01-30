@@ -1,9 +1,20 @@
-import { AppleMusic, Connect, Gallery, Home, Instagram, Music, Snapchat, Spotify, Tiktok, Youtube } from '@/components/icons';
+import MainImage from '@/public/images/ii6-pyro-main-bg.jpg';
 
-import GalleryCardImage0 from '@/public/images/gallery/gallery-card-0.jpg';
-import GalleryCardImage1 from '@/public/images/gallery/gallery-card-1.jpeg';
-import GalleryCardImage2 from '@/public/images/gallery/gallery-card-2.jpg';
-import GalleryCardImage3 from '@/public/images/gallery/tempt-pegs.jpeg';
+import AwkCover from '@/public/images/music_covers/awk.jpeg';
+import HypedCover from '@/public/images/music_covers/hyped.jpg';
+import TemptCover from '@/public/images/music_covers/tempt.png';
+import DenyCover from '@/public/images/music_covers/deny.jpeg';
+import SurrenderCover from '@/public/images/music_covers/surrender.png';
+import NvmCover from '@/public/images/music_covers/nvm.jpg';
+
+import ToonedImage from '@/public/images/gallery/tooned.jpg';
+import SpaceImage from '@/public/images/gallery/space.jpg';
+import TemptImage from '@/public/images/gallery/tempt.jpeg';
+import AwakeImage from '@/public/images/gallery/awake.jpeg';
+import ColdImage from '@/public/images/gallery/cold.jpg';
+import StareImage from '@/public/images/gallery/stare.jpg';
+ 
+import { AppleMusic, Connect, Gallery, Home, Instagram, Music, Snapchat, Spotify, Tiktok, Youtube } from '@/components/icons';
 
 import { IIArtist, IGalleryCard, IMenuItems, ITrackInfo, TrackType } from '@/types';
 
@@ -68,8 +79,8 @@ export const languageMenuItems: IMenuItems[] = [
 export const artist: IIArtist = {
   name: 'ii6 pyro',
   short_name: 'ii6',
-  main_image: '/images/ii6-pyro-main.png',
-  latest_release_link: 'https://distrokid.com/hyperfollow/ii6pyro/tempt',
+  main_image: MainImage,
+  latest_release_link: 'https://distrokid.com/hyperfollow/ii6pyro/awk',
   siteUrl: 'https://ii6pyro.xyz',
   socials: [
     {
@@ -107,67 +118,66 @@ export const artist: IIArtist = {
 
 export const musicList: ITrackInfo[] = [
   {
+    name: 'awk',
+    cover: AwkCover,
+    video: '/videos/awk-visualizer.mp4',
+    videoPoster: '/images/video_posters/awk.png',
+    youtubeId: 'dbdcWhkyvEI',
+    type: TrackType.SINGLE,
+    year: '2026',
+  },
+  {
+    name: 'hyped',
+    cover: HypedCover,
+    video: '/videos/hyped-maria-visualizer.mp4',
+    videoPoster: '/images/video_posters/hyped-maria.png',
+    youtubeId: 'dbdcWhkyvEI',
+    type: TrackType.EP,
+    year: '2025',
+  },
+  {
     name: 'tempt',
-    cover: '/images/music_covers/tempt.png',
-    video: '/tempt-visualizer.mp4',
+    cover: TemptCover,
+    video: '/videos/tempt-visualizer.mp4',
+    videoPoster: '/images/video_posters/tempt.png',
     youtubeId: 'dbdcWhkyvEI',
     type: TrackType.SINGLE,
     year: '2025',
   },
   {
     name: 'deny',
-    cover: '/images/music_covers/deny.jpeg',
-    video: '/nvm-visualizer.mp4',
+    cover: DenyCover,
+    video: '/videos/deny-visualizer.mp4',
+    videoPoster: '/images/video_posters/deny.png',
     youtubeId: 'Y-nU_3fG2uc',
     type: TrackType.SINGLE,
     year: '2025',
   },
   {
     name: 'surrender',
-    cover: '/images/music_covers/surrender_cover.png',
-    video: '/surrender-visualizer.mp4',
+    cover: SurrenderCover,
+    video: '/videos/surrender-visualizer.mp4',
+    videoPoster: '/images/video_posters/surrender.png',
     youtubeId: 'SAQXk6rP4ww',
     type: TrackType.SINGLE,
-    year: '2025',
-  },
-  {
-    name: 'go',
-    cover: '/images/music_covers/go_cover.jpeg',
-    video: '/tempt-visualizer.mp4',
-    youtubeId: 'dr0zGaZKja4',
-    type: TrackType.SINGLE,
-    year: '2025',
+    year: '2024',
   },
   {
     name: 'nvm',
-    cover: '/images/music_covers/nvm_cover.jpg',
-    video: '/nvm-visualizer.mp4',
+    cover: NvmCover,
+    video: '/videos/nvm-visualizer.mp4',
+    videoPoster: '/images/video_posters/nvm.png',
     youtubeId: 'bGffXgRrckU',
     type: TrackType.SINGLE,
-    year: '2025',
-  },
-  {
-    name: 'lma',
-    cover: '/images/music_covers/lma_cover.jpg',
-    video: '/surrender-visualizer.mp4',
-    youtubeId: 'qn7haRe2QE4',
-    type: TrackType.SINGLE,
-    year: '2025',
-  },
-  {
-    name: 'haze',
-    cover: '/images/music_covers/haze_cover.jpg',
-    video: '/tempt-visualizer.mp4',
-    youtubeId: 'h53pPUN0PZE',
-    type: TrackType.SINGLE,
-    year: '2025',
+    year: '2024',
   },
 ];
 
 export const galleryDeck: IGalleryCard[] = [
   {
-    name: 'resurrection',
-    image: GalleryCardImage0,
+    name: 'tooned',
+    type: 'image',
+    src: ToonedImage,
     bottom: '-20%',
     left: '30%',
     from: { z: -4000, opacity: 0 },
@@ -179,8 +189,9 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-0.5`,
   },
   {
-    name: 'awake',
-    image: GalleryCardImage1,
+    name: 'space',
+    type: 'image',
+    src: SpaceImage,
     top: '-30rem',
     left: '80%',
     from: { z: -4000, y: 300, opacity: 0 },
@@ -192,8 +203,9 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.2`,
   },
   {
-    name: 'depth',
-    image: GalleryCardImage2,
+    name: 'tempt',
+    type: 'image',
+    src: TemptImage,
     bottom: '70%',
     left: '20%',
     from: { opacity: 0, z: -4000 },
@@ -205,21 +217,24 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.25`,
   },
   {
-    name: 'awake2',
-    image: GalleryCardImage3,
+    name: 'motion',
+    type: 'video',
+    src: '/images/gallery/motion.mp4',
+    videoPoster: '/images/video_posters/motion.png',
     top: '50%',
     left: '90%',
     from: { opacity: 0, z: -4200 },
     keyframes: [
       { z: -3050, opacity: 1 },
-      { z: -700, opacity: 1 },
+      { z: -1500, opacity: 1 },
       { z: 0, opacity: 0 },
     ],
     position: `>-1.3`,
   },
   {
-    name: 'depth2',
-    image: GalleryCardImage1,
+    name: 'awake',
+    type: 'image',
+    src: AwakeImage,
     bottom: '-20%',
     left: '0',
     from: { z: -4200, opacity: 0 },
@@ -231,8 +246,9 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.35`,
   },
   {
-    name: 'resurrection2',
-    image: GalleryCardImage2,
+    name: 'cold',
+    type: 'image',
+    src: ColdImage,
     top: '-20%',
     left: '70%',
     from: { z: -4500, opacity: 0 },
@@ -244,8 +260,10 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.3`,
   },
   {
-    name: 'depth3',
-    image: GalleryCardImage1,
+    name: 'dance',
+    type: 'video',
+    src: '/images/gallery/dance.mp4',
+    videoPoster: '/images/video_posters/dance.png',
     top: '30%',
     left: '10%',
     from: { z: -5200, opacity: 0 },
@@ -257,8 +275,9 @@ export const galleryDeck: IGalleryCard[] = [
     position: `>-1.25`,
   },
   {
-    name: 'awake3',
-    image: GalleryCardImage0,
+    name: 'stare',
+    type: 'image',
+    src: StareImage,
     bottom: '-40%',
     left: '65%',
     from: { z: -4800, opacity: 0},
