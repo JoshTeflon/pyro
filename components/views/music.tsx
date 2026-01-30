@@ -131,7 +131,7 @@ const Music = () => {
           title={activeTrackVideo.name}
           className='w-full h-screen object-cover'
           poster={activeTrackVideo.videoPoster}
-          preload='none'
+          preload='metadata'
           autoPlay
           playsInline
           muted
