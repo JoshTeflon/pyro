@@ -181,7 +181,7 @@ const Music = () => {
                       `w-full max-w-96 h-96 flex items-center justify-center rounded-md cursor-grab transition-all duration-300 ease-in-out
                       ${isActive ? 'scale-100 opacity-100 cursor-pointer' : 'scale-50 opacity-50'}`
                     }
-                    onClick={() => isActive && setActiveYtVideo(item.youtubeId)}
+                    onClick={() => isActive && setActiveYtVideo(item.youtubeId ?? null)}
                   >
                     <div className='group relative w-full h-full bg-black/50 rounded-md transition-all duration-300 ease-in-out'>
                       <Image
@@ -204,6 +204,7 @@ const Music = () => {
                           variant='secondary-primary'
                           roundness='pill'
                           size='xs'
+                          disabled={!item.youtubeId}
                         >
                           { musicSectionLang('trackCta') }
                         </Button>
