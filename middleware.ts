@@ -8,8 +8,5 @@ export const config = {
   // Match all pathnames except for
   // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
   // - … the ones containing a dot (e.g. `favicon.ico`)
-
-  // Explicitly include `/` since some hosting environments can be finicky
-  // with regex-only matchers for the root pathname.
-  matcher: ['/', '/((?!api|trpc|_next|_vercel|.*\\..*).*)']
+  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
 };
