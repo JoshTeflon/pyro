@@ -47,7 +47,7 @@ export default async function RootLayout({ children, params }: Readonly<{
       <body className={`${GeistMono.className} ${GeistMono.variable}`}>
         <NextIntlClientProvider locale={locale} >
           {children}
-          <Analytics />
+          {process.env.NODE_ENV === 'production' && <Analytics />}
         </NextIntlClientProvider>
       </body>
     </html>
