@@ -2,7 +2,16 @@
 
 import createNextIntlPlugin from 'next-intl/plugin';
 
-const nextConfig = {};
+const nextConfig = {
+	async rewrites() {
+		return [
+			{
+				source: '/',
+				destination: '/en',
+			},
+		];
+	},
+};
 
 const withNextIntl = createNextIntlPlugin();
 

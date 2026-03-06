@@ -84,7 +84,7 @@ const Gallery = () => {
     <section
       id='gallery'
       ref={galleryRef}
-      className='gallery relative block w-full h-[500vh] bg-main z-[1]'
+      className='gallery bg-cross-grid relative block w-full h-[500vh] bg-main z-[1]'
     >
       <div className='gallery-title-wrapper w-full h-full absolute top-0 left-0 z-[-1]'>
         <div className='sticky top-0 w-full h-screen -mt-[100vh] pointer-events-none overflow-hidden'>
