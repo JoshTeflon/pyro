@@ -34,8 +34,6 @@ export default async function RootLayout({ children, params }: Readonly<{
   children: React.ReactNode;
   params: Promise<{locale: string}>;
 }>) {
-  const isProduction = process.env.NODE_ENV === 'production';
-
   const { locale } = await params;
 
   if (!hasLocale(routing.locales, locale)) {
@@ -49,7 +47,7 @@ export default async function RootLayout({ children, params }: Readonly<{
       <body className={`${GeistMono.className} ${GeistMono.variable}`}>
         <NextIntlClientProvider locale={locale} >
           {children}
-          {isProduction && <Analytics />}
+          {process.env.NODE_ENV === 'production' && <Analytics />}
         </NextIntlClientProvider>
       </body>
     </html>
