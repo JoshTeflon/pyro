@@ -225,40 +225,9 @@ input:-webkit-autofill:active {
     @apply mx-auto w-full max-w-8xl px-4 lg:px-8 xl:px-16;
   }
 
-  .absolute-center {
-    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
-  }
-
-  .flex-center {
-    @apply flex items-center justify-center;
-  }
-
-  .flex-between {
-    @apply flex items-center justify-between;
-  }
-
   .bar {
     @apply block absolute p-0 w-8 h-1 rounded;
     transition: all 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
-  }
-
-  .bg-cross-grid {
-    background-color: var(--main-clr);
-    background-image:
-      repeating-linear-gradient(
-        to right,
-        transparent 0,
-        transparent 69px,
-        lch(94.52% 0.36 17.65 / 0.03) 69px,
-        lch(94.52% 0.36 17.65 / 0.03) 70px
-      ),
-      repeating-linear-gradient(
-        to bottom,
-        transparent 0,
-        transparent 69px,
-        lch(94.52% 0.36 17.65 / 0.03) 69px,
-        lch(94.52% 0.36 17.65 / 0.03) 70px
-      );
   }
 
   .outline-connect-footer-logo {
@@ -280,5 +249,17 @@ input:-webkit-autofill:active {
   .outline-connect-header {
     color: currentColor;
     -webkit-text-stroke: 2px var(--main-clr);
+  }
+
+  .absolute-center {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
   }
 }
