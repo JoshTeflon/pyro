@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 import Loading from '@/app/[locale]/loading';
 
-// import { CustomCursor } from '@/components/shared';
+import { CustomCursor } from '@/components/shared';
 import { DevConsole, Header } from '@/components/interfaces';
 import { Connect, Gallery, Home, Music } from '@/components/views';
 
@@ -25,8 +25,8 @@ const LandingClient = () => {
 
   return (
     <AppContextProvider ready={!isLoading}>
-      {/* <CustomCursor /> */}
       <DevConsole />
+      <CustomCursor />
       <Header  />
       <main className='relative w-full h-full flex flex-col grow font-geist-mono tracking-wide overflow-hidden'>
         <Home />

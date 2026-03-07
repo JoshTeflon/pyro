@@ -77,9 +77,62 @@ body {
   backface-visibility: hidden;
 }
 
-/* body, button, a {
-  cursor: none;
-} */
+@media (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button,
+  html.has-custom-cursor [role='button'],
+  html.has-custom-cursor [data-cursor-interact] {
+    cursor: none !important;
+  }
+
+  .cursor-ring,
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10000;
+    mix-blend-mode: difference;
+    will-change: transform;
+  }
+
+  .cursor-ring {
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid lch(94.52% 0.36 17.65 / 0.7);
+    border-radius: 999px;
+    transition: width 0.22s ease, height 0.22s ease, border-color 0.22s ease, opacity 0.22s ease;
+  }
+
+  .cursor-dot {
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 999px;
+    background: lch(94.52% 0.36 17.65 / 0.9);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  html.has-custom-cursor[data-cursor-state='hover'] .cursor-ring {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-color: lch(94.52% 0.36 17.65 / 0.95);
+  }
+
+  html.has-custom-cursor[data-cursor-state='hover'] .cursor-dot {
+    transform: translate(-50%, -50%) scale(0.75);
+  }
+
+  html.has-custom-cursor[data-cursor-pressed='true'] .cursor-ring {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  html.has-custom-cursor[data-cursor-pressed='true'] .cursor-dot {
+    transform: translate(-50%, -50%) scale(1.45);
+  }
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

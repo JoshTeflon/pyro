@@ -144,7 +144,7 @@ const useAppReady = (): LoadingState => {
       });
     });
 
-    const heroImg = document.querySelector('.landing-img') as HTMLImageElement;
+    const heroImg = document.querySelector('.landing-img img') as HTMLImageElement | null;
 
     const waitForImageDecode = (img: HTMLImageElement) => {
       if (img.complete && img.naturalWidth > 0) {
@@ -155,7 +155,7 @@ const useAppReady = (): LoadingState => {
         img.onload = () => {
           img.decode?.().finally(resolve);
         };
-        img.onerror = () => resolve;
+        img.onerror = () => resolve();
       });
     };
 

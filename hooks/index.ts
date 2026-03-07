@@ -4,3 +4,4 @@ export { default as useReveal } from './useReveal';
 export { default as useActiveSection } from './useActiveSection';
 export { default as useModal } from './useModal';
 export { default as useAppReady } from './useAppReady';
+export { default as useHeroImageDistortion } from './useHeroImageDistortion';
