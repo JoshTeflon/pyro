@@ -58,7 +58,6 @@ const Home = () => {
     return () => ctx.revert();
   }, [ready]);
 
-
   const scrollToBottom = useCallback(() => {
     const el = document.getElementById('connect');
 
@@ -73,7 +72,10 @@ const Home = () => {
   }, []);
 
   return (
-    <section id='home' className='relative w-full h-screen min-h-svh overflow-hidden'>
+    <section
+      id='home'
+      className='relative w-full h-screen min-h-svh overflow-hidden'
+    >
       <Image
         ref={landingImageRef}
         className='landing-img z-10 absolute inset-0 w-full h-full object-cover object-center'
