@@ -67,12 +67,14 @@ const CustomCursor = () => {
 
     return () => {
       globalThis.cancelAnimationFrame(rafId);
+
       globalThis.removeEventListener('mousemove', setPointerTarget);
       globalThis.removeEventListener('mousedown', setPressed);
       globalThis.removeEventListener('mouseup', clearPressed);
 
       delete root.dataset.cursorState;
       delete root.dataset.cursorPressed;
+
       root.classList.remove('has-custom-cursor');
     };
   }, []);
