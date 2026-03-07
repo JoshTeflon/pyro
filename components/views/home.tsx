@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef } from 'react';
+import { useCallback } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -9,7 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SocialPlatforms, Button } from '@/components/interfaces';
 import { Arrow, Play } from '@/components/icons';
 
-import { useApp } from '@/hooks';
+import { useApp, useHeroImageDistortion } from '@/hooks';
 import { artist, musicList } from '@/lib/data';
 import { useTranslations } from 'next-intl';
 
@@ -20,17 +20,25 @@ const Home = () => {
 
   const newTrackTitleLang = useTranslations('newTrackTitle');
   const trackTypesLang = useTranslations('trackTypes');
+  const heroImageSrc = typeof artist.main_image === 'string' ? artist.main_image : artist.main_image.src;
 
-  const landingImageRef = useRef<HTMLImageElement>(null);
+  const {
+    homeRef,
+    landingMediaRef,
+    canvasRef,
+    onPointerEnter,
+    onPointerMove,
+    onPointerLeave,
+  } = useHeroImageDistortion(heroImageSrc);
 
   useGSAP(() => {
     if (!ready) return;
 
     const ctx = gsap.context(() => {
-      gsap.to(landingImageRef.current, {
+      gsap.to(landingMediaRef.current, {
         scale: 2,
         scrollTrigger: {
-          trigger: landingImageRef.current,
+          trigger: landingMediaRef.current,
           start: 'bottom 95%',
           scrub: 1,
           toggleActions: 'restart none none none',
@@ -45,7 +53,7 @@ const Home = () => {
           duration: 1,
           ease: 'sine.inOut',
           scrollTrigger: {
-            trigger: landingImageRef.current,
+            trigger: landingMediaRef.current,
             start: 'bottom 90%',
             scrub: true,
           },
@@ -74,19 +82,29 @@ const Home = () => {
   return (
     <section
       id='home'
+      ref={homeRef}
       className='relative w-full h-screen min-h-svh overflow-hidden'
+      onPointerEnter={onPointerEnter}
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
     >
-      <Image
-        ref={landingImageRef}
-        className='landing-img z-10 absolute inset-0 w-full h-full object-cover object-center'
-        src={artist.main_image}
-        alt='ii6 pyro artiste-themed background'
-        quality={100}
-        placeholder='blur'
-        fill
-        priority
-        sizes='100vw'
-      />
+      <div ref={landingMediaRef} className='landing-img absolute inset-0 w-full h-full z-[8]'>
+        <Image
+          className='absolute inset-0 w-full h-full object-cover object-center'
+          src={artist.main_image}
+          alt='ii6 pyro artiste-themed background'
+          quality={100}
+          placeholder='blur'
+          fill
+          sizes='100vw'
+        />
+
+        <canvas
+          ref={canvasRef}
+          className='pointer-events-none absolute inset-0 w-full h-full opacity-0 transition-opacity duration-200'
+          aria-hidden='true'
+        />
+      </div>
 
       <div className='z-10 absolute inset-0 w-full h-full bg-home-overlay'></div>
 
@@ -105,6 +123,8 @@ const Home = () => {
                 alt={musicList[0].name}
                 quality={100}
                 placeholder='blur'
+                fill
+                sizes='(max-width: 768px) 124px, 132px'
               />
             </div>
 
