@@ -3,37 +3,37 @@
 @tailwind utilities;
 
 :root {
-  /* 🦍 Primary Brand Color */
+  /* Primary Brand Color */
   --primary-clr: hsl(0, 86%, 28%); /* fallback */
   --primary-clr: lch(27.37% 59.89 37.03);
 
   --primary-clr-100: hsl(0, 89%, 96%);
   --primary-clr-100: lch(94.79% 6.47 19.75);
 
-  /* 🖤 Main Background / Dark Base */
+  /* Main Background / Dark Base */
   --main-clr: hsl(0, 0%, 3%);
   --main-clr: lch(2.19% 0 296.81);
 
-  /* 🤍 Body / Text */
+  /* Body / Text */
   --body-clr: hsl(0, 3%, 94%);
   --body-clr: lch(94.52% 0.36 17.65);
 
   --burn-clr: hsl(39, 93%, 55%);
   --burn-clr: lch(75.22% 75.9 76.02);
 
-  /* 🩶 Neutral Grey */
+  /* Neutral Grey */
   --grey-clr: hsl(0, 0%, 35%);
   --grey-clr: lch(37.82% 0.01 296.81);
 
-  /* ✅ Success Green */
+  /* Success Green */
   --success-clr: hsl(120, 60%, 75%);
   --success-clr: lch(84.83% 49.09 142.02);
 
-  /* ❌ Error Red */
+  /* Error Red */
   --error-clr: hsl(0, 100%, 90%);
   --error-clr: lch(86.41% 19.27 20.85);
 
-  /* 🕶️ Overlay Colors */
+  /* Overlay Colors */
   --overlay-clr: hsla(0, 0%, 0%, 0.3);
   --overlay-clr: lch(0% 0 0 / 0.3);
 
@@ -46,7 +46,7 @@
   --danger-overlay-clr: hsla(0, 100%, 32%, 0.4);
   --danger-overlay-clr: lch(33.53% 74.57 39.77 / 0.4);
 
-  /* 🟡 Scrollbar Styling */
+  /* Scrollbar Styling */
   --scrollbar-thumb: hsla(50, 100%, 91%, 0.3);
   --scrollbar-thumb: lch(96.98% 19.54 99.87 / 0.3);
 
